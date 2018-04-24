@@ -1,0 +1,29 @@
+<form class="form-horizontal" ng-hide="vm.vital.id == vm.bpId">
+    <div class="form-group" ng-show="vm.vitalId">
+
+        <label class="control-label col-xs-3" for="field_value">{{vm.vital.name + " ("+vm.unit.name+")"}}</label>
+        <div class="col-xs-9">
+            <input type="text" autocomplete="off" class="form-control" name="value" id="field_value" required ng-model="vm.personVital.value"
+                ng-blur="vm.save()" style="width: 40%;" />
+            <p style="color: red;" ng-show="vm.validateVital()">{{vm.validateVital()}} </p>
+
+        </div>
+    </div>
+</form>
+
+<form class="form-horizontal" ng-show="vm.vital.id == vm.bpId">
+    <div class="form-group" ng-show="vm.vitalId">
+        <label class="control-label col-xs-3" for="field_value">{{vm.vital.name + " ("+vm.unit.name+")"}}</label>
+        <div class="col-xs-9">
+            Systolic<input type="number" autocomplete="off" class="form-control" name="value" id="field_value" required ng-model="vm.systolic"
+                ng-blur="vm.saveBp()" style="width: 40%;" />
+            <p style="color: red;" ng-show="vm.validateVitalBpSystolic()">{{vm.validateVitalBpSystolic()}} </p>/ Diastolic
+            <input type="number" autocomplete="off" class="form-control" name="value" id="field_value" required ng-model="vm.diastolic"
+                ng-blur="vm.saveBp()" style="width: 40%;" />
+            <p style="color: red;" ng-show="vm.validateVitalBpDiastolic()">{{vm.validateVitalBpDiastolic()}} </p>
+        </div>
+    </div>
+
+
+
+</form>

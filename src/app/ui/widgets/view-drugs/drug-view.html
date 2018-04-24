@@ -1,0 +1,19 @@
+<legend>Medication Given</legend>
+<div class="col-xs-12">
+    <table class="table table-striped table-bordered row-border hover">
+        <thead>
+            <tr>
+                <th>Drug Name</th>
+                <th>Formulation</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="model in vm.medicationList">
+                <td>{{model.drugName }}</td>
+                <td>{{model.formulation }}</td>
+                <td>{{model.quantity }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

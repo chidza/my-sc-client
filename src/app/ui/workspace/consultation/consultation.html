@@ -1,0 +1,12 @@
+<div class="col-xs-12">
+    <fieldset>
+        <legend>
+            <div ng-if="vm.workspaceId=='admission'"><span class="fa fa-bed fa-1x "></span>&nbsp;In Patient Management</div>
+            
+            <div ng-if="vm.workspaceId=='opd'"><span class="fa fa-users fa-1x "></span>&nbsp;Out Patient Management</div>
+        </legend>
+    </fieldset>
+</div>
+<div class="row">
+    <div ui-view></div>
+</div>

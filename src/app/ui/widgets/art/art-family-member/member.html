@@ -1,0 +1,75 @@
+<div class="col-12">
+    <label> Immediate family members</label>
+    <button class="btn btn-primary pull-right" ng-click="vm.add()">Add Family Member</button>
+    <br/>
+    <br/>
+
+    <div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>OIArt Number</th>
+                    <th class="text-center">Age(yrs)</th>
+                    <th class="text-center">On ART</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="member in vm.members">
+                    <td>{{member.memberName}}</td>
+                    <td>{{member.artNumber}}</td>
+                    <td class="text-center">{{member.memberAge}}</td>
+                    <td class="text-center"> <span ng-class="member.artStatus ? 'fa fa-check text-danger' : 'fa fa-times text-success'"></span></td>
+                    <td> <button type="button" ng-click="vm.remove(member.id)" class="btn btn-danger btn-lg"><i class="fa fa-trash-o">Remove</i></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br/>
+
+    <div class="col-xs-12">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="provider" class="col-xs-4 control-label"><span  class="glyphicon glyphicon-education" aria-hidden="true"></span>&nbsp;&nbsp;Educational Level</label>
+                <div class="col-xs-8">
+                    <label ng-repeat="option in vm.educationLevels"><input
+                            type="radio" name="level" ng-model="vm.person.educationLevelId" ng-click="vm.save()"
+                            ng-value="option.id" /> {{option.name}}&nbsp;&nbsp;&nbsp; </label>
+                </div>
+            </div>
+
+            <div class="form-group" ng-hide="true">
+                <label for="ophanStatus" class="col-xs-4 control-label"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Ophan Status</label>
+                <div class="col-xs-8">
+                    <label ng-repeat="option in vm.ophanStatus"><input
+                            type="radio" name="ophan" ng-model="vm.status"
+                            ng-value="option" /> {{option}}&nbsp;&nbsp;&nbsp; </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="provider" class="col-xs-4 control-label"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>&nbsp;&nbsp;<span>Occupation</span></label>
+                <div class="col-xs-8">
+                    <label ng-repeat="op in vm.occupations"><input
+                            type="radio" ng-model="vm.person.occupationId"  ng-value="op.id"  ng-click="vm.save()"
+                            ng-value="op.id" /> {{op.name}}&nbsp;&nbsp;&nbsp; </label>
+
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="vm.status=='SINGLE'">
+                <label for="ophanStatus" class="col-xs-4 control-label">Deceased</label>
+                <div class="col-xs-8">
+                    <label ng-repeat="option in vm.parents" ng-hide="option=='BOTH'||option=='NONE'"><input
+                            type="radio" name="parent" ng-model="vm.parent"
+                            ng-value="option" /> {{option}}&nbsp;&nbsp;&nbsp; </label>
+                </div>
+            </div>
+
+
+
+        </form>
+    </div>
+
+</div>

@@ -1,0 +1,175 @@
+<style>
+    .textcolor {
+        color: #ffffff;
+    }
+
+    .boreder {
+        border-right: 1px solid black;
+        height: 480px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    body::-webkit-scrollbar {
+        width: 1em;
+    }
+
+    body::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+</style>
+<div class="col-xs-12" ng-hide="vm.pnc.id">
+    <p>Patient general information will only be available after patient registration</p>
+</div>
+<div class="col-xs-12" ng-show="vm.pnc.id">
+
+
+    <form class="form-horizontal">
+
+        <div class="form-group">
+            <label class="col-xs-6 control-label"> Registration Date</label>
+            <div class="col-xs-6">
+                <p class="form-control-static">
+                    {{vm.pnc.date | date:"y-MM-dd"}}
+                </p>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-6 control-label">HIV STATUS</label>
+            <div class="col-xs-6">
+                <mrs-hiv-status-dialog offer-hts="vm.onOfferHts()" person-id="vm.personId" date="vm.date"></mrs-hiv-status-dialog>
+                <!--<p class="form-control-static">
+                    {{vm.hivStatus}}
+                </p>-->
+            </div>
+
+        </div>
+
+        <div class="box-default">
+            <div class="col-xs-7 boreder">
+                <legend>Mother Details</legend>
+                <mrs-pnc-overview-screening person-id="vm.personId" encounter-id="vm.encounterId" pnc-visit-id="vm.pncVisitId"></mrs-pnc-overview-screening>
+            </div>
+
+            <div class="col-xs-5">
+                <legend>Child Details</legend>
+                <div ng-repeat="child in vm.children">
+                    <div class="form-group">
+                        <label class="col-xs-1 control-label"><b>{{$index +1}}.</b></label>
+                        <label class="col-xs-3 control-label">Name</label>
+                        <div class="col-xs-4">
+                            <p class="form-control-static">
+                                <span>{{child.lastname + " " + child.firstname}}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label">Age</label>
+                        <div class="col-xs-4">
+                            <p class="form-control-static">
+                                <span>{{vm.childAge(child.birthdate)}} days</span>
+                            </p>
+                        </div>
+                        <div class="col-xs-4">
+                            <a class="btn btn-success pull-right" ng-click="vm.attend(child.id)">Attend to
+                        baby</a>
+                        </div>
+
+                    </div>
+                    <hr>
+
+                </div>
+    </form>
+
+    </div>
+
+
+
+    <!--
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">PNC Overview </div>
+            <div class="panel-body">
+                <div class="col-xs-12" ng-hide="vm.pnc.id">
+                    <p>Patient general information will only be available after patient registration</p>
+                </div>
+                <div class="col-xs-12" ng-show="vm.pnc.id">
+                    <div class="col-xs-6">
+                        <form name="editForm" role="form" novalidate  show-validation>
+
+                            <div class="row">
+                                <label class="col-sm-6">Date of Registration:</label>
+
+                                <div class="col-sm-6">{{vm.pnc.date | date:"y-MM-dd"}}</div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-6">Hiv Status:</label>
+
+                                <div class="col-sm-6">POSITIVE</div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-6">Breast Cancer Screening:</label>
+
+                                <div class="col-sm-6">NOT SCREENED</div>
+                            </div>
+
+
+                            <div class="row">
+                                <label class="col-sm-6">Cervical Cancer Screening:</label>
+
+                                <div class="col-sm-6">NOT SCREENED</div>
+                            </div>
+
+                            <div class="row">
+                                <label class="col-sm-6">Syphilis Screening:</label>
+
+                                <div class="col-sm-6">NOT SCREENED</div>
+                            </div>
+
+                            <div class="row">
+                                <label class="col-sm-6">TB Screening:</label>
+
+                                <div class="col-sm-6">NOT SCREENED</div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="panel panel-primary col-xs-12">
+                            <div class="panel-heading">
+                                <div class="fa fa-user"></div>
+                                Children
+                            </div>
+                            <div class="panel-body" ng-repeat="child in vm.children">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-6 control-label">Name</label>
+                                        <div class="col-sm-6">
+                                            <p class="form-control-static">
+                                                <span>{{child.lastname + " " + child.firstname}}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-6 control-label">Age</label>
+                                        <div class="col-sm-6">
+                                            <p class="form-control-static">
+                                                <span>{{vm.childAge(child.birthdate)}} days</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 ">
+                                        <a class="btn btn-success pull-right" ng-click="vm.attend(child.id)">Attend to
+                        baby</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->

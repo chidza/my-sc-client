@@ -1,0 +1,233 @@
+<style>
+    .textcolor {
+        color: #ffffff;
+    }
+
+
+    .boreder {
+
+        height: 470px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+
+    body::-webkit-scrollbar {
+        width: 1em;
+    }
+
+
+    body::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .scrollbar {
+
+        float: left;
+        height: 470px;
+
+        overflow-y: scroll;
+        overflow-x: scroll;
+    }
+
+    .force-overflow {
+        min-height: 470px;
+    }
+
+    .style-5::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #F5F5F5;
+    }
+
+    .style-5::-webkit-scrollbar {
+        width: 10px;
+        background-color: #F5F5F5;
+    }
+
+    .style-5::-webkit-scrollbar-thumb {
+        background-color: #0ae;
+
+        background-image: -webkit-gradient(linear, 0 0, 0 100%,
+        color-stop(.5, rgba(255, 255, 255, .2)),
+        color-stop(.5, transparent), to(transparent));
+    }
+</style>
+
+
+
+<div class="col-xs-6 ">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">Register New Person</div>
+
+        <div class="panel-body">
+            <form class="form-horizontal" autocomplete="off" name="editForm">
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">Identifier</label>
+                    <label class="col-xs-9">
+                        <select ng-options="d.id as d.name  for d in vm.personIdentifiers" ng-change="vm.getIdentifier()" class="form-control" ng-model="vm.personIdData.typeId"></select>
+                    </label>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">{{vm.identifier}}</label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" name="number" id="field_number" ng-model="vm.personIdData.number" required autocomplete="off"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">Last Name</label>
+                    <div class="col-xs-9">
+                        <input type="text" id="field_lastname" name="lastname" required class="form-control" placeholder="lastname" ng-model="vm.person.lastname"
+                        />
+                    </div>
+                    <div class="col-xs-9 col-xs-offset-3" ng-show="editForm.lastname.$invalid">
+                        <p class="help-block" ng-show="editForm.lastname.$error.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">First Name</label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" name="firstname" placeholder="firstname" ng-model="vm.person.firstname" required
+                        />
+                    </div>
+                    <div class="col-xs-9 col-xs-offset-3" ng-show="editForm.firstname.$invalid">
+                        <p class="help-block" ng-show="editForm.firstname.$error.required">
+                            This field is required.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="sexMale" class="col-xs-3 control-label">Sex</label>
+                    <div class="col-xs-8">
+                        <label>
+                            <input type="radio" name="sex" required id="sexMale" value="MALE" ng-model="vm.person.sex"> Male
+                        </label>
+                        <label>
+                            <input type="radio" required name="sex" id="sexFemale" value="FEMALE" ng-model="vm.person.sex"> Female
+                        </label>
+                    </div>
+                    <div class="col-xs-9 col-xs-offset-3" ng-show="editForm.sex.$invalid">
+                        <p class="help-block" ng-show="editForm.sex.$error.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-xs-3" for="field_birthdate">Birthdate</label>
+                    <div class="col-xs-3">
+                        Year
+                        <input type="number" required name="birthdate" ng-model="vm.dob.year" ng-maxlength="4" ng-click="vm.setDate()" class="form-control"
+                        />
+                    </div>
+                    <div class="col-xs-4">
+                        Month
+                        <select ng-options="d.id as d.name  for d in vm.months" class="form-control" ng-model="vm.dob.month"></select>
+
+                    </div>
+                    <div class="col-xs-2">
+                        Day
+                        <input type="number" required name="birthdate" ng-model="vm.dob.day" ng-click="vm.setDate()" class="form-control" />
+                    </div>
+                    <div class="col-xs-9 col-xs-offset-3" ng-show="editForm.birthdate.$invalid">
+                        <p class="help-block" ng-show="editForm.birthdate.$error.required">
+                            All fields are required.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-3" for="field_istimateAge">Estimate Age</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" class="form-control" name="istimateAge" id="field_istimateAge" ng-model="vm.person.isEstimateAge"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-xs-6 col-xs-offset-6">
+                        <a class="btn btn-primary pull-right" ng-click="vm.checkDetails()" ng-disabled="!vm.person.lastname">Check Details</a>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-6 ">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">Check for Duplicates</div>
+        <div class="panel-body boreder style-5">
+
+            <p>
+                <p ng-show="vm.list.length == 0 && vm.check == true">
+                    There are no duplicates found
+                </p>
+                <div class="list-group" ng-repeat="item in vm.list | orderBy:'lastname'">
+
+                    <a class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-1">
+                                <i ng-class="{'fa fa-female fa-3x ': item.sex == 'FEMALE', 'fa fa-male fa-3x ': item.sex == 'MALE'}">
+                                </i>
+                            </div>
+                            <div class="col-xs-11">
+
+                                <div class="row">
+                                    <div class="col-xs-12">
+
+                                        <h4 class="list-group-item-heading">
+                                            {{item.lastname + ' '+item.firstname}}
+                                        </h4>
+                                    </div>
+
+
+                                    <div class="col-xs-2">
+                                        <div>{{item.sex}}</div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <address>{{item.dob.year+'-'+item.dob.month+'-'+item.dob.day}}</address>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="pull-right">
+                                            <button ng-click="vm.edit(item.id)" class="btn btn-info">View</button>&nbsp;
+                                            <button ng-click="vm.viewDetails(item)" class="btn btn-success pull-right">Select</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </p>
+
+
+
+
+        </div>
+
+
+
+
+    </div>
+<div class="row">
+
+        <div class="col-xs-6">
+                <a class="btn btn-success btn-block pull-left" ng-show="vm.check === true" ng-click="vm.save()">Register</a>
+            </div>
+            <div class="col-xs-6">
+                <a class="btn btn-danger btn-block pull-right" ng-click="vm.close()">Cancel registration</a>
+            </div>
+</div>
+  
+</div>

@@ -1,0 +1,30 @@
+<form name="editForm" role="form" novalidate  show-validation>
+    <div class="form-group">
+        <label class="control-label" for="field_date">Date</label>
+        <div class="input-group">
+            <input id="field_date" type="text" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.personProcedure.date"
+                is-open="vm.datePickerOpenStatus.date" />
+            <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="field_procedure">Procedure</label>
+        <input disabled class="form-control" id="field_procedure" name="procedure" ng-model="vm.procedures.name">
+        </select>
+    </div>
+    <div ng-show="editForm.procedure.$invalid">
+        <p class="help-block" ng-show="editForm.procedure.$error.required">
+            This field is required.
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" ng-click="vm.save()" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

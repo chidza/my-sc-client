@@ -1,0 +1,70 @@
+<div class="col-xs-12">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">Essential Care for Babies Capturing Form</div>
+        <div class="panel-body">
+            <div class="row">
+                <label class="col-xs-6">Date: {{vm.date| date:"yyyy-MM-dd"}} Time: {{vm.date| date:"HH:mm"}} </label>
+                <label class="col-xs-6">
+                    Current User: {{vm.user}}
+                </label>
+            </div>
+            <br><br>
+
+            <uib-tabset>
+
+                <uib-tab heading="Examinations">
+                    
+                      
+                        <mrs-ecb-consultation-patient-essential-care-for-babies-list-examination-layout essential-baby-care-id="vm.essentialCareForBabiesId"></mrs-ecb-consultation-patient-essential-care-for-babies-list-examination-layout>
+                   
+                   
+                  
+
+                </uib-tab>
+                <uib-tab heading="Vitals" active="true">
+
+                        <mrs-essential-babies-care-patient-consult-vital-list-layout essential-baby-care-id="vm.essentialCareForBabiesId"></mrs-essential-babies-care-patient-consult-vital-list-layout>
+                       
+
+                </uib-tab>
+                <uib-tab heading="Baby Feeding Options">
+                    <mrs-essential-baby-care-feeding-option-questionaire-dialog essential-baby-care-id="vm.essentialCareForBabiesId" category-name="FEEDING"></mrs-essential-baby-care-feeding-option-questionaire-dialog>
+
+                </uib-tab>
+
+                <uib-tab heading="Danger Signs">
+
+                    <mrs-essential-baby-care-questionaire-dialog essential-baby-care-id="vm.essentialCareForBabiesId" category-name="DANGER_SIGNS"></mrs-essential-baby-care-questionaire-dialog>
+
+                </uib-tab>
+
+                <uib-tab heading="Medications">
+
+                  
+                        <mrs-essential-babies-care-patient-art-medicine-list-layout  essential-baby-care-id="vm.essentialCareForBabiesId"></mrs-essential-babies-care-patient-art-medicine-list-layout>
+               
+               
+               
+                    </uib-tab>
+
+                <uib-tab heading="Investigations">
+
+                    <mrs-essential-babies-care-patient-investigation-list-layout essential-baby-care-id="vm.essentialCareForBabiesId"></mrs-essential-babies-care-patient-investigation-list-layout>
+
+                
+
+
+                </uib-tab>
+
+            </uib-tabset>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-xs-12 ">
+                    <button class="btn btn-danger btn-lg pull-right" ng-click="vm.confirm()">Back To overview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

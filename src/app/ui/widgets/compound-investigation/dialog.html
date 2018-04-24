@@ -1,0 +1,24 @@
+<legend>{{vm.compoundInvestigation.name}}</legend>
+<table class="table table-striped table-bordered row-border hover">
+    <thead>
+        <tr>
+            <th>Test</th>
+            <th>Result</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="model in vm.personInvestigations">
+            <td>{{model.investigationName}}</td>
+            <td>
+                <mrs-person-compound-investigation-test-dialog saved="vm.onTestSaved(personInvestigationId,personInvestigationTestId,model.investigationId)" person-investigation-test-id="model.personInvestigationTestId"
+                    person-investigation-id="model.personInvestigationId" encounter-id="vm.encounterId" person-id="vm.personId" investigation-id="model.investigationId" date="vm.date"></mrs-person-compound-investigation-test-dialog>
+            </td>
+            <td>
+                <div ng-if="model.personInvestigationId">
+                    <button  ng-click="vm.delete(model)" class="btn btn-danger"><i class="fa fa-trash-o">Clear</i></button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

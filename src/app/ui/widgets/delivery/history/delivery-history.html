@@ -1,0 +1,98 @@
+<form name="editForm" role="form">
+    <div class="form-group col-xs-6">
+        <div class="form-group">
+            <label class="control-label" for="field_lnmp"><i class="glyphicon glyphicon-calendar"></i>LNMP</label>
+            <div class="input-group">
+                <input id="field_lnmp" type="text" ng-change="vm.createUpdateAnc()" class="form-control" name="lnmp" uib-datepicker-popup="{{dateformat}}"
+                    ng-model="vm.anc.lnmp" is-open="vm.datePickerOpenStatus.lnmp" required/>
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('lnmp')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.date.$invalid">
+                <p class="help-block" ng-show="editForm.date.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_contraction">Contraction</label>
+            <input type="checkbox" class="form-control" name="contraction" id="field_contraction" ng-model="vm.deliveryHistory.contraction"
+                ng-click="vm.update()" />
+        </div>
+        <!--<div class="form-group" ng-show="vm.deliveryHistory.contraction==true">
+        <label class="control-label" for="field_date"> <i class="glyphicon glyphicon-calendar"></i>Date Time Of On Set</label>
+        <div class="input-group">
+            <input id="field_dateoftimeOfOnSet" type="text" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.deliveryHistory.timeOfOnSet"
+                is-open="vm.datePickerOpenStatus.dateoftimeOfOnSet" ng-change="vm.update()" required disabled/>
+            <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateoftimeOfOnSet')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+        </div>-->
+
+        <div class="form-group" ng-show="vm.deliveryHistory.contraction==true">
+            <label class="control-label" for="field_timeOfOnSet">Date of OnSet</label>
+            <div class="input-group">
+                <input id="field_dateoftimeOfOnSet" type="text" class="form-control" name="dateoftimeOfOnSet" enable-date="true" initial-picker="date"
+                    uib-datepicker-popup="{{dateformat}}" ng-model="vm.deliveryHistory.dateOfOnSet" is-open="vm.datePickerOpenStatus.dateoftimeOfOnSet"
+                    ng-change="vm.update()" />
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateoftimeOfOnSet')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+        </div>
+
+        <div class="form-group" ng-show="vm.deliveryHistory.contraction==true">
+            <label class="control-label" for="field_timeOfOnSet">Time Of On Set</label>
+            <div class="input-group">
+                <input id="field_timeOfOnSet" type="text" class="form-control" name="timeOfOnSet" enable-date="false" initial-picker="time"
+                    datetime-picker="HH:mm" ng-model="vm.deliveryHistory.timeOfOnSet" is-open="vm.datePickerOpenStatus.timeOfOnSet"
+                    ng-change="vm.update()" />
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('timeOfOnSet')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+        </div>
+        <div class="form-group" ng-show="vm.deliveryHistory.contraction==true">
+            <label class="control-label" for="field_duration">Duration</label>
+            <input type="text" class="form-control" name="duration" autocomplete="off" id="field_duration" ng-model="vm.deliveryHistory.duration" ng-blur="vm.update()"
+            />
+        </div>
+    </div>
+    <div class="form-group col-xs-6">
+        <div class="form-group">
+            <label class="control-label" for="field_membranesRuptured">Membranes Ruptured</label>
+            <input type="checkbox" class="form-control" name="membranesRuptured" id="field_membranesRuptured" ng-model="vm.deliveryHistory.membranesRuptured"
+                ng-click="vm.update()" />
+        </div>
+
+        <div class="form-group" ng-show="vm.deliveryHistory.membranesRuptured==true">
+            <label class="control-label" for="field_timeOfOnSet">Date Of Rupture</label>
+            <div class="input-group">
+                <input id="field_dateoftimeOfRupture" type="text" class="form-control" name="dateoftimeOfRupture" enable-date="true" initial-picker="date"
+                    uib-datepicker-popup="{{dateformat}}" ng-model="vm.deliveryHistory.dateOfRupture" is-open="vm.datePickerOpenStatus.dateoftimeOfRupture"
+                    ng-change="vm.update()" />
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateoftimeOfRupture')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+        </div>
+        <div class="form-group" ng-show="vm.deliveryHistory.membranesRuptured==true">
+            <label class="control-label" for="field_timeOfRupture">Time Of Rupture</label>
+            <div class="input-group">
+                <input id="field_timeOfRupture" type="text" class="form-control" name="timeOfRupture" enable-date="false" initial-picker="time"
+                    datetime-picker="HH:mm" ng-model="vm.deliveryHistory.timeOfRupture" ng-change="vm.update()" is-open="vm.datePickerOpenStatus.timeOfRupture"
+                />
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('timeOfRupture')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_showPresent">Show Present</label>
+            <input type="checkbox" class="form-control" name="showPresent" id="field_showPresent" ng-model="vm.deliveryHistory.showPresent"
+                ng-blur="vm.update()" />
+        </div>
+    </div>
+
+</form>

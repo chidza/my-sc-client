@@ -1,0 +1,11 @@
+<div ng-hide="vm.prescriptions.length===0">
+    <strong> Medication </strong>
+
+<ul ng-repeat="p in vm.prescriptions" class="list-unstyled">
+    <li>
+        <b>{{$index  +1}}.</b>{{p.drugName + ', ' + p.formulation + ' ' + p.strength + '' + p.unit + ', ' + p.frequency +
+        ' / ' + p.duration + 'days'}}
+    </li>
+</ul>
+<hr>
+</div>

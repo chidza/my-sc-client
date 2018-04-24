@@ -1,0 +1,22 @@
+<table datatable="ng" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Definative</th>
+            <th>Differential</th>
+            <th>Working</th>
+            <th>Final</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="diagnose in vm.diagnoses">
+            <td>{{diagnose.date | date:"y-MM-dd"}}</td>
+            <td>{{diagnose.name}}</td>
+            <td>{{diagnose.definative}}</td>
+            <td>{{diagnose.differential}} </td>
+             <td>{{diagnose.working}}</td>
+             <td>{{diagnose.final}}</td>
+        </tr>
+    </tbody>
+</table>

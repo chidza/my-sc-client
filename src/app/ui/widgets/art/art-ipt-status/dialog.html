@@ -1,0 +1,27 @@
+<div class="col-xs-12">
+    <h4><label> Art IPT Status</label></h4>
+    <hr/>
+    <form name="editForm" class="form-horizontal" autocomplete="off">
+        <div class="form-group">
+            <label class="col-xs-2">IPT Status</label>
+            <div class="col-xs-10">
+                <div class="col-xs-4" ng-repeat="status in vm.iptStatuses">
+                    <input type="radio" ng-model="vm.artIptStatus.statusId" ng-click="vm.save()" ng-value="status.id" name="artstatus" />
+                    <label class="col-xs-8">{{status.name}}</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-3">Reason</label>
+            <div class="input-group col-xs-5">
+                <input type="text" autocomplete="off" ng-disabled="true" class="form-control" ng-model="vm.reason.name">
+                <div class="input-group-btn ">
+                    <button ng-click="vm.reasons()" ng-disabled="!vm.artIptStatus.id" class="btn btn-primary btn-block" type="button"><span ng-show="!vm.reason.id">Set</span><span ng-show="vm.reason.id">Change</span></button>
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+</div>

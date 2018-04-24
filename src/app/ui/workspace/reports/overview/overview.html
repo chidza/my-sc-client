@@ -1,0 +1,56 @@
+<form name="editForm" role="form" novalidate show-validation>
+    <div class="col-xs-6 col-xs-offset-3">
+        <div class="form-group col-xs-12">
+            <label for="field_group">Report Group</label>
+            <select class="form-control" id="field_group" name="group" ng-change="vm.reportGroupChange()" ng-model="vm.reportGroup" ng-options="group as group for group in vm.groups"
+                required>
+                <option value=""></option>
+                </select>
+        </div>
+
+        <div class="form-group col-xs-12">
+            <label for="field_report">Report</label>
+            <select class="form-control" id="field_report" name="report" ng-model="vm.report" ng-options="report as report.name for report in vm.reports">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group" ng-show="vm.report">
+            <div class="col-xs-12">
+                <label for="field_duration">Duration</label>
+            </div>
+            <div ng-if="vm.report.frequency==='MONTHLY'">
+                <div class="col-xs-4">
+                    <select class="form-control" id="field_duration" name="month" ng-model="vm.month" ng-options="month.id as month.name for month in vm.months">
+                    <option value=""></option>
+                </select>
+                </div>
+                <div class="col-xs-2">
+                    <input type="number" required name="year" ng-model="vm.year" ng-maxlength="4" class="form-control" />
+                </div>
+            </div>
+            <div ng-if="vm.report.frequency==='WEEKLY'">
+                <div class="col-xs-2">
+                    <input type="number" required name="year" ng-model="vm.year" ng-maxlength="4" class="form-control" />
+                </div>
+                <div class="col-xs-2">
+                    <input type="number" required name="year" ng-model="vm.week" min="0" max="52" ng-maxlength="2" class="form-control" />
+                </div>
+                <!--  <div class="col-xs-4">
+                    <select class="form-control" id="field_duration" name="week" ng-model="vm.week" ng-options="week.id as week.name for week in vm.weeks">
+                    <option value=""></option>
+                </select> -->
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <div class="col-xs-9">
+        <div class="pull-right">
+            <button type="button" class="btn btn-primary" ng-click="vm.generate()" ng-disabled="vm.isMissingInfo()">
+                <span class="glyphicon glyphicon-print"></span>&nbsp;<span>Generate</span>
+            </button>
+        </div>
+    </div>
+
+</form>

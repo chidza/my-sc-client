@@ -1,0 +1,32 @@
+<style>
+    input.largerCheckbox {
+        width: 25px;
+        height: 25px;
+    }
+</style>
+
+
+
+
+<div class="panel panel-primary">
+
+    <a data-toggle="collapse" data-target="#{{vm.categoryName}}">{{vm.categoryName}}</a>
+
+    <div id="{{vm.categoryName}}" class="collapse in">
+        <div class="panel-body">
+            <ul ng-repeat="questions in vm.zepiQuestionList">
+
+                <li style="font-size: large;">
+                    {{questions.name}}
+
+                    <input type="checkbox" class="largerCheckbox" ng-checked="vm.isExist(questions.id)" ng-value="questions.value" id="questions.id"
+                        ng-click="vm.save(questions)">
+
+
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</div>

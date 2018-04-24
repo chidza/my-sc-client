@@ -1,0 +1,29 @@
+<div class="table-responsive">
+    <table datatable="ng" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th><span>Class</span></span>
+                </th>
+                <th><span>Grade</span></span>
+                </th>
+                <th><span>Number of studends</span>
+                </th>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="queue in vm.queues track by queue.id">
+                <td>{{queue.name}}</td>
+                <td>{{queue.departmentName}}</td>
+                <td>{{queue.count}}</td>
+                <td class="text-right">
+                    <div class="pull-right">
+                        <button class="btn btn-success btn-lg" ng-click="vm.onQueueSelected(queue)"><i class="glyphicon glyphicon-eye-open"></i> Attend to Queue</button>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

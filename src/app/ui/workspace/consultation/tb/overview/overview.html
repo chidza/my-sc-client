@@ -1,0 +1,39 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">TB Overview </div>
+    <div class="panel-body">
+        <div class="col-xs-12">
+
+            <p ng-hide="vm.tb.id">Patient general information will only be available after patient registration</p>
+        </div>
+
+        <div class="row" ng-show="vm.tb.id">
+            <div class="col-xs-12">
+                <div class="panel-body">
+                    <div class="col-xs-12">
+                        <table class="table">
+                            <tr></tr>
+
+                            <td><b>Date Of Registration</b></td>
+                            <td class="center">{{vm.tb.date | date:"y-MM-dd"}}</td>
+                            <td><b>TB Type</b></td>
+                            <td class="center">{{vm.tb.type}}</td>
+
+
+                            <tr>
+                                <td><b>TB Category</b></td>
+                                <td class="center">
+                                    {{vm.getCategoryName(vm.tb.categoryId)}}
+                                </td>
+                                <td><b>HIV Status</b></td>
+                                <td class="center">
+                                    <p>{{vm.hivStatus.status}}</p>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

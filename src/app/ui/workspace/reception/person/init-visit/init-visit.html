@@ -1,0 +1,81 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">Visit Initiation</div>
+    <div class="panel-body">
+
+        <form ng-hide="vm.isAdmitted()">
+            <div class="row">
+                <div class="col-xs-6">
+
+                    <label>
+            <input type="checkbox" name="repeatVisit" id="field_repeatVisit" ng-model="vm.opd.repeatVisit" /> Check for repeat visit
+        </label>
+
+                </div>
+                <div class="col-xs-6" ng-hide="true">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Previous Diagnosis</div>
+                        <div class="panel-body">
+                            <ul ng-repeat="d in vm.diagnoses" class="list-unstyled">
+                                <li><b>{{$index +1}}-:</b> {{d.date +" - "+ d.name}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <p>&nbsp;</p>
+            </div>
+
+            <div class="form-group">
+                <legend>Send to Queue</legend>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-xs-8">
+                    <div class="col-xs-7">
+                        <div class=" col-xs-6" ng-repeat="queue in vm.queues">
+                            <label>
+                        <input id="{{queue.id}}" ng-model="vm.queueId" name="queueId" ng-value="queue.id" type="radio">
+                        {{queue.name}} 
+                    </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-4">
+                    <p>
+                        <strong><u>Current Queues for patient</u></strong>
+                    </p>
+                    <ul>
+                        <li ng-repeat="q in vm.currentQueues">{{q.name}}</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="col-xs-12">
+                <hr/>
+                <div class="pull-right">
+                    <button type="button" ng-disabled="!vm.queueId" ng-click="vm.save()" class="btn btn-primary btn-lg">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Send to Queue</span>
+        </button>
+                </div>
+            </div>
+
+        </form>
+
+        <div class="col-xs-12" ng-show="vm.isAdmitted()">
+            <p class="text-danger"><strong> Patient is currently admitted </strong> </p>
+            <p>
+                <button type="button" class="btn btn-primary" ng-click="vm.back()">Back</button>
+            </p>
+        </div>
+
+
+    </div>
+</div>

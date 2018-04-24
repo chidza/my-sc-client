@@ -1,0 +1,100 @@
+<form name="editForm" role="form" novalidate show-validation>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group col-xs-6">
+                    <label class="control-label " for="field_admitted">Date</label>
+                    <div class="input-group">
+                        <input id="field_admitted" type="text" class="form-control" name="admitted" uib-datepicker-popup="y-MM-dd" ng-model="vm.newAdmission.time"
+                            is-open="vm.datePickerOpenStatus.admitted" required/>
+                        <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('admitted')">&nbsp;<i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                    </div>
+                    <div ng-show="editForm.admitted.$invalid">
+                        <p class="help-block" ng-show="editForm.admitted.$error.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label class="control-label " for="field_time">Time</label>
+                    <div class="input-group ">
+                        <input id="field_time" type="text" class="form-control" name="time" enable-date="false" initial-picker="time" datetime-picker="HH:mm"
+                            ng-model="vm.newAdmission.time" is-open="vm.datePickerOpenStatus.time" required />
+                        <span class="input-group-btn">
+                        <button type="button"  class="btn btn-default" ng-click="vm.openCalendar('time')" >&nbsp;<i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                    </div>
+                    <div ng-show="editForm.time.$invalid">
+                        <p class="help-block" ng-show="editForm.time.$error.required">
+                            This field is required.
+                        </p>
+                        <p class=" help-block" ng-show="editForm.time.$error.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-12">
+                    <label class="control-label" for="field_ward">Ward</label>
+                    <div class="input-group col-xs-12">
+                        <select class="form-control" ng-change="vm.getCheckListForWard(vm.newAdmission.wardId)" id="field_ward" name="ward" ng-model="vm.newAdmission.wardId"
+                            ng-options="ward.id as ward.name for ward in vm.wards" required>
+                <option value=""></option>
+                </select>
+                    </div>
+                    <div ng-show="editForm.ward.$invalid">
+                        <p class="help-block" ng-show="editForm.ward.$error.required">
+                            This field is required.
+                        </p>
+                    </div>
+
+                </div>
+               <!--  <div ng-show="vm.state==true">
+                    <legend>Ward Check List Available</legend>
+                    <ul ng-repeat="item in vm.wardCheckList | orderBy:'name'" class="list-unstyled">
+                        <li style="font-size: large;">
+                            <input type="radio" class="largerCheckbox"  ng-value="item.id"
+                                id="item.id"> {{item.name}}
+                        </li>
+                    </ul> -->
+                    <!-- start -->
+                    <!-- <mrs-ward-check-list-item-dialog ward-check-list-id = "vm.wardCheckListId" 
+      admission-ward-check-list-id="vm.admissionWardCheckListId" closed="vm.onClosed()"
+       saved="vm.onSaved(admissionWardCheckListId, wardCheckListId)"></mrs-ward-check-list-item-dialog> 
+      
+                </div>-->
+     <!-- end -->
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group ">
+                    <label class="control-label" for="field_admitted">Current Ward</label> {{vm.getWardName(vm.admission.wardId)}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label " for="field_admitted">Admitted at</label> {{vm.admission.createdDate | date:"yyyy-MM-dd
+                    HH:mm"}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <hr/>
+
+    <p>&nbsp;</p>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="pull-right">
+                <button type="button" class="btn btn-default btn-lg" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+                <button type="button" ng-click="vm.save()" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary btn-lg">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Change ward</span>
+        </button>
+            </div>
+        </div>
+    </div>
+</form>

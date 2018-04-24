@@ -1,0 +1,21 @@
+<table class="table table-bordered" ng-style="{'width': vm.width +'px'}">
+    <tr>
+        <td style="border-right:1px solid black;"><strong>Name: </strong> {{vm.names}}</td>
+        <td><strong class="text text-center"> Gestational Age </strong>: {{vm.ancInformation.gestationalAge.week}} weeks {{vm.ancInformation.gestationalAge.day}}
+            days
+        </td>
+        <td><strong>Date of Admission</strong>: {{vm.dateOfAdmission | date:"yyyy-MM-dd"}}</td>
+
+    </tr>
+    <tr>
+        <td style="border-right:1px solid black;"><strong> HIV Status </strong>: {{vm.result}} </td>
+        <td><strong> Gravida </strong>: {{vm.ancInformation.gravida}} <span class="pull-right"><strong> Para </strong>: {{vm.ancInformation.para}}</span></td>
+        <td><strong>Time of Admission</strong>: {{vm.time | date:"hh:mm"}}</td>
+    </tr>
+
+     <tr>
+        <td style="border-right:1px solid black;"><strong> Raptured Membranes </strong>: {{vm.timeOfMembraneRapture | date:"yyyy-MM-dd hh:mm"}} </td>
+        <td><strong> Hospital Number </strong>: ____________________</td>
+        <td></td>
+    </tr>
+</table>

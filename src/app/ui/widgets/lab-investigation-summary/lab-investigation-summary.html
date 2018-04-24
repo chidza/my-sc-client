@@ -1,0 +1,53 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Test Information</h3>
+	</div>
+	<div class="panel-body" ng-repeat="model in vm.model  track by model.personInvestigationId">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-xs-4 control-label">Name</label>
+						<div class="col-xs-8">
+							<p class="form-control-static">{{model.name}}</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-4 control-label">Date</label>
+						<div class="col-xs-8">
+							<p class="form-control-static">{{model.sampleDate}}</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-4 control-label">Sample</label>
+						<div class="col-xs-8">
+							<p class="form-control-static">{{model.sampleName}}</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-4 control-label">Test</label>
+						<div class="col-xs-8">
+							<p class="form-control-static">{{model.testName}}</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-4 control-label">Lab</label>
+						<div class="col-xs-8">
+							<p class="form-control-static">{{model.labName}}</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-4 control-label">Result Status</label>
+						<div class="col-xs-8">
+							<span ng-class="model.resultStatus ? 'fa fa-check text-danger' : 'fa fa-times text-success'"></span>
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<button ng-disabled="!vm.personId" ng-click="vm.onTestSelected(model)" class="btn btn-lg btn-primary btn-block" type="button">Open Patient File</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</div>
+</div>

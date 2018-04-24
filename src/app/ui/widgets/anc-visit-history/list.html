@@ -1,0 +1,36 @@
+<div class="col-xs-12">
+    <table datatable="ng" class="table table-striped table-bordered row-border hover">
+        <thead>
+            <tr>
+                <td colspan="11">
+                    <div class="pull-right">
+                        <button type="button" ng-click="vm.add()" class="btn btn-lg btn-success pull-right"><i class="fa fa-plus"></i></button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Visit Number</th>
+                <th>Date</th>
+                <th>Tb Screening Done</th>
+                <th>Malaria Result</th>
+                <th>Treatment Given</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="ancVisit in vm.ancVisits">
+                <td>{{ancVisit.visitNumber}}</td>
+                <td>{{ancVisit.date | date:"y-MM-dd"}}</td>
+                <td class="text-center"><span ng-class="ancVisit.tbScreening ? 'fa fa-check text-success' : 'fa fa-times text-danger'"></span></td>
+                <td>{{vm.getResult(ancVisit.malariaResult)}}</td>
+                <td>{{ancVisit.treatment}}</td>
+                <td>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-primary" ng-click="vm.edit(ancVisit)"><i class="fa fa-edit"></i> Edit</button>
+                        <button type="button" class="btn btn-danger" ng-click="vm.remove(ancVisit)"><i class="fa fa-trash-o"></i> Remove</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

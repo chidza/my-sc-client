@@ -1,0 +1,27 @@
+<legend>Vitals</legend>
+<table class="table table-striped table-bordered row-border hover">
+    <thead>
+        <tr>
+            <th>Vital</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>       
+        <tr>
+            <th>Pulse</th>
+            <td>{{vm.pulse.value + " " + vm.getUnit(vm.pulse.vitalId)}}</td>
+        </tr>
+        <tr>
+            <th>Fetal Heart Rate</th>
+            <td>{{vm.fetal.value + " " + vm.getUnit(vm.fetal.vitalId)}}</td>
+        </tr>
+        <tr>
+            <th>Temperature (cm)</th>
+            <td>{{vm.temp.value + " " + vm.getUnit(vm.temp.vitalId)}}</td>
+        </tr>
+        <tr>
+            <th>BP</th>
+            <td>{{vm.bp.value + " " + vm.getUnit(vm.bp.vitalId)}}</td>
+        </tr>
+    </tbody>
+</table>

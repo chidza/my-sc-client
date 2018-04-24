@@ -1,0 +1,10 @@
+<div ng-hide="vm.procedures.length===0">
+    <strong> Procedures </strong>
+
+<ul ng-repeat="procedure in vm.procedures" class="list-unstyled">
+
+    <li><b>{{$index +1}}.</b>{{procedure.name}}</li>
+    <li> {{procedure.note}}</li>
+</ul>
+<hr>
+</div>

@@ -1,0 +1,36 @@
+<form name="editForm" role="form" novalidate  show-validation>
+    <table class="table">
+        <tbody>
+            <tr>
+                <div class="form-group col-xs-6" <label class=" control-label" for="field_hivStatus">Hiv Status</label>
+                    <mrs-encounter-individual-investigation-dialog person-id="vm.personId" encounter-id="vm.encounterId" person-investigation-id="!vm.hivData.hivTestId?-1:vm.hivData.hivTestId"
+                        investigation-type="{{vm.hivTest}}" saved="vm.updateHiv(personInvestigationId)"></mrs-encounter-individual-investigation-dialog>
+                </div>
+
+                <td><b>Mother HIV test result</b></td>
+                <td class="center">{{vm.hivStatus.status}}</td>
+                <td><b>Date</b></td>
+                <td class="center">{{vm.hivStatus.date | date:'y-MM-dd'}}</td>
+            </tr>
+            <tr>
+                <td><b>Child HIV test result</b></td>
+                <td class="center">{{vm.hivStatus.status}}
+                </td>
+                <td><b>Date</b></td>
+                <td class="center">{{vm.hivStatus.date | date:'y-MM-dd'}}</td>
+            </tr>
+
+            <tr>
+                <td><b>PITC for mother</b></td>
+                <td class="center">
+                    <span class="label-default label label-info">{{vm.regimen.name}}</span>
+                </td>
+                <td><b>Has TB contact</b></td>
+                <td class="center">
+
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</form>

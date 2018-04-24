@@ -1,0 +1,29 @@
+<div class="table-responsive">
+    <table datatable="ng" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th><span>Ward</span></span>
+                </th>
+                <th><span>Department</span></span>
+                </th>  
+                <th><span>Type</span></span>
+                </th>               
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="ward in vm.wards track by ward.id">
+                <td>{{ward.name}}</td>
+                <td>{{ward.departmentName}}</td>   
+                <td>{{ward.type}}</td>              
+                <td class="text-right">                     
+                     <div class="pull-right">
+                        <button class="btn btn-success btn-lg" ng-click="vm.onWardSelected(ward)"><i class="fa fa-flag  fa-pull-left " aria-hidden="true" ></i>&nbsp;&nbsp; Attend to Ward</button>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

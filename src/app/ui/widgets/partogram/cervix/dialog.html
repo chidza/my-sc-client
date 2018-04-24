@@ -1,0 +1,42 @@
+
+<form class="form-horizontal" name="editForm" role="form" novalidate show-validation>
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="col-xs-3 control-label " for="field_dilatation">Dilatation (cm)</label>
+            <div class="col-xs-9">
+                <input type="number" class="form-control" ng-blur="vm.save()" min="1" max="10" name="dilatation" id="field_dilatation" ng-model="vm.cervix.dilatation"
+                    required />
+                <div ng-show="editForm.dilatation.$invalid">
+                    <p class="help-block" style="color: red;" ng-show="editForm.dilatation.$error.max">
+                        Out of range
+                </div>
+                <div ng-show="editForm.dilatation.$invalid && vm.cervix.descentId">
+                    <p class="help-block"  style="color: red;" ng-show="editForm.dilatation.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3" for="field_engagement">Descent of head </label>
+            <div class="col-xs-9">
+                <label ng-repeat="d in vm.levels | orderBy:'-id'">
+            <input type="radio" name="descent" ng-change="vm.save()" required ng-model="vm.cervix.descentId" ng-value="d.id"/>{{d.name}}&nbsp;&nbsp;&nbsp;&nbsp;
+              </label>
+                <div ng-show="editForm.descent.$invalid && vm.cervix.dilatation>3">
+                    <p class="help-block"  style="color: red;"ng-show="editForm.descent.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="form-group" ng-show="vm.cervix.id">
+            <div class="col-xs-3 col-xs-offset-9">
+                <button class="btn btn-danger" ng-click="vm.clear()">Clear</button>
+            </div>
+        </div>
+    </div>
+</form>

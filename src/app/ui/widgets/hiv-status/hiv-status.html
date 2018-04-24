@@ -1,0 +1,5 @@
+<span ng-if="vm.hivStatus.status=='UNKNOWN'" class="label-default label label-danger"> {{vm.hivStatus.status}} &nbsp;&nbsp;
+                        </span>&nbsp;&nbsp;
+<span ng-if="vm.hivStatus.status!='UNKNOWN'" class="label-default label label-info"> {{vm.hivStatus.status}} &nbsp;&nbsp;
+                        </span>&nbsp;&nbsp;
+<span ng-if="vm.hivStatus.status=='UNKNOWN'"> <button type="button" ng-click="vm.gotoHts()" class="btn btn-success btn-md">Offer HTS</button> </span>

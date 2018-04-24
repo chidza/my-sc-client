@@ -1,0 +1,15 @@
+<div class="col-xs-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Delivery General Examinations</div>
+        <div class="panel-body">
+            <uib-tabset>
+                <uib-tab heading="Nurse's Examinations" active="true">
+                    <mrs-nurse-examination-dialog encounter-id="vm.encounterId" workspace-id="vm.workspaceId" person-id="vm.personId" nurse-general-examination-id="vm.nurseGeneralExaminationId"></mrs-nurse-examination-dialog>
+                </uib-tab>
+                <uib-tab heading="Doctor's Examinations">
+                    <mrs-doctor-general-examination-dialog encounter-id="vm.encounterId" workspace-id="vm.workspaceId" person-id="vm.personId" doctor-general-examination-id="vm.doctorGeneralExaminationId"></mrs-doctor-general-examination-dialog>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>

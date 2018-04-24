@@ -1,0 +1,50 @@
+<form name="editForm" role="form" novalidate  show-validation>
+
+    <div class="col-xs-12">
+
+        <div class="form-group">
+            <label for="id">Final result</label>
+            <input type="text" class="form-control" id="id" name="id" ng-model="vm.result" readonly />
+        </div>
+
+        <div class="form-group">
+            <label  for="field_resultsIssued">Results issued</label>
+            <input type="checkbox" class="form-control" ng-click="vm.save()" name="resultsIssued" id="field_resultsIssued" ng-model="vm.hts.resultsIssued"
+            />
+            <div ng-show="editForm.resultsIssued.$invalid">
+                <p class="help-block" ng-show="editForm.resultsIssued.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div>
+            <div ng-if="vm.hts.resultsIssued==false" class="form-group">
+                <label class="control-label" for="field_reason">Reason for not issuing result </label>
+                <select class="form-control" ng-change="vm.save()" id="field_reason" name="reason" ng-model="vm.hts.reasonForNotIssuingResultId"
+                    ng-options="reason.id as reason.name for reason in vm.reasonsForNotIssuingResult" required>
+                    <option value=""></option>
+                    </select>
+                   
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_postTestCounselling">Post test counselled</label>
+            <input type="checkbox" ng-click="vm.save()" class="form-control" name="postTestCounselling" id="field_postTestCounselling"
+                ng-model="vm.hts.postTestCounselling" />
+            <div ng-show="editForm.postTestCounselling.$invalid">
+                <p class="help-block" ng-show="editForm.postTestCounselling.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+
+        <div ng-if="vm.investigationResult.result=='POSITIVE'" class="form-group">
+            <label class="control-label" for="field_postTestCounselling"></label>
+            <button type="button" class="btn btn-primary">
+                <span ></span>&nbsp;<span>Generate OI/ART Number</span>
+           </button>
+        </div>
+
+      
+</form>

@@ -1,0 +1,7 @@
+<div class="col-xs-12" ng-show="vm.search">
+    <mrs-person-search register="vm.onRegister()" selected="vm.select(personId)"></mrs-person-search>
+</div>
+
+<div class="col-xs-12" ng-show="vm.register">
+    <mrs-person-new-dialog date="vm.date" person-id="-1" saved="vm.select(personId)" view="vm.select(personId)" closed="vm.onCancel()"></mrs-person-new-dialog>
+</div>

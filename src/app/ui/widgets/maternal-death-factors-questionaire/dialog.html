@@ -1,0 +1,20 @@
+<style>
+    input.largerCheckbox {
+        width: 25px;
+        height: 25px;
+    }
+</style>
+
+
+
+<ul ng-repeat="question in vm.maternalDeathQuestionaire" class="list-unstyled">
+
+    <li style="font-size: large;">
+
+        <label><input type="checkbox" class="largerCheckbox" ng-checked="vm.isExist(question)" ng-value="question.value" id="question.id"
+            ng-click="vm.save(question)"> {{question.name}}</label>
+
+    </li>
+
+
+</ul>

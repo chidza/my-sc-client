@@ -1,0 +1,18 @@
+<table datatable="ng" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Medication</th>
+            <th>Formulation</th>
+            <th>Frequency</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="prescription in vm.prescriptions">
+            <td>{{prescription.date | date:"y-MM-dd"}}</td>
+            <td>{{prescription.drugName}}</td>
+            <td>{{prescription.strength + " " + prescription.unit + " " + prescription.formulation}}</td>
+            <td>{{prescription.frequency + " / " + prescription.duration}}</td>
+        </tr>
+    </tbody>
+</table>

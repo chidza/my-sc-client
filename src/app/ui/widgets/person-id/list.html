@@ -1,0 +1,31 @@
+<div class="col-xs-12">
+    <table datatable="ng" class="table table-striped table-bordered row-border hover">
+        <thead>
+            <tr>
+                <th colspan="4">
+                    <div class="pull-right">
+                        <button type="button" ng-click="vm.add()" class="btn btn-success pull-right btn-lg"><i class="fa fa-plus"></i></button>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th>Identifier Type</th>
+                <th> Number </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="id in vm.ids">
+                <td>{{vm.getName(id.typeId)}}</td>
+                <td>{{id.number}}</td>
+
+                <td>
+                    <div class="pull-right">
+                        <button type="button" ng-click="vm.edit(id.id)" class="btn btn-primary btn-lg"><i class="fa fa-edit">Edit</i></button>
+                        <button type="button" ng-click="vm.remove(id.id)" class="btn btn-danger btn-lg"><i class="fa fa-trash-o">Remove</i></button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

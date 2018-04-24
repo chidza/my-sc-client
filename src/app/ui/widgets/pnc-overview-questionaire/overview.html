@@ -1,0 +1,139 @@
+<style>
+    .textcolor {
+        color: #ffffff;
+    }
+
+
+
+
+
+
+
+
+    .boreder {
+        border-right: 1px solid black;
+        height: 480px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+
+
+
+
+
+
+
+    body::-webkit-scrollbar {
+        width: 1em;
+    }
+
+
+
+
+
+
+
+
+    body::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+</style>
+<div class="col-xs-12">
+
+
+
+
+    <form class="form-horizontal">
+
+        <div class="form-group">
+            <label class="col-xs-5 control-label"> PNC Visit Type</label>
+            <div class="col-xs-2">
+                <p class="form-control-static">{{vm.pncVisit.pncVisitTypeId}}</p>
+            </div>
+            <label class="col-xs-3 control-label"> Registration Date</label>
+            <div class="col-xs-2">
+                <p class="form-control-static">
+                    {{vm.pncVisit.date | date:"y-MM-dd"}}
+                </p>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label class="col-xs-5 control-label"> Date of Delivery </label>
+            <div class="col-xs-4">
+                <p class="form-control-static">
+                    {{vm.pncVisit.date | date:"y-MM-dd"}}
+                </p>
+            </div>
+        </div>
+
+        <div class="box-default">
+            <div class="col-xs-6 boreder">
+                <legend>Mother Details</legend>
+                <br>
+
+                <br>
+                <strong> Vitals </strong>
+
+                <ul ng-repeat="vital in vm.vitalList" class="list-unstyled">
+
+
+                    <li><b>{{$index +1}}.</b> {{vital.vitalName}}-{{vital.value +' '+ vital.unit}}</li>
+                </ul>
+                <hr>
+                <strong> Medication </strong>
+                <ul ng-repeat="medication in vm.medicationList" class="list-unstyled">
+
+
+                    <li><b>{{$index +1}}.</b> {{medication.drugName}} {{medication.formulation +' '+medication.strength + ' '+
+                        medication.unit}}
+                    </li>
+                </ul>
+
+
+
+                <hr>
+            </div>
+
+
+
+            <div class="col-xs-6">
+
+                <legend>Child Details</legend>
+                <div ng-repeat="child in vm.children">
+                    <div class="form-group">
+                        <label class="col-xs-1 control-label"><b>{{$index +1}}.</b></label>
+                        <label class="col-xs-4 control-label">Name</label>
+                        <div class="col-xs-4">
+                            <p class="form-control-static">
+                                <span>{{child.lastname + " " + child.firstname}}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label">Age</label>
+                        <div class="col-xs-4">
+                            <p class="form-control-static">
+                                <span>{{vm.childAge(child.birthdate)}} days</span>
+                            </p>
+                        </div>
+                        <div class="col-xs-4">
+                            <a class="btn btn-success pull-right" ng-click="vm.attend(child.id)">Attend to
+                        baby</a>
+                        </div>
+
+                    </div>
+                    <hr>
+
+
+
+
+
+                </div>
+
+
+
+    </form>
+
+    </div>

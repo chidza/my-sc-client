@@ -1,0 +1,14 @@
+<style>
+    input.largerCheckbox {
+        width: 25px;
+        height: 25px;
+    }
+</style>
+
+<legend>{{vm.getLabel(vm.categoryName)}}</legend>
+<ul ng-repeat="question in vm.pncQuestionList | orderBy:'name'" class="list-unstyled">
+    <li style="font-size: large;">
+        <input type="checkbox" class="largerCheckbox" ng-checked="vm.isExist(question)" ng-value="question.value" id="question.id"
+            ng-click="vm.save(question, $event)"> {{question.name}}
+    </li>
+</ul>

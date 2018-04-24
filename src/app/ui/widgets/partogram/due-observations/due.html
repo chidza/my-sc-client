@@ -1,0 +1,8 @@
+<div class="panel panel-primary" ng-show="vm.observations.length>0">
+    <div class="panel-heading">Observations due as at {{vm.date | date:"yyyy-MM-dd HH:mm"}}</div>
+    <div class="panel-body">
+        <ul ng-repeat="o in vm.observations">
+            <li><span style="color:red" ng-show="vm.overdue">{{o.observation}}</span><span ng-show="!vm.overdue">{{o.observation}}</span></li>
+        </ul>
+    </div>
+</div> 

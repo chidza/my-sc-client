@@ -1,0 +1,33 @@
+<style>
+    input.largerCheckbox {
+        width: 25px;
+        height: 25px;
+    }
+</style>
+
+<legend>Ward Check List</legend>
+<ul ng-repeat="checkList in vm.wardCheckList | orderBy:'name'" class="list-unstyled">
+    <li style="font-size: large;">
+        <input type="radio" class="largerCheckbox" ng-click="vm.getWardCheckListItems(checkList.id)" ng-checked="vm.getWardCheckList(checkList.id)"
+            ng-value="checkList.id" id="checkList.id"> {{checkList.name}}
+        <div ng-show="vm.state==true">
+            <!-- start -->
+            <legend>Ward Check List Items</legend>
+            <ul ng-repeat="item in vm.wardCheckListItems | orderBy:'name'" class="list-unstyled">
+                <li style="font-size: large;">
+                    <input type="checkbox" class="largerCheckbox" ng-click="vm.addWardCheckListItemDTO(item.id, $event)" ng-checked="vm.getWardCheckList(item.id)" ng-value="item.id"
+                        id="item.id"> {{item.name}}
+                </li>
+            </ul>
+        </div>
+        <!-- end -->
+    </li>
+</ul>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon "></span>&nbsp;<span>Cancel</span>
+        </button>
+    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="vm.save()">
+            <span class="glyphicon "></span>&nbsp;<span>Save</span>
+        </button>
+</div>

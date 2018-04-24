@@ -1,0 +1,7 @@
+<span ng-if="vm.tbStatus.status=='No'" class="label-default label label-danger"> Not done &nbsp;&nbsp; </span>
+
+<span ng-if="vm.tbStatus.status!='No' && vm.tbStatus.status != 'Presumptive'" class="label-default label label-info"> {{vm.tbStatus.status}} &nbsp;&nbsp;
+                        </span>&nbsp;&nbsp;
+<span ng-if="vm.tbStatus.status== 'Presumptive'" class="label-default label label-warning"> {{vm.tbStatus.status}} &nbsp;&nbsp;
+                        </span>&nbsp;&nbsp;
+<span> <button type="button" ng-click="vm.screen()" ng-hide="vm.tbStatus.status=='In Care'" class="btn btn-primary btn-md">Screen Tb</button> </span>

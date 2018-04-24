@@ -1,0 +1,57 @@
+<form name="editForm" role="form" novalidate show-validation>
+    <div class="form-group">
+        <label class="control-label col-xs-4" for="field_deliveryMethod">Delivery Method</label>
+
+        <div class="col-xs-6">
+            <select class="form-control" ng-change="vm.save()" name="deliveryMethod" ng-model="vm.infant.deliveryMethod" id="field_deliveryMethod"
+                required>
+                <option value="ASSISTEDBREECH">ASSISTED BREECH</option>
+                <option value="C_SECTION">C-SECTION</option>
+                <option value="INSTRUMENT_DELIVERY">INSTRUMENT DELIVERY</option>
+                <option value="NVD">NVD</option>
+                <option value="VACUUM">VACUUM</option>
+            </select>
+            <div ng-show="editForm.deliveryMethod.$invalid">
+                <p class="help-block" ng-show="editForm.deliveryMethod.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="form-group">
+        <label for="field_caput" class="col-xs-4">Gender</label>
+        <div class="col-xs-6">
+            <label>
+                        <input type="radio" name="Male" ng-change="vm.save()" ng-model="vm.foetal.gender" value="MALE" value="True"/>Male
+                           </label>
+            <label>
+                        <input type="radio" name="Female" ng-change="vm.save()"  ng-model="vm.foetal.gender" value="FEMALE"/>Female
+                           </label>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="field_caput" class="control-label col-xs-4">Type of Still Birth</label>
+
+        <div class="col-xs-6">
+            <label>
+                        <input type="radio" name="MSB" ng-change="vm.save()" ng-model="vm.foetal.stillBirthType" value="MSB" value="True"/>MSB
+                           </label>
+            <label>
+                        <input type="radio" name="FSB" ng-change="vm.save()" ng-model="vm.foetal.stillBirthType" value="FSB"/>FSB
+                           </label>
+
+        </div>
+
+    </div>
+
+</form>

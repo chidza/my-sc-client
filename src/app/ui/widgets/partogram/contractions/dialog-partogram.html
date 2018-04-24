@@ -1,0 +1,36 @@
+<legend>Contractions</legend>
+<form class="form-horizontal" name="editForm" role="form" novalidate show-validation>
+    <div class="form-group ">
+        <label class="control-label col-xs-3" for="field_count">Total number of contractions</label>
+        <div class="col-xs-6">
+            <div class="input-group">
+                <input type="number" ng-disabled="vm.contractionsList.length>0" ng-change="vm.newItem(vm.count)" min="1" max="10" class="form-control" name="count" id="field_count"
+                    ng-model="vm.count" ng-required="vm.contraction.id == ''" />
+                <div class="input-group-btn">
+                    <button class="btn btn-success" ng-click="vm.addNewChoice()">Add more</button>
+                </div>
+            </div>
+            <div ng-show="editForm.count.$invalid">
+                <p class="help-block" ng-show="editForm.count.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+
+            <div class="form-group" ng-repeat="elemnt in vm.contractionsList" ng-show="vm.show==true">
+
+                <label class="control-label" for="contraction">{{$index + 1}}.Duration per Contraction in secs</label>
+                <div class="input-group">
+                    <input id="contraction" class="form-control" autocomplete="off" ng-blur="vm.save(elemnt)" type="text" ng-model="elemnt.dilation" required/>
+                    <div class="input-group-btn"><button id="contraction" class="btn btn-danger glyphicon glyphicon-trash" ng-click="vm.removeChoice($index,elemnt.id)"
+                            type="button">Remove</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

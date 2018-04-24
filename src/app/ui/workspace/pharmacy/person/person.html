@@ -1,0 +1,27 @@
+<div class="col-xs-9">
+    <ng-outlet></ng-outlet>
+</div>
+
+<div class="col-xs-3">
+
+    <mrs-person-label person-id="vm.personId"></mrs-person-label>
+
+    <button ng-link="['PharmacyPeopleOverview',{ personId : vm.personId }]" class="btn btn-info btn-block btn-lg" type="button"><i class="fa fa-hospital-o pull-left"></i>Overview</button>
+
+    <div class="panel">
+
+        <div class="panel-body">
+
+            <div class="row">
+                <button ng-link="['PharmacyPeopleDemographics',{personId:vm.personId}]" class="btn btn-primary btn-block btn-lg" type="button"><i class="fa fa-id-card-o pull-left"></i>Demographics</button>
+                <button ng-link="['PharmacyPeopleIdentification',{personId:vm.personId}]" class="btn btn-primary btn-block btn-lg" type="button"><i class="fa fa-address-card pull-left"></i>Identification</button>
+                <button ng-link="['PharmacyPeopleContactDetail',{personId:vm.personId}]" class="btn btn-primary btn-block btn-lg" type="button"><i class="fa fa-address-book-o pull-left"></i>Contact Details</button>
+                <button ng-link="['PharmacyPeopleRelation',{personId:vm.personId}]" class="btn btn-primary btn-block btn-lg" type="button"><i class="fa fa-users pull-left"></i>Relations</button>
+                <button ng-link="['PharmacyPeopleMedicalAid',{personId:vm.personId}]" class="btn btn-primary btn-block btn-lg" type="button"><i class="fa fa-plus-square pull-left"></i>Medical Aid</button>
+            </div>
+        </div>
+    </div>
+
+    <button ng-link="['PharmacySearch']" class="btn btn-danger btn-lg btn-block" type="button"><i class="fa fa-sign-out pull-left"></i>Close Patient File</button>
+
+</div>

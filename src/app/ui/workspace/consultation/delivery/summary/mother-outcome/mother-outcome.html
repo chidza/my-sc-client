@@ -1,0 +1,28 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">Maternal</div>
+    <div class="panel-body">
+        <div class="form-group">
+            <label class="col-xs-12 control-label">Mother Outcome:</label>
+
+            <div class="col-xs-12">
+                <div>
+                    <label> <input type="radio" ng-disabled="vm.disableAlive"    ng-click="vm.outcomeChanged()" ng-model="vm.motherOutcome" value="ALIVE"
+            name="outcomes" /> Alive &nbsp;&nbsp;&nbsp;&nbsp;
+        </label>
+                    <label> <input type="radio" ng-disabled="vm.disableDead"    ng-click="vm.outcomeChanged()" ng-model="vm.motherOutcome" value="DEAD"
+            name="outcomes" /> Dead &nbsp;&nbsp;&nbsp;&nbsp;
+        </label>
+                </div>
+            </div>
+        </div>
+        <div ng-if="vm.motherOutcome=='ALIVE'">
+            <mrs-mother-outcome-dialog workspace-id="vm.workspaceId" encounter-id="vm.encounterId" person-id="vm.personId" delivery-summary-id="vm.deliverySummaryId"></mrs-mother-outcome-dialog>
+        </div>
+        <div ng-if="vm.disableAlive">
+
+         
+            <mrs-maternal-death-dialog add-diagnosis="vm.add()" diagnosis-id="vm.diagnosisId" delivery-id="vm.deliveryId"></mrs-maternal-death-dialog>
+      
+        </div>
+    </div>
+</div>

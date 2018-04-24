@@ -1,0 +1,9 @@
+<div ng-hide="vm.examinations.length===0">
+    <strong> Examinations </strong>
+
+    <ul ng-repeat="examination in vm.examinations" class="list-unstyled">
+        <li><b>{{$index +1}}.</b> {{examination.name}}-<i ng-class="examination.present ? 'fa fa-check text-danger' : 'fa fa-times text-success'"></i></li>
+
+    </ul>
+    <hr>
+</div>

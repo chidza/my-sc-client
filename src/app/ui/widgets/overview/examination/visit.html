@@ -1,0 +1,23 @@
+<div class="col-xs-12">
+    <table datatable="ng" class="table table-striped table-bordered row-border hover">
+        <thead>
+
+            <tr>
+                <th>Examinations name</th>
+                <th>Present</th>
+                <th>Notes</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="examination in  vm.examinations">
+                <td>{{examination.name}}</td>
+                <td>
+                    <span ng-class="examination.present ? 'fa fa-check text-danger' : 'fa fa-times text-success'"></span>
+                </td>
+                <td>{{examination.note}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

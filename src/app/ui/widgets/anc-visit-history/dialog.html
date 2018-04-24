@@ -1,0 +1,41 @@
+<div class="col-xs-12">
+    <form class="form-horizontal">
+
+
+        <div class="form-group ">
+            <label class="col-xs-4 control-label">Visit No.</label>
+            <div class="col-xs-4">
+                <input type="number" ng-model="vm.visit.visitNumber" class="form-control"></select>
+            </div>
+
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-4 control-label">Visit Date:</label>
+            <div class="col-xs-4">
+                <div class="input-group">
+
+                          <input id="field_date" type="text"  class="form-control" name="date" uib-datepicker-popup="{{dateformat}}"
+                    ng-model="vm.visit.date" is-open="vm.datePickerOpenStatus.date" required/>
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-xs-4 col-xs-offset-4">
+                <div class="pull-right">
+                    <button class="btn btn-default" ng-click="vm.close()">Close</button>
+                    <button class="btn btn-success" ng-click="vm.save()">save</button>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+
+</div>

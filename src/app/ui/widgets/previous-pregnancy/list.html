@@ -1,0 +1,49 @@
+<div class="col-xs-12">
+    <!--   <div class="row">
+        <div class="col-sm-4">Para</div>
+        <div class="col-sm-4">Gravida</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">{{vm.ancInformation.para}}</div>
+        <div class="col-sm-4">{{vm.ancInformation.gravida}}</div>
+    </div>-->
+    <table class="table table-striped table-bordered row-border hover">
+        <thead>
+            <tr>
+                <th colspan="3">
+                    <div class="pull-right">
+                        <button type="button" ng-click="vm.add()" class="btn btn-success pull-right"><i class="fa fa-plus fa-2x"></i></button>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <th>Pregnancy Outcome</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="p in vm.previousAncs" ng-hide="p.deliveryId==vm.deliveryId && vm.deliveryId.length >= 0">
+                <td ng-show="p.outcome!='CURRENT'">{{p.ancRegistrationDate | date:'yyyy-MM-dd'}} </span>
+
+                </td>
+                <td ng-show="p.outcome=='MISCARRIED' || p.outcome=='ABORTION'"><span style="color: red">{{p.outcome}}</span></td>
+                <td ng-show="p.outcome=='DELIVERED' && p.deliveryId!=vm.deliveryId">
+                    <span>
+                    <ul ng-repeat="b in p.birth">
+                        <li ng-if="b.outcome=='ALIVE'">{{b.gender + ", " + b.outcome + ", " + b.birthWeight + "g, by " + b.modeOfDelivery}}
+                        </li>
+                        <li style="color:red;" ng-if="b.outcome!='ALIVE'">{{b.outcome}}</li>
+                    </ul>
+</span>
+                </td>
+  <td ng-show="p.deliveryId==vm.deliveryId && vm.deliveryId.length >= 0"><span > <ul> <li class="text-primary"> CURRENT DELIVERY</li></ul></span> </td>
+                <td ng-show="p.outcome!='CURRENT'">
+                    <div class="pull-right">
+                        <button type="button" ng-disabled="p.deliveryId==vm.deliveryId" ng-click="vm.edit(p.ancId)" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

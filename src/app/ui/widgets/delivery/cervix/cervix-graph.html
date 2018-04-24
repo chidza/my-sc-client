@@ -1,0 +1,26 @@
+<!--<style>
+  #container {
+    min-width: 800px;
+    max-width: 800px;
+    height: 400px;
+    margin: 0 auto
+  }
+</style>-->
+
+<script>
+  // Define a custom symbol path
+  Highcharts.SVGRenderer.prototype.symbols.cross = function (x, y, w, h) {
+    return ['M', x, y, 'L', x + w, y + h, 'M', x + w, y, 'L', x, y + h, 'z'];
+  };
+  if (Highcharts.VMLRenderer) {
+    Highcharts.VMLRenderer.prototype.symbols.cross = Highcharts.SVGRenderer.prototype.symbols.cross;
+  }
+  Highcharts.seriesTypes.line.prototype.requireSorting = false;
+
+  if (Highcharts != null && Highcharts.CanVGRenderer == null) {
+    Highcharts.CanVGRenderer = {};
+  }
+
+</script>
+
+  <highchart id="container" config="vm.cervix"></highchart>

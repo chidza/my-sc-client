@@ -1,0 +1,67 @@
+<form name="editForm" role="form" novalidate >
+    <div class="form-group col-xs-6"> <label class="control-label" for="field_temperature">Temperature</label>
+        <mrs-encounter-individual-vital-dialog person-id="vm.personId" workspace-id="vm.workspaceId" encounter-id="vm.encounterId"  person-vital-id="vm.nurseGeneralExamination.temperatureId"
+            vital-type="vm.temp" saved="vm.updateVital(personVitalId,vm.temp)"></mrs-encounter-individual-vital-dialog>
+
+    </div>
+
+    <div class="form-group col-xs-6"> <label class=" control-label" for="field_pulse">Pulse</label>
+        <mrs-encounter-individual-vital-dialog person-id="vm.personId" workspace-id="vm.workspaceId" encounter-id="vm.encounterId"  person-vital-id="vm.nurseGeneralExamination.pulseId"
+            vital-type="vm.pulse" saved="vm.updateVital(personVitalId,vm.pulse)"></mrs-encounter-individual-vital-dialog>
+            
+
+    </div>
+
+    <div class="form-group col-xs-6"> <label class=" control-label" for="field_bloodPressure">Blood Pressure</label>
+        <mrs-encounter-individual-vital-dialog person-id="vm.personId" workspace-id="vm.workspaceId" encounter-id="vm.encounterId"  person-vital-id="vm.nurseGeneralExamination.bloodPressureId"
+            vital-type="vm.bp" saved="vm.updateVital(personVitalId,vm.bp)"></mrs-encounter-individual-vital-dialog>
+
+    </div>
+
+    <div class="form-group col-xs-6"> <label class=" control-label" for="field_haemoglobin">Haemoglobin (g/dl)</label>
+        <mrs-encounter-individual-investigation-dialog encounter-id="vm.encounterId" workspace-id="vm.workspaceId" person-id="vm.personId"  person-investigation-id="vm.nurseGeneralExamination.haemoglobinId"
+            investigation-type="vm.haemoglobin" saved="vm.updateHaemoglobin(personInvestigationId)"></mrs-encounter-individual-investigation-dialog>
+    </div>
+
+    <div class="form-group col-xs-6"> <label class="control-label" for="field_foetalHeartRate">Foetal Heart Rate</label>
+        <mrs-encounter-individual-vital-dialog person-id="vm.personId" workspace-id="vm.workspaceId" encounter-id="vm.encounterId"  person-vital-id="vm.nurseGeneralExamination.foetalHeartRateId"
+            vital-type="vm.fetal" saved="vm.updateVital(personVitalId,vm.fetal)"></mrs-encounter-individual-vital-dialog>
+    </div>
+
+
+    <div class="form-group col-xs-6"> <label class="control-label" for="field_lie">Lie</label>
+
+        <select class="form-control" name="lie" ng-model="vm.nurseGeneralExamination.lie" ng-blur="vm.update()" id="field_lie">
+                <option value="OBLIQUE">OBLIQUE</option>
+                <option value="TRANSVERSE">TRANSVERSE</option>
+                <option value="LONGITUDINAL">LONGITUDINAL</option>
+                <option value="BULKY">BULKY</option>
+                <option value="OSKIE">OSKIE</option>
+            </select>
+
+    </div>
+    <div class="form-group col-xs-6"> <label class="control-label" for="field_presentation">Presentation</label>
+
+        <select class="form-control" name="presentation" ng-blur="vm.update()" ng-model="vm.nurseGeneralExamination.presentation"
+            id="field_presentation">
+            <option value="SHOULDER">SHOULDER</option>
+            <option value="BREECH">BREECH</option>
+            <option value="BULKY">BULKY</option>
+            <option value="CEPHALIC">CEPHALIC</option>
+            </select>
+
+    </div>
+    <div class="form-group col-xs-6"> <label class="control-label" for="field_engagement">Engagement</label>
+
+        <label ng-repeat="d in vm.levels | orderBy:-id">
+            <input type="radio" name="AmnioticFluidId" ng-change="vm.update()" ng-model="vm.nurseGeneralExamination.engagement" ng-value="d.id"/>{{d.name}}&nbsp;&nbsp;&nbsp;&nbsp;
+              </label>
+
+    </div>
+    <div class="form-group col-xs-6"> <label class="control-label" for="field_oedema">Oedema</label>
+
+        <input type="checkbox" class="form-control" name="oedema" id="field_oedema" ng-model="vm.nurseGeneralExamination.oedema"
+            ng-click="vm.update()"  />
+
+    </div>
+</form>

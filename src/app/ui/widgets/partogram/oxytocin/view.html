@@ -1,0 +1,29 @@
+<legend>Oxytocin </legend>
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Select Formulation: </label>
+        <div class="col-xs-9">
+            <p>{{vm.getFormulation(vm.dispense.drugId)}}</p>
+        </div>
+    </div>
+    <div class="form-group" ng-show="vm.dispense.batchId">
+        <label class="col-xs-3 control-label" for="field_batch">Batch: </label>
+        <div class="col-xs-9">
+            <div class="col-xs-9">
+                <p>{{vm.getBatch(vm.dispense.batchId)}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" ng-show="vm.dispense.batchId">
+        <label class="col-xs-3 control-label" for="field_batch">Batch Expiry Date</label>
+        <div class="col-xs-9">
+            <h4>{{vm.batchExpiryDate}}</h4>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Number of drops:</label>
+        <div class="col-xs-9">
+            <p>{{vm.dispense.quantity}}</p>
+        </div>
+    </div>
+</form>

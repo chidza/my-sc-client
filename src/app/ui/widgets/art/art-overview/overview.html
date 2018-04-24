@@ -1,0 +1,88 @@
+<div class="col-xs-12">
+
+    <p ng-hide="vm.art.id">Patient general information and patient history will only be available after patient registration</p>
+</div>
+
+<div class="col-xs-12 " ng-show="vm.art.id">
+
+    <div class="panel-body">
+        <div class="col-xs-12">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><b>Date Of Registration</b></td>
+                        <td class="center">{{vm.art.date | date:"y-MM-dd"}}</td>
+                        <td><b>OIART Number</b></td>
+                        <td class="center">{{vm.art.artNumber}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Enrolment Date</b></td>
+                        <td class="center">{{vm.personArtStatusFirst.date | date:"y-MM-dd"}}
+                        </td>
+                        <td><b>Date of HIV Test</b></td>
+                        <td class="center">{{vm.personInvestigation.date | date:"y-MM-dd"}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>CD4 Count</b></td>
+                        <td class="center">
+                            <div ng-if="vm.cd4Examination.result<=vm.cd4CountThreshold"> <span class="label-default label label-danger">{{vm.cd4Examination.result}}</span></div>
+                            <div ng-if="vm.cd4Examination.result>vm.cd4CountThreshold"> {{vm.cd4Examination.result}}</div>
+                            <span ng-show="!vm.cd4Examination.id"> <a ng-click="vm.gotoTest('CD4 Count')"> <button type="button" class="btn btn-primary btn-xs">Perform Test</button> </a></span>
+                        </td>
+                        <td><b>Viral Load</b></td>
+                        <td class="center">
+                            <div ng-if="vm.viralLoadExamination.result>=vm.viralLoadThreshold"> <span class="label-default label label-danger">{{vm.viralLoadExamination.result}}</span></div>
+                            <div ng-if="vm.viralLoadExamination.result<vm.viralLoadThreshold"> {{vm.viralLoadExamination.result}}</div>
+
+                            <span ng-show="!vm.viralLoadExamination.id"> <a ng-click="vm.gotoTest('Viral Load')"><button type="button" class="btn btn-primary btn-xs">Perform Test</button></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>ARV combination regimen</b></td>
+                        <td class="center">
+                            <span class="label-default label label-info">{{vm.regimen.name}}</span>
+                        </td>
+                        <td><b>TB Status</b></td>
+                        <td class="center">
+                            <mrs-tb-screening-status person-id="vm.personId" encounter-id="vm.encounterId"></mrs-tb-screening-status>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>ARV Status</b></td>
+                        <td class="center">
+                            <span class="label-default label label-info">{{vm.artStatus.name}}</span>
+                        </td>
+                        <td><b>Pregnancy Status</b></td>
+                        <td class="center">
+                            <div ng-if="vm.anc.id" class="glyphicon glyphicon-ok"> <span ng-show="vm.pregnant"> <strong>EDD:</strong> {{vm.edd}} &nbsp;&nbsp;</span></div>
+                            <div ng-if="!vm.anc.id"> {{"Not pregnant"}}</div>
+                            <div ng-if="vm.anc.id && vm.gravida >'5'" class="label-default label label-info"> Gravida is more than 5 <span ng-show="vm.pregnant"> &nbsp;&nbsp;</span></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Next Review Date</b></td>
+                        <td class="center">
+                            <span class="label-warning label label-default">{{vm.art.currentVisit().nextReviewDate}}</span>
+                        </td>
+                        <td><b>Allergies</b></td>
+                        <td class="center">
+                            <span class="label-default label label-info" ng-repeat="allergy in vm.allergies">{{allergy }} &nbsp;&nbsp;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>WHO STAGE</b></td>
+                        <td class="center">
+                            <span class="label-default label label-info">{{vm.whoStage.stage}}</span>
+                        </td>
+                        <td><b>Orphan Status</b></td>
+                        <td ng-show="vm.person.parentDied=='BOTH'">DOUBLE</td>
+                        <td ng-show="vm.person.parentDied=='NONE'">NONE</td>
+                        <td ng-show="vm.person.parentDied=='MOTHER'">SINGLE - MOTHER</td>
+                        <td ng-show="vm.person.parentDied=='FATHER'">SINGLE - FATHER</td>
+                        <td ng-show="vm.person.parentDied==null"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

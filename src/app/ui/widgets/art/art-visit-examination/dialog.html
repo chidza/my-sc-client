@@ -1,0 +1,83 @@
+<style>
+    input[type="radio"] {
+        vertical-align: middle;
+        width: 30px;
+        height: 30px;
+    }
+</style>
+
+<div class="col-xs-12">
+
+    <form class="form-horizontal">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="visittype" class="col-xs-3 control-label">Visit type</label>
+                    <div class="col-xs-9">
+                        <select ng-options="d.id as d.name  for d in vm.visitTypes" ng-change="vm.update()" class="form-control" ng-model="vm.artVisit.artVisitTypeId"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="whoclinical" class="col-xs-3 control-label">WHO clinical stage</label>
+                    <div class="col-xs-9">
+                        <label ng-repeat="option in vm.whoStages"><input
+                                    type="radio" name="stage" ng-model="vm.whoStage.stage" ng-click="vm.updateWhoStage()"
+                                    ng-value="option"/> &nbsp;{{ option}}&nbsp;&nbsp;&nbsp; </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">Tb Status</label>
+                    <div class="col-xs-9">
+                        <mrs-tb-screening-status person-id="vm.personId" encounter-id="vm.encounterId"></mrs-tb-screening-status>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="visitstatus" class="col-xs-3 control-label">Visit status</label>
+                    <div class="col-xs-9">
+                        <select ng-options="d.id as d.name  for d in vm.visitStatus" ng-change="vm.update()" class="form-control" ng-model="vm.artVisit.artVisitStatusId"></select>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- new section -->
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Functional Status</label>
+                <div class="col-xs-9">
+                    <div class="input-group">
+                        <input type="text" autocomplete="off" ng-disabled="true" class="form-control" ng-model="vm.functionalStatus.name">
+                        <div class="input-group-btn ">
+                            <button ng-click="vm.updateFunctionalStatus()" class="btn btn-primary btn-block" type="button"><span ng-hide="vm.personArtFunctionalStatus.id">Set</span><span ng-show="vm.personArtFunctionalStatus.id">Change</span></button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Follow Up Status</label>
+                <div class="col-xs-9">
+                    <div class="input-group">
+                        <input type="text" autocomplete="off" ng-disabled="true" class="form-control" ng-model="vm.followUpStatus.name">
+                        <div class="input-group-btn ">
+                            <button ng-click="vm.updateFollowUpStatus()" class="btn btn-primary btn-block" type="button"><span ng-hide="vm.personArtFollowUpStatus.id">Set</span><span ng-show="vm.personArtFollowUpStatus.id">Change</span></button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cliniciaan" class="col-xs-3 control-label">Name of clinician</label>
+
+                <div class="col-xs-8">
+
+                    <input type="text" class="form-control" name="oi" id="cliniciaan" ng-disabled="true" ng-model="vm.username" />
+                </div>
+               
+            </div>
+        </div>
+    </form>
+</div>

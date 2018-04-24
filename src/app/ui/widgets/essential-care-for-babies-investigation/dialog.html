@@ -1,0 +1,47 @@
+<form name="editForm" role="form" novalidate show-validation>
+
+    <div class="modal-body">
+
+        <div class="form-group">
+            <label class="control-label col-xs-2">Sample</label>
+            <div class="input-group col-xs-8">
+                <label >{{vm.sampleName}}</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-xs-2">Test</label>
+            <div class="input-group col-xs-8">
+                <label >{{vm.testName}}</label>
+            </div>        </div>
+
+        <div class="form-group">
+            <label class="control-label col-xs-2" for="field_date ">Date</label>
+            <div class="input-group col-xs-4">
+                <input id="field_date" type="text" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.personInvestigation.date"
+                    is-open="vm.datePickerOpenStatus.date" required/>
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.date.$invalid">
+                <p class="help-block" ng-show="editForm.date.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-xs-12">
+        <div class="pull-right">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+            <button type="button" ng-click="vm.save()" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+        </div>
+    </div>
+
+</form>

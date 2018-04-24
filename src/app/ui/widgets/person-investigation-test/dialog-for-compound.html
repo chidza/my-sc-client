@@ -1,0 +1,11 @@
+<form class="form-horizontal" name="editForm">
+    <div class="form-group">
+        <div class="col-xs-9" ng-show="vm.investigationResults.length>0">
+            <label ng-repeat="result in vm.investigationResults track by $index"> <input type="radio" ng-change="vm.save()" ng-model="vm.personInvestigationTest.result" ng-value="result.id" name="result"/> {{result.name}}&nbsp;&nbsp;</label>
+        </div>
+        <div class="col-xs-5" ng-hide="vm.investigationResults.length>0">
+            <input type="text" ng-model="vm.personInvestigationTest.result" ng-blur="vm.save()" class="form-control">
+        </div>
+    </div>
+
+</form>

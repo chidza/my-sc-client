@@ -1,0 +1,36 @@
+<style>
+    .enlarged {
+        width: 30px;
+        height: 30px;
+    }
+
+    input[type="radio"] {
+        vertical-align: middle;
+    }
+</style>
+<div class="col-xs-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title promo-badge">Select Formulation</h3>
+        </div>
+        <div class="panel-body">
+
+            <p>
+                <b>{{vm.drugName.name}}</b>
+            </p>
+
+            <div ng-repeat="model in vm.drugs">
+                <label>  
+                <input type="radio" class="enlarged"  ng-click="vm.selected(model.id)" name="testId" ng-value="model.id">  {{model.formulation + ' ' + model.strength + ' ' + model.unit}}
+</label>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+
+        <div class="pull-right">
+            <button class="btn btn-primary btn-lg" class="form-control" ng-show="vm.formulationId" ng-click="vm.onSelected()">Select Formulation</button>
+        </div>
+    </div>

@@ -1,0 +1,21 @@
+<div ng-if="vm.workspaceId=='opd'">
+
+    <div class="col-xs-12">
+        <h4>
+            Select queue to attend
+        </h4>
+        <mrs-queue-list queue-selected="vm.open(queueId)"></mrs-queue-list>
+    </div>
+
+</div>
+
+<div ng-if="vm.workspaceId=='admission'">
+
+    <div class="col-xs-12">
+        <h4>
+            Select ward to attend
+        </h4>
+        <mrs-ward-list ward-selected="vm.open(wardId)"></mrs-ward-list>
+    </div>
+
+</div>

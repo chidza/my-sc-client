@@ -1,0 +1,53 @@
+<style>
+    input.largerCheckbox {
+        width: 25px;
+        height: 25px;
+    }
+</style>
+
+<div class="col-xs-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">PNC Visit Examination </div>
+        <div class="panel-body">
+
+
+
+            <form class="form-horizontal">
+                <div class="form-group" style="font-size: x-large;">
+                    <label for="provider" class="col-xs-4 control-label"><span  aria-hidden="true"></span>&nbsp;&nbsp;Select Pnc Day:</label>
+                    <div class="col-xs-8">
+
+                        <select class="form-control" id="type" name="type" ng-change="vm.save()" ng-model="vm.pncVisit.pncVisitTypeId" ng-options="option.id as option.name for option in vm.pncvisittypes"
+                            required>
+                <option value=""></option>
+                </select>
+                        <!--<label ng-repeat="option in vm.pncvisittypes"><input
+                            type="radio" class="largerCheckbox" name="level" ng-model="vm.pncVisit.pncVisitTypeId" ng-click="vm.save()"
+                            ng-value="option.id" /> {{option.name}}&nbsp;&nbsp;&nbsp; </label>-->
+                    </div>
+                </div>
+            </form>
+
+
+
+            <hr>
+
+            <div class="col-xs-12" ng-show="vm.pncVisit.pncVisitTypeId">
+                <div class="col-xs-6">
+                    <mrs-pnc-questionaire-dialog pnc-visit-id="vm.pncVisitId" category-name="BREASTS"></mrs-pnc-questionaire-dialog>
+                    <br>
+                    <mrs-pnc-questionaire-dialog pnc-visit-id="vm.pncVisitId" category-name="UTERUS"></mrs-pnc-questionaire-dialog>
+                    <br>
+                    <mrs-pnc-questionaire-dialog pnc-visit-id="vm.pncVisitId" category-name="GENITAL_TRACT"></mrs-pnc-questionaire-dialog>
+                </div>
+                <div class="col-xs-6">
+                    <mrs-pnc-questionaire-dialog pnc-visit-id="vm.pncVisitId" category-name="LEGS"></mrs-pnc-questionaire-dialog>
+                    <br>
+                    <mrs-pnc-questionaire-dialog pnc-visit-id="vm.pncVisitId" category-name="MENTAL_STATE"></mrs-pnc-questionaire-dialog>
+                    <br>
+                    <mrs-pnc-questionaire-dialog pnc-visit-id="vm.pncVisitId" category-name="HEALTH_EDUCATION"></mrs-pnc-questionaire-dialog>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

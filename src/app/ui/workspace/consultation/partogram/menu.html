@@ -1,0 +1,33 @@
+<style>
+    .glow {
+        display: inline-block;
+        animation: glow 0.6s 30;
+    }
+
+    @keyframes glow {
+        50% {
+            color: red;
+            transform: scale(1.9);
+        }
+    }
+</style>
+
+<div class="col-xs-12">
+    <div class="panel-body">
+
+        <div class="row">
+            <mrs-partogram-due-observations-view refresh="vm.value" delivery-id="vm.deliveryId"></mrs-partogram-due-observations-view>
+            <button ui-sref="consultation.management.partogram.alerts" class="btn btn-primary btn-block btn-lg">Alerts <span ng-show="vm.dangerSigns.length + vm.missingInformation.length>0" style="color:red" class="glow badge pull-right">
+                    {{vm.dangerSigns.length + vm.missingInformation.length}}</span><span ng-show="vm.dangerSigns.length + vm.missingInformation.length==0" class="badge pull-right">
+                    {{vm.dangerSigns.length + vm.missingInformation.length}}</span></button>
+            <button ui-sref="consultation.management.partogram.overview" class="btn btn-primary btn-block btn-lg"><i class="fa fa-flask pull-left"></i>Overview</button>
+            <button ui-sref="consultation.management.partogram.manage" class="btn btn-primary btn-block btn-lg"><i class="fa fa-flask pull-left"></i>Manage</button>
+            <button ui-sref="consultation.management.partogram.partogramNotes.list" class="btn btn-primary btn-block btn-lg"><i class="fa fa-user-md pull-left"></i>Notes</button>
+            <button ng-disabled="true" ui-sref="consultation.management.deliverySummary.overview({deliveryId:vm.deliveryId})" class="btn btn-primary btn-block btn-lg"><i class="fa fa-user-md pull-left"></i>Labour Outcome</button>
+            <button ui-sref="consultation.purpose.list({workareaId:vm.workareaId,personId:vm.personId})" class="btn btn-danger btn-block btn-lg"><i class="fa fa-sign-out pull-left"></i>Close</button>
+
+        </div>
+
+    </div>
+
+</div>

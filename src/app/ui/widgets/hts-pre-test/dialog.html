@@ -1,0 +1,95 @@
+<div class="col-xs-12">
+    <form class="form-horizontal">
+
+        <div class="form-group">
+            <label class="col-xs-4 control-label">Hts approach:</label>
+            <div class="col-xs-8">
+                <label > <input type="radio" id="htsApproachPitc" value="PITC" ng-model="vm.hts.approach" ng-click="vm.save()"> PITC
+                </label>
+                <label >
+                     <input type="radio"  id="htsApproachCitc" value="CITC" ng-model="vm.hts.approach" ng-click="vm.save()">
+                CITC
+            </label>
+            </div>
+        </div>
+
+
+        <div class="form-group ">
+            <label class="col-xs-4 control-label">Reason for HIV Testing</label>
+            <div class="col-xs-4">
+                <select ng-options="d.id as d.name  for d in vm.purposes" class="form-control" ng-model="vm.hts.purposeOfTestId" ng-change="vm.save()"></select>
+
+            </div>
+
+            <label class="col-xs-2 control-label" style="font-size: x-small;">Pre-test Information given</label>
+            <div class="col-xs-1">
+                <input class="form-control" ng-model="vm.hts.preTestInformationGiven" type="checkbox" ng-click="vm.save()">
+            </div>
+
+
+        </div>
+
+
+        <div class="form-group ">
+            <label class="col-xs-4 control-label">HTS Model</label>
+            <div class="col-xs-4">
+
+
+
+                <select ng-options="d.id as d.name  for d in vm.models" class="form-control" ng-model="vm.hts.modelId" ng-change="vm.save()"></select>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="form-group ">
+            <label class="col-xs-4 control-label" style="font-size: small;">Couple Counselling</label>
+            <div class="col-xs-1">
+                <input class="form-control" ng-model="vm.hts.coupleCounselling" type="checkbox" ng-click="vm.save()">
+            </div>
+
+        </div>
+
+
+        <div class="form-group ">
+            <div class="col-xs-6">
+                <label class="col-xs-4 control-label">New Test? : <i >In Client's Life</i>
+</label>
+                <div class="col-xs-8">
+                    <label >
+                     <label><input type="radio"  id="retest" ng-value="true" ng-model="vm.hts.retest" ng-click="vm.save()">
+                New &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <label><input type="radio"  id="retest" ng-value="false" ng-model="vm.hts.retest" ng-click="vm.save()">
+                Retest &nbsp;&nbsp;</label>
+                    </label>
+                </div>
+
+            </div>
+            <div class="col-xs-6">
+
+
+                <label class="col-xs-4 control-label">New Test : <i >For Pregnant and Lactating women</i>
+</label>
+                <div class="col-xs-8">
+                    <label >
+                        <label><input type="radio"  id="pregnancy" value="NONE" ng-model="vm.hts.testForPregnancy" ng-click="vm.save()">
+                None &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                     <label><input type="radio"  id="pregnancy" value="FIRST_TEST" ng-model="vm.hts.testForPregnancy" ng-click="vm.save()">
+                New &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <label><input type="radio"  id="pregnancy" value="RETEST" ng-model="vm.hts.testForPregnancy" ng-click="vm.save()">
+                Retest &nbsp;&nbsp;</label>
+                    </label>
+                    <!--<input class="form-control" ng-model="vm.hts.testForPregnancy" type="checkbox" ng-click="vm.save()">-->
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+{{vm.hts.testForPregnancy}}

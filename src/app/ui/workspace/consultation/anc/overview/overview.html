@@ -1,0 +1,171 @@
+<style>
+    .textcolor {
+        color: #ffffff;
+    }
+
+    .boreder {
+        border-right: 1px solid black;
+    }
+</style>
+
+
+<div class="col-xs-12">
+
+    <p ng-hide="vm.anc.id">Patient general information and patient history will only be available after patient registration</p>
+</div>
+<div class="col-xs-12" ng-show="vm.anc.id" ng-click="vm.addVisitNumber()">
+    <div class="panel panel-primary">
+        <div class="panel-heading"> ANC Summary</div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <br>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label"> Anc Number </label>
+                            <div class="col-xs-6">
+                                <p class="form-control-static">
+                                    {{vm.anc.number}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label"> HIV Status</label>
+                            <div class="col-xs-8">
+                                <mrs-hiv-status-dialog offer-hts="vm.onOfferHts()" person-id="vm.personId" date="vm.date"></mrs-hiv-status-dialog>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label class="col-xs-5 control-label">  Registration Date</label>
+                            <div class="col-xs-7">
+                                <p class="form-control-static">
+                                    {{vm.anc.date | date:"y-MM-dd"}}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-5 control-label"> Visit number</label>
+                            <div class="col-xs-7">
+                                <p class="form-control-static"> <input type="text" min="1" class="form-control" ng-model="vm.ancVisit.visitNumber" ng-blur="vm.updateVisitNumber(vm.ancVisit.visitNumber)"></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 boreder">
+
+                        <table class="table">
+                            <tr>
+                                <td colspan="2"><strong> Medical History </strong> </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <ul ng-repeat="history in vm.socialHistories">
+                                        <li ng-if="history.type=='MEDICAL'"><span>{{history.name}}</span>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2"><strong> Social History </strong> </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <ul ng-repeat="history in vm.socialHistories">
+                                        <li ng-if="history.type=='SOCIAL'"><span>{{history.name}}</span>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2"><strong>Patient History </strong> </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <ul ng-repeat="history in vm.socialHistories">
+                                        <li ng-if="history.type=='PREVEIOUS_OBSTETRIC'"><span>{{history.name}}</span>
+                                        </li>
+                                    </ul>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td colspan="2"><strong> Obstetric History </strong> </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul ng-repeat="history in vm.socialHistories">
+                                        <li ng-if="history.type=='PREVIOUS_OBSTETRIC'"><span>{{history.name}}</span>
+                                        </li>
+                                    </ul>
+                                </td>
+
+                            </tr>
+
+
+                        </table>
+                    </div>
+                    <div class=" col-xs-6 ">
+
+                        <table class="table">
+                            <tr>
+                                <td style="border-right:1px solid black;"><strong> LNMP </strong>: {{vm.anc.lnmp | date:"y-MM-dd"}} </td>
+                                <td><strong> EDD </strong>: {{vm.ancInformation.edd | date:"y-MM-dd"}} </td>
+                            </tr>
+                            <tr>
+                                <td style="border-right:1px solid black;"><strong> Para </strong>: {{vm.ancInformation.para}}</td>
+                                <td><strong> Gravida </strong>: {{vm.ancInformation.gravida}}</td>
+
+                            </tr>
+
+                            <tr>
+
+
+                            </tr>
+                            <tr>
+
+                            </tr>
+                            <tr>
+
+
+                            </tr>
+                            <td colspan="2"><strong class="text text-center"> Gestational Age </strong>: {{vm.ancInformation.gestationalAge.week}}
+                                weeks {{vm.ancInformation.gestationalAge.day}} days</td>
+
+                            <tr>
+                                <td colspan="2"><strong> General Information </strong> </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <ul ng-repeat="history in vm.socialHistories">
+                                        <li ng-if="history.type=='PREVEIOUS_OBSTETRIC'"><span>{{history.name}}</span>
+                                        </li>
+                                    </ul>
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>

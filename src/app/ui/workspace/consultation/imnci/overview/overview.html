@@ -1,0 +1,37 @@
+<style>
+    .textcolor {
+        color: #ffffff;
+    }
+    .boreder {
+        border-right: 1px solid black;
+        height: 480px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+    body::-webkit-scrollbar {
+        width: 1em;
+    }
+
+    body::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">IMNCI Overview </div>
+    <div class="panel-body">
+        <form class="form-horizontal">
+            <div class="col-xs-6">
+                <mrs-zepi-overview-dialog person-id="vm.personId"></mrs-zepi-overview-dialog>
+            </div>
+            <div class="col-xs-6">
+                <legend>Growth Monitoring</legend>
+                <div class="col-xs-12">
+                    <mrs-person-history-vital-list person-id="vm.personId"></mrs-person-history-vital-list>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>

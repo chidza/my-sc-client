@@ -1,0 +1,78 @@
+
+   <button pdf-save-button="idOne" pdf-name="partogram.pdf" class="btn btn-success ">Print Partogram <i class="fa fa-print" aria-hidden="true"></i></button>
+
+
+<div pdf-save-content="idOne">
+
+    <br>
+
+
+    <mrs-anc-delivery-static-information width="900" person-id="vm.personId"></mrs-anc-delivery-static-information>
+
+    <mrs-vitals-graph delivery-id="vm.deliveryId" width="900" height="400" person-id="vm.personId" interval="30" vital-id="3"
+        start="vm.start" end="vm.end"></mrs-vitals-graph>
+
+    <mrs-vaginal-monitoring-view width="800" delivery-id="vm.deliveryId" start="vm.start" end="vm.end"> </mrs-vaginal-monitoring-view>
+
+    <mrs-cervix-graph-echarts-test width="900" height="500" delivery-id="vm.deliveryId" start="vm.start" end="vm.end"></mrs-cervix-graph-echarts-test>
+
+    <mrs-contraction-graph width="900" height="450" delivery-id="vm.deliveryId" start="vm.start" end="vm.end"></mrs-contraction-graph>
+
+
+    <mrs-oxytocin-list width="800" delivery-id="vm.deliveryId" add-medication="vm.add()" edit-medication="vm.edit(id)" from="vm.start"
+        to="vm.end"></mrs-oxytocin-list>
+
+
+    <mrs-medication-view-vertical width="800" delivery-id="vm.deliveryId" add-medication="vm.add()" edit-medication="vm.edit(id)"
+        start="vm.start" end="vm.end"></mrs-medication-view-vertical>
+
+
+
+    <mrs-bp-graph delivery-id="vm.deliveryId" width="900" height="500" person-id="vm.personId" interval="60" vital-id="9" start="vm.start"
+        end="vm.end"></mrs-bp-graph>
+
+
+
+
+    <mrs-vitals-graph delivery-id="vm.deliveryId" width="900" height="500" person-id="vm.personId" interval="60" vital-id="2"
+        start="vm.start" end="vm.end"></mrs-vitals-graph>
+
+
+
+    <mrs-urinalysis-view-vertical width="800" delivery-id="vm.deliveryId" start="vm.start" end="vm.end"></mrs-urinalysis-view-vertical>
+   
+
+        <hr> 
+        <p ng-model="vm.delivery.partogramNote"><b>Notes:  </b>{{vm.delivery.partogramNote}}</p>
+
+       
+                    <table class="table table-striped table-bordered row-border hover">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Note</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="note in vm.partogramNotes | orderBy:'-id'">
+                                <td>{{note.date | date:'yyyy-MM-dd HH:mm'}}</td>
+                                <td>{{note.note}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+          
+
+    
+
+
+    <hr>
+</div>
+
+ 
+
+
+
+<br>
+<br><br>
+<br>

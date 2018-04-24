@@ -1,0 +1,38 @@
+<div class="col-xs-12">
+    <table datatable="ng" class="table table-striped table-bordered row-border hover">
+        <thead>
+            <tr>
+                <td colspan="6">
+                    <div class="pull-right">
+                        <button type="button" ng-click="vm.add()" class="btn btn-lg btn-success pull-right"><i class="fa fa-plus"></i></button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Date </th>
+                <th>Time</th>
+                <th>Amniotic Fluid</th>
+                <th>Degree Of Moulding</th>
+                <th>Caput</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="model in vm.monitoring">
+                <td>{{model.date | date : "yyyy-MM-dd"}}</td>
+                <td>{{model.date | date : "HH:mm"}}</td>
+                <td class="text-center"><span style="color:red" ng-show="model.amnioticFluidId==vm.bloodStainedId || model.amnioticFluidId==vm.meconiumStainedId">{{vm.getAmniotic(model.amnioticFluidId)}}</span>
+                    <span ng-show="model.amnioticFluidId!=vm.bloodStainedId && model.amnioticFluidId!=vm.meconiumStainedId">{{vm.getAmniotic(model.amnioticFluidId)}}</span>
+                </td>
+                <td class="text-center"><span style="color:red" ng-show="model.mouldingId==4">{{vm.getDegree(model.mouldingId)}}</span><span ng-show="model.mouldingId!=4">{{vm.getDegree(model.mouldingId)}}</span></td>
+                <td class="text-center"><span style="color:red" ng-show="model.caputId==4">{{vm.getDegree(model.caputId)}}</span><span ng-show="model.caputId!=4">{{vm.getDegree(model.caputId)}}</span></td>
+                <td>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-primary" ng-click="vm.edit(model)"><i class="fa fa-edit"></i> Edit</button>
+                        <button type="button" class="btn btn-danger" ng-click="vm.remove(model)"><i class="fa fa-trash-o"></i> Remove</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

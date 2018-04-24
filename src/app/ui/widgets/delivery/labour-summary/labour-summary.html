@@ -1,0 +1,74 @@
+<form name="editForm" role="form" novalidate>
+
+
+<div class="form-group">
+     <div class="col-xs-12">
+            <label class="col-xs-4 control-label">Labour:</label>
+            <div class="col-xs-8">
+                <label > <input type="radio" class="largerCheckbox" id="labourSpontaneous" value="INDUCED" ng-model="vm.labourSummary.labour" ng-click="vm.update()"> INDUCED
+                </label>
+                <label >
+                     <input type="radio"  class="largerCheckbox" id="labourInduced" value="SPONTANEOUS" ng-model="vm.labourSummary.labour" ng-click="vm.update()">
+                SPONTANEOUS
+            </label>
+
+             <label >
+                     <input type="radio" class="largerCheckbox" id="labourInduced" value="AUGMENTED" ng-model="vm.labourSummary.labour" ng-click="vm.update()">
+                AUGMENTED
+            </label> 
+            </div>
+        </div>
+</div>
+
+    <div class="form-group">
+        <div class="col-xs-12">
+         <label class="col-xs-4 control-label">Membrane Ruptured:</label>
+ <div class="col-xs-8">
+                <label > <input type="radio" class="largerCheckbox" id="membraneRuptured" value="ARTIFICIALLY" ng-model="vm.labourSummary.membraneRuptured" ng-click="vm.update()"> ARTIFICIALLY
+                </label>
+                <label >
+                     <input type="radio"  class="largerCheckbox" id="membraneRuptured" value="SPONTANEOUS" ng-model="vm.labourSummary.membraneRuptured" ng-click="vm.update()">
+                SPONTANEOUS
+            </label>
+
+            </div>
+        </div>
+    </div>
+
+
+ <div class="form-group">
+     <div class="col-xs-12" ng-hide="true">
+         <label class="col-xs-4 control-label">Birth Place:</label>
+ <div class="col-xs-8">
+                <label > <input type="radio" class="largerCheckbox" id="birthPlace" value="HOME" ng-model="vm.labourSummary.birthPlace" ng-click="vm.update()"> HOME
+                </label>
+                <label >
+                     <input type="radio" class="largerCheckbox"  id="birthPlace" value="HOSPITAL_CLINIC" ng-model="vm.labourSummary.birthPlace" ng-click="vm.update()">
+                HOSPITAL/CLINIC
+            </label>
+            <label >
+                     <input type="radio" class="largerCheckbox"  id="birthPlace" value="BBA" ng-model="vm.labourSummary.birthPlace" ng-click="vm.update()">
+                BBA
+            </label>
+
+            </div>
+        </div>
+ </div>
+
+
+
+<div class="form-group">
+    <div class="col-xs-12">
+         <label class="col-xs-4 control-label">Oxytocin Issued:</label>
+ <div class="col-xs-8">
+                <label > <input type="radio" class="largerCheckbox" id="oxytocinIssued" value="YES" ng-model="vm.labourSummary.oxytocinIssued" ng-click="vm.update()"> YES
+                </label>
+                <label >
+                     <input type="radio"  id="oxytocinIssued" value="NO" ng-model="vm.labourSummary.oxytocinIssued" ng-click="vm.update()">
+                NO
+            </label>
+
+            </div>
+        </div>
+</div>
+</form>

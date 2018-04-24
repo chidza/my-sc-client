@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        //"outDir": "src/js",
+        "target": "ES5",
+        "module": "system",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "removeComments": true,
+        "noImplicitAny": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "outFile": "src/js/app.js",
+        "moduleResolution": "node"
+    },
+       "exclude": [
+        "node_modules",
+        "src/lib",
+        "bower_components",
+        "typings/main",
+        "typings/main.d.ts",
+        "test"
+    ]
+
+}

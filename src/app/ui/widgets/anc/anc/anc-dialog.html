@@ -1,0 +1,175 @@
+<form name="editForm" role="form" novalidate show-validation>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="control-label" for="field_booking">First Contact?</label>
+                <input type="checkbox" class="form-control" name="booking" id="field_booking" ng-model="vm.anc.firstBooking"
+                />
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+
+                <label class="control-label" for="field_date">HIV STATUS PRIOR ANC BOOKING</label>
+                <div>
+                    <p class="form-control-static">
+                        {{vm.hivStatus.status}}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="control-label" for="field_date">Date</label>
+                <div class="input-group">
+                    <input id="field_date" type="text"  class="form-control" name="date" uib-datepicker-popup="{{dateformat}}"
+                        ng-model="vm.anc.date" is-open="vm.datePickerOpenStatus.date" required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+                <div ng-show="editForm.date.$invalid">
+                    <p class="help-block" ng-show="editForm.date.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="control-label" for="field_number">Anc Number</label>
+                <div class="input-group">
+                    <input type="text" autocomplete="off" name="number" class="form-control" ng-model="vm.anc.number">
+                    <div class="input-group-btn ">
+                        <button ng-click="vm.generateAncNumber()" class="btn btn-primary btn-block" type="button">Generate</button>
+                    </div>
+                </div>
+                <div ng-show="editForm.number.$invalid">
+                    <p class="help-block" ng-show="editForm.number.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="control-label" for="field_lnmp">Lnmp</label>
+                <div class="input-group">
+                    <input id="field_lnmp" type="text"  class="form-control" name="lnmp" uib-datepicker-popup="{{dateformat}}"
+                        ng-model="vm.anc.lnmp" is-open="vm.datePickerOpenStatus.lnmp" required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('lnmp')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+                <div ng-show="editForm.lnmp.$invalid">
+                    <p class="help-block" ng-show="editForm.lnmp.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="control-label" for="field_menstrualCycle">Menstrual Cycle&nbsp;&nbsp;</label>
+                <div>
+                    <label>
+                
+           <input type="radio"  name="menstrualCycle" ng-model="vm.anc.menstrualCycle" value="REGULAR" required>&nbsp;&nbsp;REGULAR
+              </label>
+                    <label>
+           <input type="radio"  name="menstrualCycle" ng-model="vm.anc.menstrualCycle"  value="IRREGULAR" required/>&nbsp;&nbsp;IRREGULAR
+              </label>
+                </div>
+            </div>
+             <div ng-show="editForm.menstrualCycle.$invalid">
+                    <p class="help-block" ng-show="editForm.menstrualCycle.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+        </div>
+    </div>
+
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="control-label" for="field_frequency">Frequency</label>
+                <input type="number" autocomplete="off" class="form-control" name="frequency" id="field_frequency" ng-model="vm.anc.frequency"
+                    required />
+                <div ng-show="editForm.frequency.$invalid">
+                    <p class="help-block" ng-show="editForm.frequency.$error.required">
+                        This field is required.
+                    </p>
+                    <p class="help-block" ng-show="editForm.frequency.$error.number">
+                        This field should be a number.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="control-label" for="field_duration">Duration</label>
+                <input type="number" class="form-control" autocomplete="off" name="duration" id="field_duration" ng-model="vm.anc.duration"
+                    required />
+                <div ng-show="editForm.duration.$invalid">
+                    <p class="help-block" ng-show="editForm.duration.$error.required">
+                        This field is required.
+                    </p>
+                    <p class="help-block" ng-show="editForm.duration.$error.number">
+                        This field should be a number.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="col-xs-6">
+
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+
+        </div>
+
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="control-label" for="field_bloodFlow">Blood Flow &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label>
+                <div>
+           <input type="radio"  name="HEAVY" ng-model="vm.anc.bloodFlow" value="HEAVY" >&nbsp;&nbsp;HEAVY
+              </label>
+                <label>
+           <input type="radio"  name="MODERATE" ng-model="vm.anc.bloodFlow" value="MODERATE"/>&nbsp;&nbsp;&nbsp;MODERATE
+              </label>
+                <label>
+           <input type="radio"  name="NORMAL" ng-model="vm.anc.bloodFlow" value="NORMAL"/>&nbsp;&nbsp;&nbsp;NORMAL
+              </label>
+            </div>
+        </div>
+
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <div class="col-xs-12">
+        <div class="pull-right">
+            <button type="button" ng-disabled="editForm.$invalid || vm.isSaving" ng-click="vm.save()" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span ng-if="!vm.anc.id">Register</span><span ng-if="vm.anc.id">Update</span>
+        </button>
+            <button ng-click="vm.closed()" class="btn btn-danger">
+           <span>Cancel</span>
+        </button>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,36 @@
+<div class="col-xs-12">
+    <table datatable="ng" class="table table-striped table-bordered row-border hover">
+        <thead>
+            <tr>
+                <th colspan="5">
+                    <div class="pull-right">
+                        <button type="button" ng-click="vm.add()" class="btn btn-success"><i class="fa fa-plus"></i> Record Complaint</button>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th>Complaint</th>
+                <th>Days</th>
+                <th>Present</th>
+                <th>Notes</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="model in vm.list">
+                <td>{{model.name}}</td>
+                <td>{{model.duration}}</td>
+                <td>
+                    <span ng-class="model.present ? 'fa fa-check text-danger' : 'fa fa-times text-success'"></span>
+                </td>
+                <td>{{model.note}}</td>
+                <td style="width: 200px;">
+                    <fieldset class="pull-right" ng-disabled="vm.disableControls(model)">
+                        <button type="button" ng-click="vm.edit(model)" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+                        <button type="button" ng-click="vm.delete(model)" class="btn btn-danger"><i class="fa fa-trash-o"></i> Remove</button>
+                    </fieldset>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

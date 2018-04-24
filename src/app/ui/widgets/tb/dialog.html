@@ -1,0 +1,47 @@
+<form name="editForm" role="form" novalidate show-validation>
+
+    <div class="form-group">
+        <label class="control-label" for="field_type">Type</label>
+        <select class="form-control" name="type" ng-change="vm.save()" ng-model="vm.tb.type" id="field_type" required>
+                <option value="NEW">NEW</option>
+                <option value="RETREATMENT">RETREATMENT</option>
+                <option value="RELAPSE">RELAPSE</option>
+                <option value="RESTART">RESTART</option>
+            </select>
+        <div ng-show="editForm.type.$invalid">
+            <p class="help-block" ng-show="editForm.type.$error.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="field_date">Date</label>
+        <div class="input-group">
+            <input id="field_date" type="text" ng-change="vm.save()" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}"
+                ng-model="vm.tb.date" is-open="vm.datePickerOpenStatus.date" required/>
+            <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+        </div>
+        <div ng-show="editForm.date.$invalid">
+            <p class="help-block" ng-show="editForm.date.$error.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="field_category">Category</label>
+        <select class="form-control" id="field_category" ng-change="vm.save()" name="category" ng-model="vm.tb.categoryId" ng-options="tbCategory.id as tbCategory.name for tbCategory in vm.tbcategories"
+            required>
+            <option value=""></option>
+            </select>
+    </div>
+    <div ng-show="editForm.category.$invalid">
+        <p class="help-block" ng-show="editForm.category.$error.required">
+            This field is required.
+        </p>
+    </div>
+
+</form>

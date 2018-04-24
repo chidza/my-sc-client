@@ -1,0 +1,25 @@
+<style type="text/css">
+    form.tab-form-vaginal .tab-pane {
+        margin: 20px 20px;
+    }
+</style>
+
+<div class="col-xs-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Delivery Vaginal Examinations</div>
+        <div class="panel-body">
+            <form name="outerForm" class="tab-form-vaginal">
+                <uib-tabset active="activeForm">
+                    <uib-tab index="0" heading="Nurse's Examinations">
+
+                        
+                        <mrs-nurse-vaginal-examination-dialog delivery-id="vm.deliveryId"></mrs-nurse-vaginal-examination-dialog>
+                    </uib-tab>
+                    <uib-tab index="1" heading="Doctor's Examinations">
+                        <mrs-doctor-vaginal-examination-dialog delivery-id="vm.deliveryId"></mrs-doctor-vaginal-examination-dialog>
+                    </uib-tab>
+                </uib-tabset>
+            </form>
+        </div>
+    </div>
+</div>

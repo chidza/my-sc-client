@@ -1,0 +1,93 @@
+<form name="editForm" role="form" novalidate show-validation>
+    <div class="row">
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_date"><i class="glyphicon glyphicon-calendar"></i>Date</label>
+            <div class="input-group">
+                <input id="field_date" type="text" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.infant.time"
+                    is-open="vm.datePickerOpenStatus.date" required/>
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.date.$invalid">
+                <p class="help-block" ng-show="editForm.date.$error.required">
+                    This field is required.
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="field_deliveryMethod">Delivery Method</label>
+                <select class="form-control" name="deliveryMethod" ng-model="vm.infant.deliveryMethod" id="field_deliveryMethod" required>
+                <option value="ASSISTEDBREECH">ASSISTED BREECH</option>
+                <option value="C_SECTION">C-SECTION</option>
+                <option value="INSTRUMENT_DELIVERY">INSTRUMENT DELIVERY</option>
+                <option value="NVD">NVD</option>
+                <option value="VACUUM">VACUUM</option>
+            </select>
+                <div ng-show="editForm.deliveryMethod.$invalid">
+                    <p class="help-block" ng-show="editForm.deliveryMethod.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="field_caput">Gender</label>
+                <label>
+           <input type="radio" name="Male" ng-model="vm.foetal.gender" value="MALE" value="True"/>Male
+              </label>
+                <label>
+           <input type="radio" name="Female" ng-model="vm.foetal.gender" value="FEMALE"/>Female
+              </label>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-xs-4" for="field_lastname">Cause of stillBirthType</label>
+                <div class="input-group col-xs-8">
+                    <input type="text" autocomplete="off" ng-disabled="true" class="form-control" ng-model="vm.diagnosis.name">
+                    <div class="input-group-btn ">
+                        <button ng-click="vm.changeDiagnosis()" class="btn btn-primary btn-block" type="button">Change</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_time"><i class="glyphicon glyphicon-time"></i> Time of Death</label>
+            <div class="input-group">
+                <input id="field_time" type="text" class="form-control" name="time" enable-date="false" initial-picker="time" datetime-picker="HH:mm" ng-model="vm.infant.time"
+                    is-open="vm.datePickerOpenStatus.time" required />
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('time')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.time.$invalid">
+                <p class="help-block" ng-show="editForm.time.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block" ng-show="editForm.time.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="field_caput">Type of Still Birth</label>
+                <label>
+           <input type="radio" name="MSB" ng-model="vm.foetal.stillBirthType" value="MSB" value="True"/>MSB
+              </label>
+                <label>
+           <input type="radio" name="FSB" ng-model="vm.foetal.stillBirthType" value="FSB"/>FSB
+              </label>
+            </div>
+
+        </div>
+
+        <div class="modal-footer col-xs-12">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+            <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" ng-click="vm.save()" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+        </div>
+    </div>
+</form>

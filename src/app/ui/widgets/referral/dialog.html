@@ -1,0 +1,37 @@
+<form name="editForm" role="form" novalidate show-validation>
+    <div class="form-group col-xs-8">
+        <label for="field_reason">Reason</label>
+        <select class="form-control" id="field_reason" name="reason" ng-model="vm.referral.reasonId" ng-options="referralReason.id as referralReason.name for referralReason in vm.referralReasons"
+            required>
+                <option value=""></option>
+            </select>
+    </div>
+    <div class="form-group col-xs-8">
+        <label for="field_facility">Facility</label>
+        <input type="uib-typeahead" ng-model="vm.facility" placeholder="&#xF002; facility list.." style="font-family: Arial, FontAwesome"
+            uib-typeahead="facility.name +' '+facility.id for facility in vm.getFacilities(vm.facility) | filter:$viewValue | limitTo: 15"
+            typeahead-loading="loadingLocations" typeahead-no-results="noResults" typeahead-on-select="vm.getFacilityId(vm.facility)"
+            autocomplete="off" required autofocus class="form-control">
+        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+        <div ng-show="noResults">
+            <i class="glyphicon glyphicon-remove"></i> No Results Found
+        </div>
+    </div>
+
+    <div class="form-group col-xs-8">
+        <label class="control-label" for="field_note">Note</label>
+        <textarea rows="10" cols="80" class="form-control" name="note" id="field_note" ng-model="vm.referral.note" />
+    </div>
+
+
+
+
+    <div class="modal-footer col-xs-12">
+        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-click="vm.save()" class="btn btn-primary btn-lg">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

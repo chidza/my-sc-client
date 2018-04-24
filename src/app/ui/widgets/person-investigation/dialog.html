@@ -1,0 +1,66 @@
+<form name="editForm" role="form" novalidate  show-validation>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Sample</label>
+        <div class="col-sm-9">
+            <p class="form-control-static">{{vm.sample.name}}</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Investigation</label>
+        <div class="col-sm-9">
+            <p class="form-control-static">{{vm.labTest.name}}</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Date</label>
+        <div class="col-xs-9">
+            <div class="input-group col-xs-5">
+                <input id="field_date" type="text" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}"
+                    ng-model="vm.personInvestigation.date" is-open="vm.datePickerOpenStatus.date" required/>
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                </div>
+            </div>
+            <div class="col-xs-5 col-xs-offset-3" ng-show="editForm.date.$invalid">
+                <p class="help-block" ng-show="editForm.date.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Final Result</label>
+        <div class="col-xs-9">
+            <br>
+            <div class="input-group col-xs-5" ng-hide="vm.investigationResults.length>0">
+                <input type="text" ng-model="vm.personInvestigation.result" class="form-control">
+            </div>
+            <div class="col-xs-12" ng-show="vm.investigationResults.length>0">
+                <label ng-repeat="result in vm.investigationResults track by $index"> <input type="radio" ng-disabled="vm.disableResult" ng-model="vm.personInvestigation.result" ng-value="result.id" name="result"/> {{result.name}}&nbsp;&nbsp;</label>
+            </div>
+
+            <div class="col-xs-5 col-xs-3-offset" ng-show="!vm.personInvestigation.result">
+                <p class="help-block" ng-show="!vm.personInvestigation.result">
+                    This field is required.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <div class="pull-right">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+           <button type="button" ng-click="vm.save()" ng-disabled="editForm.$invalid || !vm.personInvestigation.result" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+        </div>
+    </div>
+
+</form>

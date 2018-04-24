@@ -1,0 +1,29 @@
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="col-xs-5 control-label">TB Screening</label>
+        <div class="col-xs-7">
+            <mrs-tb-screening-status person-id="vm.personId" encounter-id="vm.encounterId"></mrs-tb-screening-status>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-5 control-label">Breast Examination Done</label>
+        <div class="col-xs-7">
+            <p ng-if="vm.breastCancerScreening.status!='Not Done'" class="form-control-static">{{vm.breastCancerScreening.status + " on " + vm.breastCancerScreening.date}}</p>
+             <p ng-if="vm.breastCancerScreening.status=='Not Done'" class="form-control-static">{{vm.breastCancerScreening.status}}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-5 control-label">Cervical Cancer Screening</label>
+        <div class="col-xs-7">
+            <p ng-if="vm.cervicalCancerScreening.status!='Not Done'" class="form-control-static">{{vm.cervicalCancerScreening.status + " on " + vm.cervicalCancerScreening.date}}</p>
+             <p ng-if="vm.cervicalCancerScreening.status=='Not Done'" class="form-control-static">{{vm.cervicalCancerScreening.status}}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-5 control-label">Syphilis Screening</label>
+        <div class="col-xs-7">
+            <p class="form-control-static" ng-if="vm.syphilis.id"><span>{{vm.getResult()}}</span> as at <span>{{vm.syphilis.date | date:"yyyy-MM-dd"}}</span></p>
+        <p class="form-control-static" ng-if="vm.syphilis.id==null">Not Done</p>
+        </div>
+    </div>
+</form>

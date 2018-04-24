@@ -1,0 +1,32 @@
+<style>
+    .scrollthis {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        width: 100%;
+        white-space: nowrap;
+    }
+</style>
+<div class="scrollthis">
+
+    <legend>Amniotic and Moulding</legend>
+    <table class="table table-striped table-bordered row-border hover">
+        <thead>
+            <th>Time</th>
+            <th ng-repeat="t in vm.data.times">{{t | date:"HH:mm"}}</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Amniotic Fluid</td>
+                <td ng-repeat="u in vm.data.amniotic"><span style="color:red" ng-show="u.status=='DANGER'">{{u.result}}</span><span ng-show="u.status!='DANGER'">{{u.result}}</span></td>
+            </tr>
+            <tr>
+                <td>Moulding</td>
+                <td ng-repeat="u in vm.data.moulding"><span style="color:red" ng-show="u.status=='DANGER'">{{u.result}}</span><span ng-show="u.status!='DANGER'">{{u.result}}</span></td>
+            </tr>
+            <tr>
+                <td>Caput</td>
+                <td ng-repeat="u in vm.data.caput"><span style="color:red" ng-show="u.status=='DANGER'">{{u.result}}</span><span ng-show="u.status!='DANGER'">{{u.result}}</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,60 @@
+<div class="col-xs-12">
+    <form class="form-horizontal" autocomplete="off">
+        <div class="form-group">
+            <label class="control-label col-xs-4" for="field_date">Drug:</label>
+            <div class="col-xs-5">
+                <h4>{{vm.drug.name}}</h4>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-4" for="field_date">Form:</label>
+            <div class="col-xs-5">
+                <h4>{{vm.formulation.name + " " + vm.stock.strength + vm.unit.name}}</h4>
+            </div>
+        </div>
+        <div class="form-group" ng-show="vm.drugOptionNames.length>0">
+            <label class="control-label col-xs-4" for="field_drugOption">Drug Option</label>
+            <div class="col-xs-5">
+                <label ng-repeat="option in vm.drugOptionNames"><input id ="{{option.id}}" 
+                            type="radio" class="largerCheckbox" name="level" ng-model="vm.personMedication.drugOptionId"
+                            ng-value="option.value" /> {{option.id}}&nbsp;&nbsp;&nbsp; </label>
+                <!--<select class="form-control" id="field_drugOption" name="drugOption" ng-model="vm.personMedication.drugOptionId"
+                 ng-options="option.value as option.id for option in vm.drugOptionNames">-->
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-4" for="field_date">Date</label>
+            <div class="col-xs-5">
+                <div class="input-group ">
+                    <input id="field_date" type="text" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.personMedication.date"
+                        is-open="vm.datePickerOpenStatus.date" required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" ng-show="vm.batches.length>0">
+            <label class="control-label col-xs-4" for="field_batch">Batch</label>
+            <div class="col-xs-5">
+                <label ng-repeat="batch in vm.batches">
+                    <input type="radio" name="batch" ng-click="vm.getExpiryDate()" required ng-model="vm.dispense.batchId"
+                            ng-value="batch.id" /> {{batch.batchNumber}}&nbsp;&nbsp;&nbsp; </label>
+            </div>
+        </div>
+        <div class="form-group" ng-show="vm.dispense.batchId">
+            <label class="control-label col-xs-4" for="field_batch">Batch Expiry Date</label>
+            <div class="col-xs-5">
+                <h4>{{vm.batchExpiryDate}}</h4>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="pull-right">
+                <button class="btn btn-primary" ng-click="vm.save()">Save</button>
+                <button class="btn btn-danger" ng-click="vm.close()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

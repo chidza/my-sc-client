@@ -1,0 +1,26 @@
+
+
+ 
+    <table class="table  table-bordered" ng-style="{'width': vm.width +'px'}">
+        <thead>
+            <th style="border-width: 0; font-size: x-small;" class="pull-left"></th>
+            <th ng-repeat="model in vm.medications" style="font-size: x-small;"><b>{{model.time | date:"HH:mm"}}</b></th>
+        </thead>
+        <tbody>
+         
+            <tr>
+                <td style="border-width: 0; font-size: small;" class="pull-left" ><b>Medication given <br>and IV Fluids</b></td>
+                <td ng-repeat="model in vm.medications" style="font-size: small; word-wrap: break-word;min-width: 30px;max-width: 30px"><b>{{vm.getDrugs(model.drugs)}}</b></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+
+

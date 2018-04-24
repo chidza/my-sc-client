@@ -1,0 +1,9 @@
+version: '2'
+services: 
+  web:
+    image: nginx:alpine
+    container_name: mrs-web
+    volumes: 
+      - ./src:/usr/share/nginx/html
+    ports: 
+      - 80:80

@@ -1,0 +1,28 @@
+<div>
+    <div class="form-group">
+        <label class="control-label" for="field_name">Name:</label> {{vm.site.name}}
+
+    </div>
+
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="field_value">Value</label>
+    <div class="input-group">
+        <input type="text" ng-model="vm.site.value" />
+
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="field_meta">Meta</label>
+        <div class="input-group">
+            <textarea class="form-control" rows="10" cols="80" ng-model="vm.site.meta"></textarea>
+
+        </div>
+        <div class="col-xs-6">
+            <div class="pull-right">
+                <button class="btn btn-primary" ng-click="vm.close()">Cancel</button>
+                <button class="btn btn-success" ng-click="vm.save()">Save</button>
+            </div>
+        </div>
+        </table>

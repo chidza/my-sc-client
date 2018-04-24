@@ -1,0 +1,124 @@
+<div class="col-xs-12">
+    <div class="row">
+        <div class="col-xs-6">
+            <form class="form-horizontal" autocomplete="off">
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">Sample:</label>
+                    <div class="col-xs-8">
+                        <label class="control-label">{{vm.sample.name}}</label>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">Investigation:</label>
+                    <div class="col-xs-8">
+                        <label class="control-label">{{vm.labTest.name}}</label>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+
+            <p class="pull-right">
+                <a ng-click="vm.add()" class="btn btn-primary">Add
+                    Test</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Result</th>
+                        <th>Test Equipment</th>
+                        <th>Lot Number</th>
+                        <th>Expiry Date</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="test in vm.list">
+                        <td>{{vm.getResult(test.result)}}</td>
+                        <td>{{vm.testKit(test.testKitId)}}</td>
+                        <td>{{vm.testKitBatch(test.testKitBatchId).batchNumber}}</td>
+                        <td>{{vm.testKitBatch(test.testKitBatchId).expiryDate}}</td>
+                        <td>
+                            <div class="pull-right">
+                                <button class="btn btn-small btn-primary" ng-click="vm.edit(test.id)"><span>Edit Results</span></button>
+                                <button class="btn btn-small btn-danger" ng-click="vm.delete(test)">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="row" ng-show="vm.confirm">
+        <div class="col-xs-12">
+            <p class="pull-right">
+                <a ng-click="vm.add()" class="btn btn-primary">Add Confirmatory Test</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="row" ng-hide="vm.confirm">
+        <div class="col-xs-12">
+            <form class="form-horizontal col-xs-12" autocomplete="off">
+                <div class="form-group" ng-if="vm.list.length>0">
+                    <label class="col-xs-3 control-label">Final Result</label>
+                    <div class="col-xs-9" ng-if="vm.results.length>0">
+                        <label ng-repeat="result in vm.results track by $index"> <input type="radio" ng-click="vm.save()" ng-model="vm.personInvestigation.result" ng-value="result.id" name="result"/> {{result.name}}&nbsp;&nbsp;</label>
+                    </div>
+                    <div class="col-xs-12">
+                        <p class="pull-right" ng-show="vm.finalResult.length==0 && vm.getTest(vm.investigation.investigationId).name=='HIV'">
+                            <button ng-click="vm.add()" class=" btn btn-block buttonx">Add Confirmatory Test</button>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="form-group" ng-show="vm.diagnoses.length>0">
+                    <label class="col-xs-3 control-label">Diagnosis</label>
+                    <div class="col-xs-9">
+                        <ul ng-repeat="diagnosis in vm.diagnoses" class="list-unstyled">
+                            <li>
+                                <label>
+            <input type="checkbox" class="largerCheckbox"  ng-checked="vm.isExist(diagnosis.id)" ng-value="diagnosis.id" id="diagnosis.id" ng-click="vm.saveDiagnosis(diagnosis)">
+                {{diagnosis.name}}</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-hide="vm.mode=='HIV'">
+                    <div class="col-xs-12">
+                        <a type="submit" ng-click="vm.close()" class="btn btn-lg btn-danger pull-right">Close</a>
+                    </div>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<ul ng-repeat="questions in vm.maternalDeathFactorList" class="list-unstyled">
+
+    <li>
+        <label>
+                                            <input type="checkbox" class="largerCheckbox"  ng-checked="vm.isExist(questions.id)"
+                                                    ng-value="questions.id" id="questions.id" ng-click="vm.save(questions)">
+                                            
+
+                                   
+                                                {{questions.name}}</label>

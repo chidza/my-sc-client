@@ -1,0 +1,82 @@
+<form name="editForm" role="form" novalidate show-validation>
+    <div class="col-xs-6">
+        <div class="form-group">
+            <label for="field_diagnosis">Diagnosis</label>
+            <div class="input-group col-xs-12">
+                <input type="text" autocomplete="off" ng-disabled="true" class="form-control" ng-model="vm.diagnosis.name">
+                <div class="input-group-btn ">
+                    <button ng-click="vm.changeDiagnosis()" class="btn btn-primary btn-block" type="button">Select</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_date">Date</label>
+            <div class="input-group">
+                <input id="field_date" type="text" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.maternalDeath.date"
+                    is-open="vm.datePickerOpenStatus.date" required/>
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.date.$invalid">
+                <p class="help-block" ng-show="editForm.date.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_time">Time</label>
+            <div class="input-group">
+                <input id="field_time" type="text" class="form-control" name="time" enable-date="false" initial-picker="time" datetime-picker="HH:mm"
+                    ng-model="vm.maternalDeath.time" is-open="vm.datePickerOpenStatus.time" required />
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default"  ng-click="vm.openCalendar('time')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.time.$invalid">
+                <p class="help-block" ng-show="editForm.time.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block" ng-show="editForm.time.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-4 control-label">Was this death avoidable: </label>
+
+            <div class="col-xs-8">
+                <label ng-repeat="death in vm.avoidable"> <input type="radio" ng-click="vm.update()"
+                                                                      ng-model="vm.maternalDeath.deathAvoidable"
+                                                                      ng-value="death" name="death"/> {{death}}&nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <div class="pull-right">
+                <button type="submit" ng-disabled="editForm.$invalid" ng-click="vm.save()" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span ng-show="!vm.maternalDeath.id">Save</span><span ng-show="vm.maternalDeath.id">Update</span>
+        </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6" ng-show="vm.maternalDeath.id">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Maternal Death Factors</div>
+            <div class="panel-body">
+                <label class="control-label">Were any of these factors present for this maternal death? </label>
+                <br>
+
+                <mrs-maternal-death-history-dialog maternal-death-id="vm.maternalDeath.id"></mrs-maternal-death-history-dialog>
+
+            </div>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,17 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">Patient Visit Outcome</div>
+    <div class="panel-body">
+        <p class="pull-left">
+            <button ng-if="!vm.isAdmissionModule()" ui-sref="consultation.purpose.signoff.admission" class="=btn btn-primary btn-lg">Admit Patient</button>
+            <button ng-if="vm.encounterId" ui-sref="consultation.purpose.signoff.discharge" class="=btn btn-primary btn-lg">Discharge Patient</button>
+            <button ng-if="vm.encounterId" ui-sref="consultation.purpose.signoff.refer" class="=btn btn-primary btn-lg">Refer Patient</button>
+            <button ng-if="vm.encounterId" ng-if="!vm.isAdmissionModule()" ui-sref="consultation.purpose.signoff.nextqueue" class="=btn btn-primary btn-lg">Send to Queue</button>
+        </p>
+
+        <p class="pull-right">
+            <button ng-click="vm.onExitPatientFile()" class="=btn btn-success btn-lg">Exit from patient file</button>
+        </p>
+    </div>
+</div>
+
+<div ui-view></div>

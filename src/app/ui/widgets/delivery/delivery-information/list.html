@@ -1,0 +1,15 @@
+<table class="table">
+    <tr>
+        <td style="border-right:1px solid black;"><strong> Time of admission </strong>: {{vm.dateOfAdmission | date:'yyyy-MM-dd HH:mm'}}</td>
+        <td style="border-right:1px solid black;"><strong> HIV Status </strong>: {{vm.hivStatus.status}} </td>
+        <td><strong class="text text-center"> Gestational Age </strong>: {{vm.ancInformation.gestationalAge.week}} weeks {{vm.ancInformation.gestationalAge.day}}
+            days
+        </td>
+        
+    </tr>
+    <tr>
+        <td style="border-right:1px solid black;"><strong> Ruptured membranes </strong>: {{vm.rupturedMembranes}}</td>
+        <td><strong> Gravida </strong>: {{vm.ancInformation.gravida}}</td>
+        <td style="border-right:1px solid black;"><strong> Para </strong>: {{vm.ancInformation.para}}</td>
+    </tr>
+</table>

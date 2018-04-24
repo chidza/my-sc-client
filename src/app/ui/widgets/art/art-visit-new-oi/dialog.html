@@ -1,0 +1,10 @@
+
+
+<div class="col-xs-12">
+    <div>
+        <div class="col-xs-6" ng-repeat="oi in vm.newOis">
+            <label><input  type="checkbox" ng-model="oi.state"  ng-click="vm.addRemove(oi)"/>   {{oi.name}}</label>
+        </div>
+
+    </div>
+</div>

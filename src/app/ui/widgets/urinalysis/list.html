@@ -1,0 +1,37 @@
+<div class="col-xs-12">
+    <table datatable="ng" class="table table-striped table-bordered row-border hover">
+        <thead>
+            <tr>
+                <th colspan="5">
+                    <div class="pull-right">
+                        <button type="button" ng-click="vm.add()" class="btn btn-success pull-right"><i class="fa fa-plus fa-2x"></i></button>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Test</th>
+                <th>Result</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="model in vm.urinalysis">
+                <td>{{model.date | date:"yyyy-MM-dd"}}</td>
+                <td>{{model.date | date:"HH:mm"}}</td>
+                <td>{{model.test}}</td>
+                <td>{{vm.getResult(model.result)}}</td>
+                <td>
+                    <div class="pull-right">
+                        <button type="button" ng-click="vm.edit(model.id)" class="btn btn-primary"><i class="fa fa-medkit"></i>
+                            <span ng-show="model.result == null"> Perform Test</span>
+                            <span ng-hide="model.result == null"> Edit Result &nbsp;&nbsp;</span>
+                        </button>
+                    <button ng-disabled="model.result != null" type="button" ng-click="vm.delete(model.id)" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

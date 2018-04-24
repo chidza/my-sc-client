@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-xs-2 text-center" ng-repeat="ward in vm.wards">
+        <label> <input
+							type="radio" class="form-control" name="ward" ng-model="vm.admission.wardId" id="{{ward.id}}" ng-checked="vm.isExist(ward.id)"
+							 ng-value="ward.id" />&nbsp;
+							{{ward.name}}&nbsp;&nbsp;&nbsp;&nbsp;
+						</label>
+    </div>
+</div>
+<br/>
+<div class="col-xs-12">
+    <div class="pull-right">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving || vm.admission.wardId==null" ng-click="vm.save()" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</div>
+<br/>

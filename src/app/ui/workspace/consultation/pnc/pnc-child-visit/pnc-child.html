@@ -1,0 +1,73 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">PNC Child </div>
+    <div class="panel-body">
+        <form class="form-horizontal" autocomplete="off">
+            <div class="form-group">
+                <label class="col-xs-4 control-label">Child Name:</label>
+                <div class="col-xs-8">
+                    <label class="control-label">{{vm.person.lastname + " " + vm.person.firstname}}</label>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-4 control-label">Sex:</label>
+                <div class="col-xs-8">
+                    <label class="control-label">{{vm.person.sex}}</label>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-4 control-label">Age:</label>
+                <div class="col-xs-8">
+                    <label class="control-label">{{vm.childAge(vm.person.birthdate)}}days</label>
+                </div>
+
+            </div>
+
+            <div class="col-xs-12">
+                <div class="pull-right">
+                    <button class="btn btn-danger" ng-click="vm.onClose()">Close</button>
+                </div>
+
+            </div>
+
+        </form>
+        <uib-tabset>
+            <uib-tab heading="Examinations" active="true">
+                <br>
+                <form class="form-horizontal">
+                    <div class="form-group" style="font-size: x-large;">
+                        <label for="provider" class="col-xs-4 control-label"><span  aria-hidden="true"></span>&nbsp;&nbsp;Select Pnc Day:</label>
+                        <div class="col-xs-8">
+                            <select class="form-control" id="type" name="type" ng-change="vm.save()" ng-model="vm.pncVisit.pncVisitTypeId" ng-options="option.id as option.name for option in vm.pncvisittypes"
+                                required>
+                <option value=""></option>
+                </select>
+                            <!--<label ng-repeat="option in vm.pncvisittypes"><input
+                            type="radio" class="largerCheckbox" name="level" ng-model="vm.pncVisit.pncVisitTypeId" ng-click="vm.save()"
+                            ng-value="option.id" /> {{option.name}}&nbsp;&nbsp;&nbsp; </label>-->
+                        </div>
+                    </div>
+                </form>
+                <div class="col-xs-12" ng-if="vm.pncVisit.pncVisitTypeId">
+                    <br>
+                    <mrs-pnc-questionaire-dialog pnc-visit-id="vm.pncVisitId" category-name="NEWBORN_INFANT"></mrs-pnc-questionaire-dialog>
+                </div>
+            </uib-tab>
+
+            <uib-tab heading="Vitals">
+                <mrs-encounter-vital-list refresh="vm.refreshVital"  add-vital="vm.addVital()" encounter-id="vm.encounterId" edit-vital="vm.editVital(id)" person-id="vm.childId" workspace-id="vm.workspaceId"></mrs-encounter-vital-list>
+            </uib-tab>
+
+            <uib-tab heading="Medications">
+
+                
+                <mrs-encounter-medication-list refresh="vm.refreshMedication" workspace-id="vm.workspaceId" encounter-id="vm.encounterId" person-id="vm.childId" add-medication="vm.selectMedication()"
+                    edit-medication="vm.editMedication(id)"></mrs-encounter-medication-list>
+            </uib-tab>
+
+        </uib-tabset>
+    </div>
+</div>

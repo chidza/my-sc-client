@@ -1,0 +1,26 @@
+
+
+
+<table class="table  table-bordered row-border hover" ng-style="{'width': vm.width +'px'}">
+    <thead>
+        <th style="border-width: 0;"></th>
+        <th ng-repeat="r in vm.record" style="font-size: x-small;">{{r.time | date:"HH:mm"}}</th>
+    </thead>
+   <tbody>
+        <tr>
+            <td style="border-width: 0; text-align: left; font-size: small;" ><b>Amniotic Fluid</b></td>
+            <td ng-repeat="r in vm.record"><span style="color:red; font-size: small;" ng-show="r.amnioticStatus=='DANGER'"><b>{{r.amniotic}}</b></span>
+                <span ng-show="r.amnioticStatus=='OK'" style="font-size: small;"><b>{{r.amniotic}}</b></span></td>
+        </tr>
+        <tr>
+            <td style="border-width: 0; text-align: left; font-size: small;" ><b>Moulding</b></td>
+            <td ng-repeat="r in vm.record"><span style="color:red; font-size: small;" ng-show="r.mouldingStatus=='DANGER'"><b>{{r.moulding}}</b></span>
+                <span style="font-size: small;"ng-show="r.mouldingStatus=='OK'"><b>{{r.moulding}}</b></span></td>
+        </tr>
+        <tr>
+            <td style="border-width: 0; text-align: left; font-size: small;" ><b>Caput</b></td>
+            <td ng-repeat="r in vm.record"><span style="color:red; font-size: small;" ng-show="r.caputStatus=='DANGER'"><b>{{r.caput}}</b></span>
+                <span ng-show="r.caputStatus=='OK'" style="font-size: small;"><b>{{r.caput}}</b></span></td>
+        </tr>
+   </tbody>
+</table>

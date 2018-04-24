@@ -1,0 +1,22 @@
+
+<table class="table table-bordered row-border hover" ng-style="{'width': vm.width +'px'}">
+    <thead>
+        <th style="border-width: 0; font-size: small;" class="pull-left"></th>
+        <th ng-repeat="u in vm.urinalysis" style="font-size: x-small;">{{u.time | date:"HH:mm"}}</th>
+        
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border-width: 0; font-size: small;" class="pull-left"><b>Protein</b></td>
+            <td ng-repeat="u in vm.urinalysis"><span style="color:red; font-size: x-small;" ng-show="u.proteinStatus=='DANGER'">{{u.protein}}</span><span ng-show="u.proteinStatus=='OK'" style="font-size: x-small;"><b>{{u.protein}}</b></span></td>
+        </tr>
+        <tr>
+            <td style="border-width: 0; font-size: small;" class="pull-left"><b>Acetone</b></td>
+            <td ng-repeat="u in vm.urinalysis"><span style="color:red ; font-size: x-small;" ng-show="u.acetoneStatus=='DANGER'">{{u.acetone}}</span><span ng-show="u.acetoneStatus=='OK'" style="font-size: x-small;"><b>{{u.acetone}}</b></span></td>
+        </tr>
+        <tr>
+            <td style="border-width: 0; font-size: small;" class="pull-left"><b>Volume</b></td>
+            <td ng-repeat="u in vm.urinalysis"><span style="color:red ;font-size: small;" ng-show="u.volumeStatus=='DANGER'">{{u.volume}}</span><span ng-show="u.volumeStatus=='OK'" style="font-size: small;"><b>{{u.volume}}</b></span></td>
+        </tr>
+    </tbody>
+</table>

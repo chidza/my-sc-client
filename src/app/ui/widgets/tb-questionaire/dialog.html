@@ -1,0 +1,22 @@
+<style>
+    input.largerCheckbox {
+        width: 25px;
+        height: 25px;
+    }
+</style>
+<legend>Risk Groups</legend>
+
+
+<ul ng-repeat="question in vm.tbQuestionaire" class="list-unstyled">
+
+    <li style="font-size: large;">
+
+        <input type="checkbox" class="largerCheckbox" ng-checked="vm.isExist(question)" ng-value="question.value" id="question.id"
+            ng-click="vm.save(question)">
+
+            {{question.name}}
+
+    </li>
+
+
+</ul>

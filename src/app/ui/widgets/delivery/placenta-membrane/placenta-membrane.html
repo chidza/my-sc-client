@@ -1,0 +1,124 @@
+<form name="editForm" role="form" novalidate>
+
+    
+
+    <div class="form-group col-xs-12">
+        <label class="control-label" for="field_deliveryMethod">Delivery method&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+        <label>
+           <input type="radio"  name="deliveryMethod" ng-model="vm.placentaMembrane.deliveryMethod" ng-change="vm.update()" value="CONTROLLED_CORD_TRACTION" >&nbsp;&nbsp;&nbsp;&nbsp;CONTROLLED CORD TRACTION
+              </label>
+        <label>
+           <input type="radio"  name="deliveryMethod" ng-model="vm.placentaMembrane.deliveryMethod" ng-change="vm.update()" value="MANUAL_REMOVAL"/>&nbsp;&nbsp;&nbsp;&nbsp;MANUAL REMOVAL
+              </label>
+    </div>
+
+    <div class="form-group col-xs-6">
+            <label class="control-label" for="field_date">Date of Delivery of the Placenta</label>
+            <div class="input-group">
+                <input id="field_date" type="text" ng-change="vm.update()" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.placentaMembrane.date"
+                    is-open="vm.datePickerOpenStatus.date" required/>
+                <span class="input-group-btn">
+                        <button type="button"   class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.date.$invalid">
+                <p class="help-block" ng-show="editForm.date.$error.required">
+                    This field is required.
+                </p>
+            </div>
+    </div>
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_time">Time of Delivery of the Placenta</label>
+            <div class="input-group">
+                <input id="field_time" ng-change="vm.update()"  type="text" class="form-control" name="time" enable-date="false" initial-picker="time" datetime-picker="HH:mm"
+                    ng-model="vm.placentaMembrane.time" is-open="vm.datePickerOpenStatus.time" required />
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('time')" ><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.time.$invalid">
+                <p class="help-block" ng-show="editForm.time.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block" ng-show="editForm.time.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+    </div>
+
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_membraneState">Membrane State</label>
+
+
+
+        <label>
+           <input type="radio"  name="membraneCOMPLETE" ng-model="vm.placentaMembrane.membraneState" ng-change="vm.update()" value="COMPLETE" >&nbsp;&nbsp;COMPLETE
+              </label>
+        <label>
+           <input type="radio"  name="IRREGULAR" ng-model="vm.placentaMembrane.membraneState"  ng-change="vm.update()" value="INCOMPLETE"/>&nbsp;&nbsp;INCOMPLETE
+              </label>
+
+    </div>
+
+
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_membraneDescription">Membrane Description</label>
+        <input type="text" class="form-control" ng-blur="vm.update()" name="membraneDescription" id="field_membraneDescription" ng-model="vm.placentaMembrane.membraneDescription"
+        />
+    </div>
+
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_placentaState">Placenta State</label>
+
+        <label>
+           <input type="radio"  name="placentaCOMPLETE"  ng-model="vm.placentaMembrane.placentaState" ng-change="vm.update()" value="COMPLETE" >&nbsp;&nbsp;COMPLETE
+              </label>
+        <label>
+           <input type="radio"  name="placentaINCOMPLETE"  ng-model="vm.placentaMembrane.placentaState"  ng-change="vm.update()" value="INCOMPLETE"/>&nbsp;&nbsp;INCOMPLETE
+
+              </label>
+    </div>
+
+
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_placentaWeight">Placenta Weight (g)</label>
+        <input type="text" class="form-control" ng-blur="vm.update()" name="placentaWeight" id="field_placentaWeight" ng-model="vm.placentaMembrane.placentaWeight"
+        />
+    </div>
+
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_placentaDescription">Placenta Description</label>
+        <input type="text" class="form-control" ng-blur="vm.update()" name="placentaDescription" id="field_placentaDescription" ng-model="vm.placentaMembrane.placentaDescription"
+        />
+    </div>
+
+
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_umbilicalCordVessel">Umbilical Cord Vessel</label>
+        <input type="number" class="form-control" ng-blur="vm.update()" name="umbilicalCordVessel" id="field_umbilicalCordVessel"
+            ng-model="vm.placentaMembrane.umbilicalCordVessel" />
+    </div>
+
+
+
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_umbilicalCordDescription">Umbilical Cord Description</label>
+        <input type="text" class="form-control" ng-blur="vm.update()" name="umbilicalCordDescription" id="field_umbilicalCordDescription"
+            ng-model="vm.placentaMembrane.umbilicalCordDescription" />
+    </div>
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_umbilicalCordState">Umbilical Cord State</label>
+
+
+        <label>
+           <input type="radio"  name="NORMAL" ng-model="vm.placentaMembrane.umbilicalCordState" ng-change="vm.update()" value="NORMAL" >&nbsp;&nbsp;NORMAL
+              </label>
+        <label>
+           <input type="radio"  name="ABNORMAL"  ng-model="vm.placentaMembrane.umbilicalCordState"  ng-change="vm.update()" value="ABNORMAL"/>&nbsp;&nbsp;ABNORMAL
+              </label>
+
+    </div>
+
+
+</form>

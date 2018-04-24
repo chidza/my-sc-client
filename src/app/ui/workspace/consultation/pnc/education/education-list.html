@@ -1,0 +1,17 @@
+<div class="col-xs-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">PNC Health Education </div>
+        <div class="panel-body">
+            <uib-tabset>
+                <uib-tab heading="Current">
+                    <mrs-encounter-health-education-list refreshed="vm.onRefreshed()" workspace-id="vm.workspaceId" person-id="vm.personId" encounter-id="vm.encounterId"
+                        add-health-education="vm.add()" edit-health-education="vm.edit(id)"></mrs-encounter-health-education-list>
+                </uib-tab>
+                <uib-tab heading="History">
+                    <mrs-person-visit-health-education-list reload="vm.refresh" opd-id="vm.opdId"></mrs-person-visit-health-education-list>
+                </uib-tab>
+
+            </uib-tabset>
+        </div>
+    </div>
+</div>

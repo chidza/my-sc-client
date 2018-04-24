@@ -1,0 +1,29 @@
+<form name="editForm" class="form-horizontal" role="form" novalidate show-validation>
+
+    <div class="form-group">
+        <label class="control-label col-xs-4" for="field_date">Date of Delivery</label>
+        <div class="col-xs-6">
+            <div class="input-group ">
+                <input id="field_date" type="text" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.pregnancy.deliveryDate"
+                    is-open="vm.datePickerOpenStatus.date" ng-change="vm.save()" required/>
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default"  ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" ng-hide="vm.stage=='PNC'">
+        <label class=" control-label col-xs-4">Pregnancy Outcome &nbsp;</label>
+        <div class="col-xs-6">
+            <label>
+                  <input type="radio" ng-disabled="vm.pregnancyHistoryDetails.id" ng-change="vm.save()" name="deliveryType" ng-model="vm.pregnancy.outcome" value="DELIVERED"/>Delivery
+                </label>
+            <label>
+                  <input type="radio" ng-disabled="vm.pregnancyHistoryDetails.id" ng-change="vm.save()"  name="deliveryType" ng-model="vm.pregnancy.outcome" value="MISCARRIED"/>Miscarriage
+                </label>
+        </div>
+    </div>
+
+    <br/>
+</form>

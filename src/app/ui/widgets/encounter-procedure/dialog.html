@@ -1,0 +1,24 @@
+<form name="editForm" role="form" novalidate show-validation>
+
+    <div class="form-group">
+        <label for="field_procedure">Procedure</label>
+        <input disabled class="form-control" id="field_procedure" name="procedure" ng-model="vm.procedure.name">
+        <div class="form-group">
+            <label class="control-label" for="field_note">Notes</label>
+            <textarea class="form-control" name="note" id="field_note" ng-model="vm.personProcedure.note"></textarea>
+        </div>
+    </div>
+    <div ng-show="editForm.procedure.$invalid">
+        <p class="help-block" ng-show="editForm.procedure.$error.required">
+            This field is required.
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="button" ng-disabled="editForm.$invalid || vm.isSaving" ng-click="vm.save()" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

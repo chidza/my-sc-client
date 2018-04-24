@@ -1,0 +1,18 @@
+<div class="col-xs-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading"> Anc Medication</div>
+        <div class="panel-body">
+            <uib-tabset>
+                <uib-tab heading="Edit">
+                    <mrs-encounter-medication-list refreshed="vm.onRefreshed()" person-id="vm.personId" workspace-id="vm.workspaceId" encounter-id="vm.encounterId" add-medication="vm.add()"
+                        edit-medication="vm.edit(id)"></mrs-encounter-medication-list>
+                </uib-tab>
+                <uib-tab heading="Current">
+                    <mrs-person-visit-prescription-list reload="vm.refresh" opd-id="vm.opdId"></mrs-person-history-vital-list>
+
+                </uib-tab>
+
+            </uib-tabset>
+        </div>
+    </div>
+</div>

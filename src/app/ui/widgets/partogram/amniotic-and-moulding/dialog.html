@@ -1,0 +1,35 @@
+<legend>Amniotic Fluid and Mouding</legend>
+<form  class="form-horizontal" name="editForm" role="form" novalidate show-validation>
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="col-xs-3 control-label" for="field_amnioticFluid">Amniotic Fluid</label>
+            <div class="col-xs-9">
+                <label ng-repeat="d in vm.amniotic">
+            <input type="radio" ng-change="vm.save()" class="enlarged" name="AmnioticFluidId" ng-model="vm.vaginal.amnioticFluidId" ng-value="d.id"/> {{d.name}}&nbsp;&nbsp;&nbsp;&nbsp;
+              </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-3 control-label" for="field_moulding">Moulding</label>
+            <div class="col-xs-9">
+                <label ng-repeat="d in vm.degrees">
+           <input type="radio" class="enlarged" ng-change="vm.save()" name="mouldingId" ng-model="vm.vaginal.mouldingId" ng-value="d.id"/> {{d.name}}&nbsp;&nbsp;&nbsp;&nbsp;
+              </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-3 control-label" for="field_caput">Caput</label>
+            <div class="col-xs-9">
+                <label ng-repeat="d in vm.degrees">
+           <input type="radio" class="enlarged" ng-change="vm.save()" name="CaputId" ng-model="vm.vaginal.caputId" ng-value="d.id"/> {{d.name}}&nbsp;&nbsp;&nbsp;&nbsp;
+              </label>
+            </div>
+        </div>
+        <div class="form-group" ng-show="vm.vaginal.id">
+            <div class="col-xs-3 col-xs-offset-9">
+                <button class="btn btn-danger" ng-click="vm.clear()">Clear</button>
+            </div>
+        </div>
+</form>

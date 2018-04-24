@@ -1,0 +1,61 @@
+<form name="editForm" role="form" novalidate  show-validation>
+    <div class="col-xs-7">
+        <div class="form-group">
+            <label class="control-label" for="field_birthdate" >First Contact?</label>
+            <div class="input-group col-xs-4">
+                <span ng-if="vm.anc.firstBooking">Yes</span><span ng-if="!vm.anc.firstBooking">No</span>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label class="control-label" for="field_lastname">Date:</label> {{vm.anc.date | date:"yyyy-MM-dd"}}
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_firstname">Lnmp:</label> {{vm.anc.lnmp | date:"yyyy-MM-dd"}}
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_sex">Frequency:</label> {{vm.anc.frequency}}
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label" for="field_istimateAge">Blood Flow:</label> {{vm.anc.bloodFlow}}
+        </div>
+    </div>
+     </div>
+
+    <div class="col-xs-5">
+        <div class="form-group">
+            <label class="control-label">HIV STATUS PRIOR ANC BOOKING</label>
+            <div class="input-group col-xs-4">
+                {{vm.hivStatus.status}}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_istimateAge">Anc Number</label>
+            <p> {{vm.anc.number}}</p>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_birthdate">Menstrual Cycle </label>
+            <div class="input-group col-xs-4">
+                {{vm.anc.menstrualCycle}}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_birthdate">Duration</label>
+            <div class="input-group col-xs-4">
+                {{vm.anc.duration}}
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <div class="pull-right">
+                <a class="btn btn-primary" ng-click="vm.editAnc()">Edit Detail</a>
+            </div>
+        </div>
+</form>

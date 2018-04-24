@@ -1,0 +1,14 @@
+node_modules
+bower_components
+test/coverage
+lib
+dist
+.vscode
+.idea
+*.log
+*.txt
+.settings
+*.~
+typings
+src/js
+*.map

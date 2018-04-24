@@ -1,0 +1,35 @@
+<div class="table-responsive">
+    <table datatable="ng" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th><span>Lastname</span></span>
+                </th>
+                <th><span>Firstname</span></span>
+                </th>
+                <th><span>Sex</span></span>
+                </th>
+                <th><span>Birthdate</span></span>
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="person in vm.people track by person.id">
+                <td>{{person.lastname}}</td>
+                <td>{{person.firstname}}</td>
+                <td>{{person.sex}}</td>
+                <td>{{person.birthdate | date:'mediumDate'}}</td>
+
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="button" ng-click="vm.onPersonSelected(person)" class="btn btn-primary btn-block btn-lg">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

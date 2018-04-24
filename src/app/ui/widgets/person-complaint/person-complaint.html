@@ -1,0 +1,44 @@
+<form name="editForm" role="form" novalidate  show-validation>
+    <div class="form-group">
+        <label for="field_complaint">Complaint</label>
+        <input disabled class="form-control" id="field_complaint" name="complaint" ng-model="vm.complaint.name">
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="field_date">Date</label>
+        <div class="input-group">
+            <input id="field_date" type="text" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.personComplaint.date"
+                is-open="vm.datePickerOpenStatus.date" required/>
+            <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+        </div>
+        <div ng-show="editForm.date.$invalid">
+            <p class="help-block" ng-show="editForm.date.$error.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="field_present">Present</label>
+        <input type="checkbox" class="form-control" name="present" id="field_present" ng-model="vm.personComplaint.present" />
+        <div ng-show="editForm.present.$invalid">
+            <p class="help-block" ng-show="editForm.present.$error.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="field_duration">Duration</label>
+        <input type="number" class="form-control" ng- name="duration" id="field_duration" ng-model="vm.personComplaint.duration"
+        />
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="button" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary" ng-click="vm.save()">
+            <span class="glyphicon glyphicon-save "></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

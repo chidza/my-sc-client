@@ -1,0 +1,71 @@
+<form name="editForm" role="form" novalidate show-validation>
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label class="control-label" for="field_fetalMovement">Fetal Movement</label>
+            <input type="checkbox" ng-click="vm.update()" class="form-control" name="fetalMovement" id="field_fetalMovement" ng-model="vm.obstetricExamination.fetalMovement"
+            />
+            <div ng-show="editForm.fetalMovement.$invalid">
+                <p class="help-block" ng-show="editForm.fetalMovement.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_engaged">Engaged</label>
+            <input type="checkbox" ng-click="vm.update()" class="form-control" name="engaged" id="field_engaged" ng-model="vm.obstetricExamination.engaged"
+            />
+            <div ng-show="editForm.engaged.$invalid">
+                <p class="help-block" ng-show="editForm.engaged.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xs-12">
+
+        <div class="form-group">
+            <label class="control-label" for="field_presentation">Presentation  &nbsp;</label>
+            <label>
+           <input type="radio"  name="NONEPRESENTATION" ng-model="vm.obstetricExamination.presentation" ng-change="vm.update()" value="NONE" >&nbsp;&nbsp;NONE
+              </label>
+            <label>
+           <input type="radio"  name="SHOULDER" ng-model="vm.obstetricExamination.presentation" ng-change="vm.update()" value="SHOULDER" >&nbsp;&nbsp;SHOULDER
+              </label>
+            <label>
+           <input type="radio"  name="CEPHALIC" ng-model="vm.obstetricExamination.presentation" ng-change="vm.update()" value="CEPHALIC"/>&nbsp;&nbsp;&nbsp;CEPHALIC
+              </label>
+            <label>
+           <input type="radio"  name="BREECH" ng-model="vm.obstetricExamination.presentation" ng-change="vm.update()" value="BREECH"/>&nbsp;&nbsp;&nbsp;BREECH
+              </label>
+            <label>
+           <input type="radio"  name="presentationBULKY" ng-model="vm.obstetricExamination.presentation" ng-change="vm.update()" value="BULKY"/>&nbsp;&nbsp;&nbsp;BULKY
+              </label>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label" for="field_presentation">Lie  &nbsp;</label>
+            <label>
+           <input type="radio"  name="NONE" ng-model="vm.obstetricExamination.lie" ng-change="vm.update()" value="NONE" >&nbsp;&nbsp;NONE
+              </label>
+            <label>
+           <input type="radio"  name="OBLIQUE" ng-model="vm.obstetricExamination.lie" ng-change="vm.update()" value="OBLIQUE" >&nbsp;&nbsp;OBLIQUE
+              </label>
+            <label>
+           <input type="radio"  name="LONGITUDINAL" ng-model="vm.obstetricExamination.lie" ng-change="vm.update()" value="LONGITUDINAL"/>&nbsp;&nbsp;&nbsp;LONGITUDINAL
+              </label>
+            <label>
+           <input type="radio"  name="OSKIE" ng-model="vm.obstetricExamination.lie" ng-change="vm.update()" value="OSKIE"/>&nbsp;&nbsp;&nbsp;OSKIE
+              </label>
+            <label>
+           <input type="radio"  name="TRANSVERE" ng-model="vm.obstetricExamination.lie" ng-change="vm.update()" value="TRANSVERE"/>&nbsp;&nbsp;&nbsp;TRANSVERE
+              </label>
+
+            <label>
+           <input type="radio"  name="lieBULKY" ng-model="vm.obstetricExamination.lie" ng-change="vm.update()" value="BULKY"/>&nbsp;&nbsp;&nbsp;BULKY
+              </label>
+        </div>
+    </div>
+</form>

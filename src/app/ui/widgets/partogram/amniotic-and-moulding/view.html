@@ -1,0 +1,25 @@
+<legend>Amniotic Fluid and Moulding</legend>
+<table class="table table-striped table-bordered row-border hover">
+    <thead>
+        <tr>
+            <th>Observation</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        <tr>
+            <th>Amniotic Fluid</th>
+            <td>{{vm.getAmniotic(vm.vaginal.amnioticFluidId)}}</td>
+        </tr>
+        <tr>
+            <th>Moulding</th>
+            <td>{{vm.getDegree(vm.vaginal.mouldingId)}}</td>
+        </tr>
+        <tr>
+            <th>Caput</th>
+            <td>{{vm.getDegree(vm.vaginal.caputId)}}</td>
+        </tr>
+    </tbody>
+</table>

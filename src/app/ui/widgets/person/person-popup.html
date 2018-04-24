@@ -1,0 +1,97 @@
+<form name="editForm" role="form" novalidate  show-validation>
+     <fieldset ng-disabled="true">
+    <div class="col-xs-7">       
+        <div class="form-group">
+            <label class="control-label" for="field_lastname">Last Name</label>
+            <input type="text" class="form-control" name="lastname" id="field_lastname" ng-model="vm.person.lastname" required />
+            <div ng-show="editForm.lastname.$invalid">
+                <p class="help-block" ng-show="editForm.lastname.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_firstname">First Name</label>
+            <input type="text" class="form-control" name="firstname" id="field_firstname" ng-model="vm.person.firstname" required />
+            <div ng-show="editForm.firstname.$invalid">
+                <p class="help-block" ng-show="editForm.firstname.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_sex">Sex</label>
+            <select class="form-control" name="sex" ng-model="vm.person.sex" id="field_sex" required>
+                <option value="MALE">MALE</option>
+                <option value="FEMALE">FEMALE</option>
+                <option value="OTHER">OTHER</option>
+            </select>
+            <div ng-show="editForm.sex.$invalid">
+                <p class="help-block" ng-show="editForm.sex.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_birthdate">Birthdate</label>
+            <div class="input-group col-xs-4">
+                <input id="field_birthdate" type="text" class="form-control" name="birthdate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.person.birthdate"
+                    is-open="vm.datePickerOpenStatus.birthdate" required/>
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('birthdate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.birthdate.$invalid">
+                <p class="help-block" ng-show="editForm.birthdate.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_istimateAge">Estimate Age</label>
+            <input type="checkbox" class="form-control" name="istimateAge" id="field_istimateAge" ng-model="vm.person.istimateAge" />
+        </div>
+
+    </div>
+
+    <div class="col-xs-5">
+        <div class="form-group">
+            <label for="field_maritalState">Marital State</label>
+            <select class="form-control" id="field_maritalState" name="maritalState" ng-model="vm.person.maritalStateId" ng-options="maritalState.id as maritalState.name for maritalState in vm.maritalstates"
+                required>
+                <option value=""></option>
+                </select>
+        </div>
+        <div ng-show="editForm.maritalState.$invalid">
+            <p class="help-block" ng-show="editForm.maritalState.$error.required">
+                This field is required.
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label for="field_educationLevel">Education Level</label>
+            <select class="form-control" id="field_educationLevel" name="educationLevel" ng-model="vm.person.educationLevelId" ng-options="educationLevel.id as educationLevel.name for educationLevel in vm.educationlevels">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_occupation">Occupation</label>
+            <select class="form-control" id="field_occupation" name="occupation" ng-model="vm.person.occupationId" ng-options="occupation.id as occupation.name for occupation in vm.occupations">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+</fieldset>
+    <div class="col-xs-12">
+        <div class="pull-right">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Close</span>
+        </button>
+
+        </div>
+    </div>
+
+</form>

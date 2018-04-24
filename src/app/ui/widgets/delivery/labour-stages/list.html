@@ -1,0 +1,55 @@
+<div class="col-xs-12">
+    <table class="table table-striped table-bordered row-border hover">
+        <thead>
+            <tr ng-hide="true">
+                <td colspan="11">
+                    <div class="pull-right">
+                        <button type="button" ng-click="vm.add()" class="btn btn-success pull-right"><i class="fa fa-plus"></i></button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Stage #</th>
+                <th>Start Date</th>
+                <th>Start Time</th>
+                <th>End Date</th>
+                <th>End Time</th>
+                <th>Total Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>{{vm.stages.stage1StartDate | date:'y-MM-dd'}}</td>
+                <td>{{vm.stages.stage1StartTime | date:"HH:mm"}}</td>
+                <td>{{vm.stages.stage2StartDate | date:'y-MM-dd'}}</td>
+                <td>{{vm.stages.stage2StartTime | date:"HH:mm"}}</td>
+                <td>{{vm.getDuration(1)}}</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>{{vm.stages.stage2StartDate | date:'y-MM-dd'}}</td>
+                <td>{{vm.stages.stage2StartTime | date:"HH:mm"}}</td>
+                <td>{{vm.stages.stage3StartDate | date:'y-MM-dd'}}</td>
+                <td>{{vm.stages.stage3StartTime | date:"HH:mm"}}</td>
+                <td>{{vm.getDuration(2)}}</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>{{vm.stages.stage3StartDate | date:'y-MM-dd'}}</td>
+                <td>{{vm.stages.stage3StartTime | date:"HH:mm"}}</td>
+                <td>{{vm.stages.stage3EndDate | date:'y-MM-dd'}}</td>
+                <td>{{vm.stages.stage3EndTime | date:"HH:mm"}}</td>
+                <td>{{vm.getDuration(3)}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="form-group row">
+        <label class="col-xs-2 control-label">Total Duration of Labour:</label>
+
+        <div class="col-xs-8">
+            <label>{{vm.getDuration(0)}}</label>&nbsp;&nbsp;
+        </div>
+    </div>
+</div>

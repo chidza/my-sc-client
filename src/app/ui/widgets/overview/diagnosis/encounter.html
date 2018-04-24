@@ -1,0 +1,13 @@
+<div ng-hide="vm.diagnoses.length===0">
+    <strong> Diagnosis </strong>
+
+<ul ng-repeat="d in vm.diagnoses" class="list-unstyled">
+
+    <li><b>{{$index +1}}.</b>{{d.name}}</li>
+    <li ng-show="d.differential"><b>Differential</b>-<span ng-class="d.differential ? 'fa fa-check text-danger' : 'fa fa-times text-success'"></li>
+    <li  ng-show="d.working"><b>Working</b>-<span ng-class="d.working ? 'fa fa-check text-danger' : 'fa fa-times text-success'"></li>
+    <li  ng-show="d.definitive"><b>Definitive</b>-<span ng-class="d.definitive ? 'fa fa-check text-danger' : 'fa fa-times text-success'"></li>
+    <li  ng-show="d.final"><b>Final</b>-<i ng-class="d.final ? 'fa fa-check text-danger' : 'fa fa-times text-success'"></i></li>
+</ul>
+<hr>
+</div>

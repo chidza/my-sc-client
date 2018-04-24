@@ -1,0 +1,15 @@
+<form name="editForm" class="form-horizontal" role="form" novalidate show-validation>
+
+    <br>
+    <div class="form-group" ng-hide="vm.stage=='PNC'">
+        <label class=" control-label col-xs-4">Birth Outcome &nbsp;</label>
+        <div class="col-xs-6">
+            <label>
+                  <input type="radio" ng-change="vm.selected()" name="birthOutcome" ng-model="vm.birthOutcome" value="ALIVE"/>Alive
+                </label>
+            <label>
+                  <input type="radio"  ng-change="vm.selected()"  name="birthOutcome" ng-model="vm.birthOutcome" value="DEAD"/>Still Birth
+                </label>
+        </div>
+    </div>
+</form>

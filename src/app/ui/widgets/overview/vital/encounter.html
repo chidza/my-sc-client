@@ -1,0 +1,7 @@
+<div ng-hide="vm.vitals.length===0">
+    <strong> Vitals </strong>
+    <ul ng-repeat="vital in vm.vitals" class="list-unstyled">
+        <li><b>{{$index +1}}.</b>{{vital.time}} {{vital.name}}-{{vital.value +' '+ vital.unit}}</li>
+    </ul>
+    <hr>
+</div>

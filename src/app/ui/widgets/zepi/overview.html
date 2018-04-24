@@ -1,0 +1,12 @@
+<legend>Immunisation</legend>
+<div class="col-xs-12" ng-show="vm.list.length>0">
+    <div class="form-group" ng-repeat="d in vm.list">
+        <label class="col-xs-5 control-label">{{d.name}}</i></label>
+        <div class="col-xs-5">
+            <p class="form-control-static">{{d.date | date:"yyyy-MM-dd"}}</p>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12" ng-show="vm.list.length==0">
+    <p>No immunisation history recorded</p>
+</div>

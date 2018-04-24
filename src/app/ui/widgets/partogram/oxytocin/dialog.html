@@ -1,0 +1,31 @@
+<legend>Oxytocin</legend>
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Select Formulation: </label>
+        <div class="col-xs-9">
+            <label ng-repeat="d in vm.formulations">
+            <input type="radio" ng-change="vm.getBatches()" class="enlarged" name="formulation" ng-model="vm.dispense.drugId" ng-value="d.id"/> {{d.formulation +"/"+d.strength + d.unit}}&nbsp;&nbsp;&nbsp;&nbsp;
+              </label>
+        </div>
+    </div>
+    <div class="form-group" ng-show="vm.batches.length>0">
+        <label class="col-xs-3 control-label" for="field_batch">Batch: </label>
+        <div class="col-xs-9">
+            <label ng-repeat="batch in vm.batches">
+                    <input type="radio" ng-change="vm.getExpiryDate()"  name="batch"  required ng-model="vm.dispense.batchId"
+                            ng-value="batch.id" /> {{batch.batchNumber}}&nbsp;&nbsp;&nbsp; </label>
+        </div>
+    </div>
+    <div class="form-group" ng-show="vm.dispense.batchId">
+        <label class="col-xs-3 control-label" for="field_batch">Batch Expiry Date</label>
+        <div class="col-xs-9">
+            <h4>{{vm.batchExpiryDate}}</h4>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Number of drops:</label>
+        <div class="col-xs-6">
+            <input type="number" ng-blur="vm.save()" class="form-control" ng-model="vm.dispense.quantity" />
+        </div>
+    </div>
+</form>

@@ -1,0 +1,40 @@
+<form name="editForm" class="form-horizontal" role="form" novalidate show-validation>
+
+    <div class="form-group">
+        <label class="col-xs-4" for="field_deliveryType">Child Details</label>
+        <div class="col-xs-8">
+            <mrs-person-label person-id="vm.infant.personId"></mrs-person-label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-4" for="field_deliveryType">Mode of delivery</label>
+        <div class="col-xs-8">
+            <select class="form-control" name="deliveryMethod" ng-change="vm.update()" ng-model="vm.infant.deliveryMethod" id="field_deliveryMethod"
+                required>
+                <option value="ASSISTEDBREECH">ASSISTEDBREECH</option>
+                <option value="C_SECTION">C SECTION</option>
+                <option value="INSTRUMENT_DELIVERY" >INSTRUMENT DELIVERY</option>
+                <option value="NVD">NVD</option>
+                <option value="VACUUM">VACUUM</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-4" for="field_occupation">Birth Weight (g)</label>
+        <label class="col-xs-8">
+        <input type="number" class="form-control" ng-blur="vm.update()" name="birthWeight" id="field_birthWeight" ng-model="vm.infant.weight" required
+        /></label>
+    </div>
+
+    <div class="col-xs-12" ng-if="vm.infant">
+        <div class="pull-right">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.exit()">
+            <span ></span>&nbsp;<span>Cancel</span>
+        </button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="vm.save()">
+            <span ></span>&nbsp;<span>Save</span>
+        </button>
+
+        </div>
+    </div>
+</form>

@@ -1,0 +1,168 @@
+<uib-tabset>
+    <uib-tab heading="Overview">
+        <br/>
+
+        <!--  <mrs-anc-delivery-static-information person-id="vm.personId"></mrs-anc-delivery-static-information> -->
+
+
+        <div class="row">
+
+            <div class="col-xs-12" ng-if="vm.state.current.name !== 'reports.preview'">
+                <div class="pull-right">
+                    <button type="button" ng-click="vm.onRecord()" class="btn btn-lg btn-success pull-right"><i class="fa fa-plus fa-2x"></i></button>
+                </div>
+            </div>
+
+        </div>
+
+        <button ng-if="vm.state.current.name === 'reports.preview'" pdf-save-button="idTwo" pdf-name="{{vm.personFullName}}.pdf"
+            class="btn btn-success ">Print Partogram <i class="fa fa-print" aria-hidden="true"></i></button>
+
+
+        <div pdf-save-content="idTwo">
+
+            <br>
+
+            <mrs-anc-delivery-static-information width="900" person-id="vm.personId"></mrs-anc-delivery-static-information>
+
+            <mrs-vitals-graph delivery-id="vm.deliveryId" width="900" height="400" person-id="vm.personId" vital-id="vm.fetalHeartRateId"
+                fetal-heart-rate-id="vm.fetalHeartRateId" start="vm.start" end="vm.end"></mrs-vitals-graph>
+
+            <mrs-vaginal-monitoring-view width="800" delivery-id="vm.deliveryId" start="vm.start" end="vm.end"> </mrs-vaginal-monitoring-view>
+
+            <mrs-cervix-graph-echarts-test width="900" height="500" delivery-id="vm.deliveryId" person-id="vm.personId" start="vm.start"
+                end="vm.end"></mrs-cervix-graph-echarts-test>
+
+            <mrs-contraction-graph width="900" height="450" delivery-id="vm.deliveryId" start="vm.start" end="vm.end"></mrs-contraction-graph>
+
+
+            <mrs-oxytocin-list width="800" delivery-id="vm.deliveryId" add-medication="vm.add()" edit-medication="vm.edit(id)" from="vm.start"
+                to="vm.end"></mrs-oxytocin-list>
+
+
+            <mrs-medication-view-vertical width="800" delivery-id="vm.deliveryId" add-medication="vm.add()" edit-medication="vm.edit(id)"
+                start="vm.start" end="vm.end"></mrs-medication-view-vertical>
+
+
+
+            <mrs-bp-graph delivery-id="vm.deliveryId" width="900" height="500" person-id="vm.personId"  pulse-id="vm.pulseId"
+                vital-id="vm.bpId" start="vm.start" end="vm.end"></mrs-bp-graph>
+
+
+
+
+            <mrs-vitals-graph delivery-id="vm.deliveryId" width="900" height="500" person-id="vm.personId" temperature-id="vm.temperatureId"
+                vital-id="vm.temperatureId" start="vm.start" end="vm.end"></mrs-vitals-graph>
+
+
+
+            <mrs-urinalysis-view-vertical width="800" delivery-id="vm.deliveryId" start="vm.start" end="vm.end"></mrs-urinalysis-view-vertical>
+            <div class="text-center">
+
+                <hr>
+                <p ng-model="vm.delivery.partogramNote"><b>Notes:  </b>{{vm.delivery.partogramNote}}</p>
+
+
+
+
+                <div class="col-xs-12">
+                    <table class="table table-striped table-bordered row-border hover">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Note</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="note in vm.partogramNotes | orderBy:'-id'">
+                                <td>{{note.date | date:'yyyy-MM-dd HH:mm'}}</td>
+                                <td>{{note.note}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+            <hr>
+        </div>
+
+        </div>
+    </uib-tab>
+
+    <uib-tab heading="Vitals">
+
+        <div class="col-xs-12">
+            <mrs-vitals-graph delivery-id="vm.deliveryId" width="900" height="400" person-id="vm.personId" vital-id="vm.fetalHeartRateId"
+            fetal-heart-rate-id="vm.fetalHeartRateId" start="vm.start" end="vm.end"></mrs-vitals-graph>
+        </div>
+        <div class="col-xs-12">
+            <mrs-bp-graph delivery-id="vm.deliveryId" width="900" height="500" person-id="vm.personId" pulse-id="vm.pulseId" vital-id="vm.bpId" start="vm.start"
+                end="vm.end"></mrs-bp-graph>
+        </div>
+        <div class="col-xs-12">
+            <mrs-vitals-graph delivery-id="vm.deliveryId" width="900" height="500" person-id="vm.personId"  temperature-id="vm.temperatureId" vital-id="vm.temperatureId"
+                start="vm.start" end="vm.end"></mrs-vitals-graph>
+        </div>
+    </uib-tab>
+
+
+    <uib-tab heading="Cervical dilatation">
+        <mrs-cervix-graph-echarts-test width="900" height="500" delivery-id="vm.deliveryId" start="vm.start" end="vm.end"></mrs-cervix-graph-echarts-test>
+
+    </uib-tab>
+    <uib-tab heading="Vaginal Monitoring">
+        </br>
+        <div class="col-xs-12">
+            <mrs-vaginal-monitoring-view width="900" delivery-id="vm.deliveryId" start="vm.start" end="vm.end"> </mrs-vaginal-monitoring-view>
+        </div>
+    </uib-tab>
+
+    <uib-tab heading="Urinalysis">
+        </br>
+        <div class="col-xs-12">
+            <mrs-urinalysis-view-vertical width="900" delivery-id="vm.deliveryId" start="vm.start" end="vm.end"></mrs-urinalysis-view-vertical>
+        </div>
+    </uib-tab>
+
+    <uib-tab heading="Contractions">
+        <div class="col-xs-12">
+            <mrs-contraction-graph delivery-id="vm.deliveryId" width="1000" height="500" start="vm.start" end="vm.end"></mrs-contraction-graph>
+        </div>
+    </uib-tab>
+
+
+
+
+    </uib-tab>
+    <uib-tab heading="Medication Given">
+        </br>
+        <div class="col-xs-12">
+            <mrs-medication-view-vertical width="900" delivery-id="vm.deliveryId" add-medication="vm.add()" edit-medication="vm.edit(id)"
+                start="vm.start" end="vm.end"></mrs-medication-view-vertical>
+        </div>
+        <div class="col-xs-12">
+            <mrs-oxytocin-list width="900" delivery-id="vm.deliveryId" add-medication="vm.add()" edit-medication="vm.edit(id)" from="vm.start"
+                to="vm.end"></mrs-oxytocin-list>
+        </div>
+    </uib-tab>
+
+</uib-tabset>
+
+
+</div>

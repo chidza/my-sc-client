@@ -1,0 +1,66 @@
+<form name="editForm" role="form" novalidate show-validation autocomplete="on">
+
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="control-label" for="field_street">School/Hse No</label>
+            <input type="text" autocomplete="street" class="form-control" name="street" id="field_street" ng-model="vm.address.street"
+                required />
+            <div ng-show="editForm.street.$invalid">
+                <p class="help-block" ng-show="editForm.street.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_city">Suburb/Village</label>
+            <input type="text" class="form-control" autocomplete="city" name="city" id="field_city" ng-model="vm.address.city" />
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_city">Province</label>
+            <select class="form-control" id="field_province" name="province" ng-change="vm.refreshDistricts() " ng-model="vm.provinceId"
+                ng-options="province.id as province.name for province in vm.provinces" required>
+                <option value=""></option>
+                </select>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label" for="field_city">District</label>
+            <select class="form-control" id="field_district" name="district" ng-model="vm.districtId" ng-change="vm.refreshTowns()" ng-options="district.id as district.name for district in vm.districts"
+                <option value=""></option>
+                </select>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_town">Town</label>
+            <select class="form-control" id="field_town" name="town" ng-model="vm.address.townId" ng-options="town.id as town.name for town in vm.towns"
+                ng-change="vm.update()" <option value=""></option>
+                </select>
+        </div>
+    </div>
+
+
+
+    <div ng-show="editForm.town.$invalid">
+        <p class="help-block" ng-show="editForm.town.$error.required">
+            This field is required.
+        </p>
+    </div>
+    <div ng-show="editForm.person.$invalid">
+        <p class="help-block" ng-show="editForm.person.$error.required">
+            This field is required.
+        </p>
+    </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="pull-right">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+            <button type="button" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary" ng-click="vm.save()">
+      <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+        </div>
+    </div>
+</form>

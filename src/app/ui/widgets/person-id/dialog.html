@@ -1,0 +1,41 @@
+<form>
+    <div class="form-group">
+        <label for="field_type">Type</label>
+        <select class="form-control" id="field_type" name="type" ng-model="vm.personIdData.typeId" ng-options="personIdentifier.id as personIdentifier.name for personIdentifier in vm.personIdentifiers"
+            required>
+            <option value=""></option>
+            </select>
+
+            <div class="form-group">
+                <label class="control-label" for="field_number">Number</label>
+                <input type="text" class="form-control" name="number" id="field_number" ng-model="vm.personIdData.number" required autocomplete="off"
+                />
+                <div ng-show="editForm.number.$invalid">
+                    <p class="help-block" ng-show="editForm.number.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+    </div>
+    <div ng-show="editForm.type.$invalid">
+        <p class="help-block" ng-show="editForm.type.$error.required">
+            This field is required.
+        </p>
+    </div>
+
+    <div ng-show="editForm.person.$invalid">
+        <p class="help-block" ng-show="editForm.person.$error.required">
+            This field is required.
+        </p>
+    </div>
+    </div>
+
+    <div class="form-group ">
+        <div class="col-xs-offset-6 col-xs-6 ">
+            <div class="pull-right">
+                <button type="button" ng-click="vm.save()" class="btn btn-primary">Save</button>
+                <button type="submit" ng-click="vm.close()" class="btn btn-danger">Cancel</button>
+            </div>
+
+</form>

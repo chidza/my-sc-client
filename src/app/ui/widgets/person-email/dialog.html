@@ -1,0 +1,30 @@
+<form name="editForm" role="form" novalidate show-validation>
+
+    <div class="col-xs-7">
+        <div class="form-group" ng-show="vm.person.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id" ng-model="vm.person.id" readonly />
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_email">Email</label>
+            <input type="email" class="form-control" name="email" autocomplete="email" placeholder="email@domain.com" id="field_email"
+                ng-model="vm.email.address" required />
+            <div ng-show="editForm.address.$invalid">
+                <p class="help-block" ng-show="editForm.address.$error.required">
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="pull-right">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+            <button type="button" ng-click="vm.save()" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+        </div>
+    </div>
+
+</form>

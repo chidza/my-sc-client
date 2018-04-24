@@ -1,0 +1,54 @@
+<form name="editForm" role="form" novalidate show-validation>
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label class="control-label" for="field_goitre">Goitre</label>
+            <input type="checkbox" class="form-control" name="goitre" ng-click="vm.update()" id="field_goitre" ng-model="vm.generalAssessment.goitre"
+            />
+            <div ng-show="editForm.goitre.$invalid">
+                <p class="help-block" ng-show="editForm.goitre.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ng-hide="vm.stage=='HISTORY'">
+            <label class="control-label" for="field_tbScreeningDone">Tb Status</label>
+            <mrs-tb-screening-status person-id="vm.personId" done="vm.checkTbStatus()" encounter-id="vm.encounterId"></mrs-tb-screening-status>
+        </div>
+        <div class="form-group" ng-show="vm.stage=='HISTORY'">
+            <label class="control-label" for="field_tbScreeningDone">Tb Screening Done</label>
+            <input type="checkbox" class="form-control" ng-click="vm.update()" name="tbScreeningDone" id="field_tbScreeningDone" ng-model="vm.generalAssessment.tbScreeningDone"
+            />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="field_abdomen">Abdomen &nbsp;</label>
+        <label>
+           <input type="radio"  name="ABDOMEN_NONE" ng-model="vm.generalAssessment.abdomen" ng-change="vm.update()" value="NONE" >&nbsp;&nbsp;NONE
+              </label>
+        <label>
+           <input type="radio"  name="STRIA" ng-model="vm.generalAssessment.abdomen" ng-change="vm.update()" value="STRIA"/>&nbsp;&nbsp;&nbsp;STRIA
+              </label>
+        <label>
+           <input type="radio"  name="NONSTRIA" ng-model="vm.generalAssessment.abdomen" ng-change="vm.update()" value="NONSTRIA"/>&nbsp;&nbsp;&nbsp;NONSTRIA
+              </label>
+    </div>
+
+    <div class="form-group">
+        <div class="form-group">
+            <label class="control-label" for="field_pallor"> Pallor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <label>
+           <input type="radio"  name="PALLOR_NONE" ng-model="vm.generalAssessment.pallor" ng-change="vm.update()" value="NONE" >&nbsp;&nbsp;NONE
+              </label>
+            <label>
+           <input type="radio"  name="PALE" ng-model="vm.generalAssessment.pallor" ng-change="vm.update()" value="PALE"/>&nbsp;&nbsp;&nbsp;PALE
+              </label>
+            <label>
+           <input type="radio"  name="PINK" ng-model="vm.generalAssessment.pallor" ng-change="vm.update()" value="PINK"/>&nbsp;&nbsp;&nbsp;PINK
+              </label>
+        </div>
+
+    </div>
+
+
+</form>

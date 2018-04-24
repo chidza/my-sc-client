@@ -1,0 +1,51 @@
+<style>
+    .addresspane {
+        height: 50%;
+        overflow-x: hidden;
+    }
+    
+    .otherpane {
+        height: 40%;
+        overflow: auto;
+    }
+</style>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Physical Address Details</div>
+            <div class="panel-body">
+                <mrs-person-address-list address-id="vm.addressId" person-id="vm.personId" add-person-address="vm.onAdd(vm.personId)" edit-person-address="vm.onEdit(addressId)"></mrs-person-address-list>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-xs-6">
+    <br/>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Phone Details</div>
+                <div class="panel-body">
+                    <mrs-person-phone-list person-id="vm.personId" add-person-phone="vm.onAddPhone()" edit-person-phone="vm.onEditPhone(phoneId)"></mrs-person-phone-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="col-xs-6">
+    <br/>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Email Address Details</div>
+                <div class="panel-body">
+                    <mrs-person-email-list person-id="vm.personId" add-person-email="vm.onAddEmail()" edit-person-email="vm.onEditEmail(emailId)"></mrs-person-email-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>

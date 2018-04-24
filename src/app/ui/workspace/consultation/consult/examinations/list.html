@@ -1,0 +1,25 @@
+<div class="col-xs-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Consultation Examinations</div>
+        <div class="panel-body">
+            <div class="pull-right">
+                <label class="col-xs-3 control-label">Tb Status</label>
+
+                <div class="col-xs-9">
+                    <mrs-tb-screening-status reload="vm.reload" done="vm.onDone()" person-id="vm.personId" encounter-id="vm.encounterId"></mrs-tb-screening-status>
+                </div>
+            </div>
+
+            <br>
+            <uib-tabset>
+                <uib-tab heading="Edit">
+                    <mrs-encounter-examination-list reload="vm.reload" refreshed="vm.onDone()" workspace-id="vm.workspaceId" person-id="vm.personId"
+                        encounter-id="vm.encounterId" add-examination="vm.add()" edit-examination="vm.edit(id)"></mrs-encounter-examination-list>
+                </uib-tab>
+                <uib-tab heading="History">
+                    <mrs-person-history-examination-list reload="vm.refreshHistory" person-id="vm.personId"></mrs-person-history-examination-list>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>

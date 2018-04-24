@@ -1,0 +1,15 @@
+<legend>Vitals</legend>
+<table class="table table-striped table-bordered row-border hover">
+    <thead>
+        <tr>
+            <th>Vital</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>       
+        <tr ng-repeat="vital in vm.quarterHourlyVitals">
+            <th>{{vital.vital}}</th>
+            <td>{{vital.value}}</td>
+        </tr>
+    </tbody>
+</table>

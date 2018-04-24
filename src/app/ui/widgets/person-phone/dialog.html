@@ -1,0 +1,26 @@
+<form name="editForm" role="form" novalidate show-validation>
+    <div class="form-group">
+        <label class="control-label" for="field_number">Number</label>
+        <input type="text" class="form-control" name="number" id="field_number" ng-model="vm.phone.number" required />
+        <div ng-show="editForm.number.$invalid">
+            <p class="help-block" ng-show="editForm.number.$error.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+
+    <div ng-show="editForm.person.$invalid">
+        <p class="help-block" ng-show="editForm.person.$error.required">
+            This field is required.
+        </p>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="button" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary" ng-click="vm.save()">
+      <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

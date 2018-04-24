@@ -1,0 +1,44 @@
+<style>
+    input.largerCheckbox {
+        width: 25px;
+        height: 25px;
+    }
+</style>
+<form class="form-horizontal" name="editForm">
+    <div class="form-group" ng-repeat="question in vm.visitQuestions">
+        <label class="col-xs-4 control-label">{{vm.getName(question.questionId)}}</label>
+        <div class="col-xs-5" ng-show="question.inputType=='BOOLEAN'">
+            <label><input type="radio"  id="bool" value="Yes" ng-model="question.value" ng-click="vm.save(question)">
+                Yes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <label><input type="radio"  id="bool" value="No" ng-model="question.value" ng-click="vm.save(question)">
+                No &nbsp;&nbsp;</label>
+        </div>
+        <div class="col-xs-5" ng-show="question.inputType=='TEXT'">
+            <input type="text" ng-model="question.value" ng-blur="vm.save(question)" class="form-control">
+        </div>
+        <div class="col-xs-5" ng-show="question.inputType=='VITAL'">
+            <mrs-encounter-individual-vital-dialog person-id="vm.personId" encounter-id="vm.encounterId" person-vital-id="!question.value?-1:question.value"
+                vital-type="{{vm.getVitalType(question.questionId)}}" saved="vm.updateVital(personVitalId,question)"></mrs-encounter-individual-vital-dialog>
+        </div>
+        <div class="col-xs-5" ng-show="question.inputType=='INVESTIGATION'">
+            <mrs-encounter-individual-investigation-dialog person-id="vm.personId" encounter-id="vm.encounterId" person-investigation-id="!question.value?-1:question.value"
+                investigation-type="{{vm.getInvestigationType(question.questionId)}}" saved="vm.updateInvestigation(personInvestigationId,question)"></mrs-encounter-individual-investigation-dialog>
+        </div>
+        <div class="col-xs-5" ng-show="question.inputType=='SKIN_PINCH'">
+            <label ng-repeat="result in vm.skinPinchList track by $index"> <input type="radio" ng-click="vm.save(question)" ng-model="question.value" id="{{result}}" ng-value="result" name="result"/> {{result}}&nbsp;&nbsp;</label>
+        </div>
+    </div>
+</form>
+<form class="form-horizontal" name="editForm">
+    <div class="form-group">
+        <label class="col-xs-4 control-label">Classification</label>
+        <div class="col-xs-5">
+            <div class="input-group">
+                <input type="text" autocomplete="off" ng-disabled="true" class="form-control" ng-value="vm.diagnosis.name">
+                <div class="input-group-btn">
+                    <button ng-click="vm.selectDiagnosis()" class="btn btn-primary btn-block" type="button"><span ng-show="!vm.diagnosis.id">Set</span><span ng-show="vm.diagnosis.id">Change</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

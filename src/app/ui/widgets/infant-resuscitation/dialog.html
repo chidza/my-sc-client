@@ -1,0 +1,20 @@
+<style>
+    input.largerCheckbox {
+        width: 25px;
+        height: 25px;
+    }
+</style>
+
+<legend>Check List</legend>
+<ul ng-repeat="item in vm.resuscitationItemList | orderBy:'name'" class="list-unstyled">
+
+    <li style="font-size: large;">
+
+       
+    </li>
+</ul>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon "></span>&nbsp;<span>Done</span>
+        </button>
+</div>

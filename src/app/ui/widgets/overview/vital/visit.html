@@ -1,0 +1,22 @@
+<table datatable="ng" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+             <th>Time</th>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="vital in vm.vitals">
+
+            <td>{{vital.date | date:"y-MM-dd"}}</td>
+            <td>{{vital.time | date:"HH:mm"}}</td>
+
+
+
+            <td>{{vital.name}}</td>
+            <td>{{vital.value +' '+ vital.unit}}</td>
+        </tr>
+    </tbody>
+</table>

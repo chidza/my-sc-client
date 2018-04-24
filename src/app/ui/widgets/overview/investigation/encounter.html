@@ -1,0 +1,10 @@
+<div ng-hide="vm.investigations.length===0">
+    <strong> Investigations </strong>
+
+<ul ng-click="vm.preview(i.id)" class="list-unstyled" ng-repeat="i in vm.investigations">
+    
+    <li  ><b>{{$index +1}}.</b>{{i.test}} - {{i.sample}} &nbsp;&nbsp;&nbsp; <b ng-show="i.result">{{i.result}}<sub class="text-warning">result</sub></b><b ng-hide="i.result">Results Pending</b></li>
+    <li ng-show="i.result">results issued - <i ng-class="i.resultIssued ? 'fa fa-check text-success' : 'fa fa-times text-danger'"></i></li>
+</ul>
+<hr>
+</div>

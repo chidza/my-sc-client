@@ -1,0 +1,33 @@
+<div class="col-xs-12">
+    <table datatable="ng" class="table table-striped table-bordered row-border hover">
+        <thead>
+            <tr>
+                <td colspan="11">
+                    <div class="pull-right">
+                        <button type="button" ng-click="vm.add()" class="btn-lg btn-success pull-right"><i class="fa fa-plus"></i></button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Note</th>
+                <th class="text-center">Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="note in vm.partogramNotes | orderBy:'-id'">
+                <td>{{note.date | date:'yyyy-MM-dd'}}</td>
+                <td>{{note.date | date:'HH:mm'}}</td>
+                <td>{{note.note}}</td>
+                <td>
+                    <div class="pull-right">
+                        <button type="button" ng-click="vm.edit(note)" class="btn btn-primary" ng-if="vm.subTime(note)==false"><i class="fa fa-edit">Edit</i></button>
+                        <button type="button" ng-click="vm.remove(note)" class="btn btn-danger" ng-if="vm.subTime(note)==false"><i class="fa fa-trash-o">Remove</i></button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

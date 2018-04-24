@@ -1,0 +1,21 @@
+<div class="col-xs-12">
+
+    <button ui-sref="consultation.management.delivery.overview" class="btn btn-info btn-block btn-lg"><i class="fa fa-universal-access  pull-left"></i>Overview</button>
+    <button ui-sref="consultation.management.deliveryRegistration.current({deliveryId:vm.deliveryId})" class="btn btn-info btn-block btn-lg"><i class="fa fa-hospital-o pull-left"></i>Registration</button>
+
+    <div class="panel-body">
+
+        <div class="row">
+            <button ui-sref="consultation.management.deliveryAssessment.overview({deliveryId:vm.deliveryId})" class="btn btn-primary btn-block btn-lg"><i class="fa fa-heartbeat pull-left"></i>Initial Assessment</button>
+            <button ui-sref="consultation.management.delivery.investigations.list" class="btn btn-primary btn-block btn-lg"><i class="fa fa-flask pull-left"></i>Investigations</button>
+            <button ui-sref="consultation.management.deliveryMonitoring.overview({deliveryId:vm.deliveryId})" class="btn btn-primary btn-block btn-lg"><i class="fa fa-eye pull-left"></i>Monitoring</button>
+            <button ui-sref="consultation.management.delivery.notes.list" class="btn btn-primary btn-block btn-lg"><i class="fa fa-eye pull-left"></i>Notes</button>
+            <button ui-sref="consultation.management.deliveryPartogram.overview({deliveryId:vm.deliveryId})" class="btn btn-primary btn-block btn-lg"><i class="fa fa-bar-chart pull-left"></i>Partogram</button>
+            <button ui-sref="consultation.management.deliverySummary.overview({deliveryId:vm.deliveryId})" class="btn btn-primary btn-block btn-lg"><i class="fa fa-file-text-o pull-left"></i>Summary</button>
+            <button ui-sref="consultation.purpose.list({workareaId:vm.workareaId,personId:vm.personId})" class="btn btn-danger btn-block btn-lg"><i class="fa fa-sign-out pull-left"></i>Close</button>
+
+        </div>
+
+    </div>
+
+</div>

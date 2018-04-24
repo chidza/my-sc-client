@@ -1,0 +1,61 @@
+<div class="col-xs-12">
+
+    <form name="editForm" role="form" novalidate>
+        <div class="modal-body">
+
+            <div class="form-group">
+                <label class="control-label" for="field_note">Notes</label>
+                <textarea rows="4" cols="50" ng-blur="vm.save()" class="form-control" name="note" id="field_note" ng-model="vm.encounterNote.note"
+                    required>
+</textarea>
+                <div ng-show="editForm.note.$invalid">
+                    <p class="help-block" ng-show="editForm.note.$error.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+            <div ng-show="editForm.encounter.$invalid">
+                <p class="help-block" ng-show="editForm.encounter.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+            <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+        </div>
+        <!--<div class="modal-footer">
+            <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>-->
+</div>
+
+<!--encounter note form-->
+<div ng-if="" class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th><span>Name</span> <span class=""></span></th>
+                <th><span>Comment</span> <span class=""></span></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="note in vm.encounterNotes track by note.id">
+                <td>{{note.id}}</td>
+                <td>{{note.note}}</td>
+                <td><button class="btn btn-primary" ng-click="vm.getNote(note.id)" type="button">Select</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--end of encounter note-->
+
+
+</form>
+</div>

@@ -1,0 +1,58 @@
+<div class="col-xs-12">
+    <table datatable="ng" class="table table-striped table-bordered row-border hover">
+        <thead>
+            <tr>
+
+                <th colspan="5">
+                    <div class="pull-left">
+                        <button type="button" ng-click="vm.hts()" class="btn btn-success pull-right">Go to HTS</button>
+                    </div>
+                    <div class="pull-right" ng-hide = "vm.section=='deliveryNurseExamination'">
+                         <button type="button"  ng-click="vm.add()" class="btn btn-success"><i class="fa fa-plus"></i> Record Investigation</button>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Sample</th>
+                <th>Test</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="model in vm.list">
+                <td>{{model.date | date:'y-MM-dd'}}</td>
+                <td>{{model.date | date:'HH:mm'}}</td>
+                <td>{{model.sampleName}}</td>
+                <td>
+                    <span class="pull-left">{{model.testName}}</span>
+                    <span class="pull-right" ng-class="model.result == null ? '' : 'fa fa-check fa-2x'"></span>
+                </td>
+                <td>
+                    <div class="pull-right" ng-disabled="vm.disableControls(model)" ng-hide="model.sampleName == 'Blood' && model.testName == 'HIV'">
+                        <button type="button" ng-if="vm.section=='deliveryNurseExamination' && model.result != null" ng-click="vm.perform(model)" class="btn btn-primary"><i class="fa fa-medkit"></i>
+                             <span > Use &nbsp;&nbsp;</span>
+                        </button>
+                        <button type="button" ng-click="vm.perform(model)" class="btn btn-primary"><i class="fa fa-medkit"></i>
+                            <span ng-show="!model.result"> Perform Test</span>
+                            <span ng-hide="model.result == null"> Edit Result &nbsp;&nbsp;</span>
+                        </button> 
+                        <button ng-disabled="model.result.length>0 || vm.checkLabStatus(model.personInvestigationId) == true" type="button" ng-click="vm.send(model)" class="btn btn-info"><i class="fa fa-ambulance"></i> Send To Lab</button>
+                        <button ng-if="vm.checkLabStatus(model.personInvestigationId) == true" type="button" ng-click="vm.labRequestFrom(model)" class="btn btn-info"><i class="fa fa-ambulance"></i>Lab Request Form</button>
+                        <button ng-disabled="model.result.length>0" type="button" ng-click="vm.delete(model)" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</button>
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="col-xs-12" ng-if="vm.investigationId">
+    <div class="pull-right">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Close</span>
+        </button>
+
+    </div>
+</div>

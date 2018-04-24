@@ -1,0 +1,67 @@
+<form name="editForm" role="form" novalidate>
+    <div class="form-group col-xs-6" <label class=" control-label" for="field_cvs">Cvs</label>
+
+        <input type="text" class="form-control" name="cvs" id="field_cvs" ng-model="vm.doctorGeneralExamination.cvs" ng-blur="vm.update()"
+        />
+
+    </div>
+    <div class="form-group col-xs-6" <label class="control-label" for="field_rs">Rs</label>
+
+        <input type="text" class="form-control" ng-blur="vm.update()" name="rs" id="field_rs" ng-model="vm.doctorGeneralExamination.rs"
+        />
+
+    </div>
+    <div class="form-group col-xs-6" <label class=" control-label" for="field_abdomen">Abdomen</label>
+
+        <input type="text" class="form-control" ng-blur="vm.update()" name="abdomen" id="field_abdomen" ng-model="vm.doctorGeneralExamination.abdomen"
+        />
+
+    </div>
+    <div class="form-group col-xs-6" <label class="control-label" for="field_lie">Lie</label>
+
+        <select class="form-control" name="lie" ng-blur="vm.update()" ng-model="vm.doctorGeneralExamination.lie" id="field_lie">
+                <option value="OBLIQUE">OBLIQUE</option>
+                <option value="TRANSVERSE">TRANSVERSE</option>
+                <option value="LONGITUDINAL">LONGITUDINAL</option>
+                <option value="BULKY">BULKY</option>
+                <option value="OSKIE">OSKIE</option>
+            </select>
+
+    </div>
+    <div class="form-group col-xs-6" <label class="control-label" for="field_presentation">Presentation</label>
+
+        <select class="form-control" ng-blur="vm.update()" name="presentation" ng-model="vm.doctorGeneralExamination.presentation"
+            id="field_presentation">
+            <option value="SHOULDER">SHOULDER</option>
+            <option value="BREECH">BREECH</option>
+            <option value="BULKY">BULKY</option>
+            <option value="CEPHALIC">CEPHALIC</option>
+            </select>
+
+    </div>
+    <div class="form-group col-xs-6" <label class="control-label" for="field_engagement">Engagement</label>
+
+        <label ng-repeat="d in vm.levels">
+            <input type="radio" name="AmnioticFluidId" ng-change="vm.update()" ng-model="vm.doctorGeneralExamination.engagement" ng-value="d.id"/>{{d.name}}&nbsp;&nbsp;&nbsp;&nbsp;
+              </label>
+
+    </div>
+
+    <div class="form-group col-xs-6" <label class="control-label" for="field_bloodPressure">Blood Pressure</label>
+        <mrs-encounter-individual-vital-dialog person-id="vm.personId" workspace-id="vm.workspaceId" encounter-id="vm.encounterId" person-vital-id="vm.doctorGeneralExamination.bloodPressureId"
+            vital-type="vm.bp" saved="vm.updateVital(personVitalId,vm.bp)"></mrs-encounter-individual-vital-dialog>
+
+    </div>
+
+    <div class="form-group col-xs-6" <label class=" control-label" for="field_haemoglobin">Haemoglobin (g/dl)</label>
+        <mrs-encounter-individual-investigation-dialog person-id="vm.personId" workspace-id="vm.workspaceId" encounter-id="vm.encounterId" person-investigation-id="vm.doctorGeneralExamination.haemoglobinId"
+            investigation-type="vm.haemoglobin" saved="vm.updateHaemoglobin(personInvestigationId)"></mrs-encounter-individual-investigation-dialog>
+    </div>
+
+    <div class="form-group col-xs-6" <label class=" control-label" for="field_foetalHedoctorGeneralExaminationRate">Foetal Heart Rate</label>
+
+        <mrs-encounter-individual-vital-dialog person-id="vm.personId" workspace-id="vm.workspaceId" encounter-id="vm.encounterId" person-vital-id="vm.doctorGeneralExamination.foetalHeartRateId"
+            vital-type="vm.fetal" saved="vm.updateVital(personVitalId,vm.fetal)"></mrs-encounter-individual-vital-dialog>
+
+    </div>
+</form>

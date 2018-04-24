@@ -1,0 +1,13 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">Partogram Overview</div>
+    <div class="panel-body">
+         <div ng-show="vm.start">
+            <mrs-delivery-partogram-preview person-id="vm.personId" saved = "vm.addNew(deliveryPartogramId)"></mrs-delivery-partogram-preview>
+        </div>
+        <div ng-if="!vm.start">
+            <button class="btn btn-primary" ng-click="vm.admit()">Admit patient onto Partogram</button>
+        </div>
+    </div>
+</div>
+
+

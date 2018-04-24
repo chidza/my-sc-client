@@ -1,0 +1,42 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "angularjs/angular.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "angularjs/angular-resource.d.ts": {
+      "commit": "55978642a28584b258e511046b9fb9d09c8a80a4"
+    },
+    "bootstrap/bootstrap.d.ts": {
+      "commit": "55978642a28584b258e511046b9fb9d09c8a80a4"
+    },
+    "angular-ui-bootstrap/angular-ui-bootstrap.d.ts": {
+      "commit": "55978642a28584b258e511046b9fb9d09c8a80a4"
+    },
+    "moment/moment.d.ts": {
+      "commit": "55978642a28584b258e511046b9fb9d09c8a80a4"
+    },
+    "jquery.dataTables/jquery.dataTables.d.ts": {
+      "commit": "55978642a28584b258e511046b9fb9d09c8a80a4"
+    },
+    "angular-dialog-service/angular-dialog-service.d.ts": {
+      "commit": "55978642a28584b258e511046b9fb9d09c8a80a4"
+    },
+    "ngstorage/ngstorage.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "angularjs/angular-cookies.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "angular-ui-router/angular-ui-router.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    }
+  }
+}

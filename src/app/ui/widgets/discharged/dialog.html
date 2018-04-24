@@ -1,0 +1,15 @@
+<div class="col-xs-12">
+    <mrs-encounter-note-dialog encounter-note-id="vm.encounterNoteId" encounter-id="vm.encounterId" saved="vm.noteSaved(encounterNoteId)"></mrs-encounter-note-dialog>
+</div>
+
+<div class="col-xs-12">
+
+    <label>Absconded <input type="checkbox" class="form-control"  ng-model="vm.absconded"></label>
+</div>
+
+<div class="col-xs-12">
+    <div class="pull-right">
+        <button class="btn btn-default btn-lg" ng-click="vm.close()">Cancel</button>
+        <button class="btn btn-primary btn-lg" ng-click="vm.discharge()">Discharge</button>
+    </div>
+</div>

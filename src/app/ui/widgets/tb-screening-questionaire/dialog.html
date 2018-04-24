@@ -1,0 +1,42 @@
+<style>
+    input.largerCheckbox {
+        width: 25px;
+        height: 25px;
+    }
+    /* The switch - the box around the slider */
+</style>
+
+
+<div ng-repeat="question in vm.encounterExaminationList">
+    <label class="col-xs-8">{{question.name}}</label>
+
+    <div class="col-xs-4">
+        <label class="switch">
+                    <input class="switch-input" type="checkbox" ng-checked="{{question.present}}"  ng-click="vm.update(question, question.present = question.present?false:true)"/>
+                    <span class="switch-label" data-on="true" data-off="false"></span>
+                    <span class="switch-handle"></span></label>
+    </div>
+
+</div>
+
+
+
+
+<!--<ul ng-repeat="question in vm.tbQuestionaire" class="list-unstyled">
+
+    <li style="font-size: large;">
+       <label class="switch"> 
+
+        <input type="checkbox" class="largerCheckbox" ng-checked="vm.isExist(question)" id="question.id" ng-click="vm.save(question)">
+             
+  <div class="slider round"></div>
+  {{question.name}}
+</label>
+    </li>
+
+
+</ul>-->
+
+<div class="pull-right">
+    <button class="btn btn-success" ng-click="vm.close()">Done</button>
+</div>

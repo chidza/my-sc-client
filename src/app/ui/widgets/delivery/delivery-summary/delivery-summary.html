@@ -1,0 +1,75 @@
+<form name="editForm" role="form" novalidate>
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_deliveredBy">Delivered By</label>
+        <input type="text" class="form-control" ng-blur="vm.update()" name="deliveredBy" id="field_deliveredBy" ng-model="vm.deliverySummary.deliveredBy"
+        />
+    </div>
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_assistedBy">Assisted By</label>
+        <input type="text" class="form-control" ng-blur="vm.update()" name="assistedBy" id="field_assistedBy" ng-model="vm.deliverySummary.assistedBy"
+        />
+    </div>
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_estimatedBloodLoss">Estimated Blood Loss (ml)</label>
+        <input type="number" class="form-control" ng-blur="vm.update()" name="estimatedBloodLoss" id="field_estimatedBloodLoss" ng-model="vm.deliverySummary.estimatedBloodLoss"
+        />
+    </div>
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_measuredBloodLoss">Measured Blood Loss (ml)</label>
+        <input type="number" class="form-control" ng-blur="vm.update()" name="measuredBloodLoss" id="field_measuredBloodLoss" ng-model="vm.deliverySummary.measuredBloodLoss"
+        />
+    </div>
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_totalBloodLoss">Total Blood Loss (ml)</label>
+        <input type="number" class="form-control" ng-blur="vm.update()" name="totalBloodLoss" id="field_totalBloodLoss" ng-model="vm.deliverySummary.totalBloodLoss"
+        />
+    </div>
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_pph">PPH</label>
+        <select class="form-control" name="pph" ng-change="vm.update()" ng-model="vm.deliverySummary.pph" id="field_pph">
+                <option value="YES">YES</option>
+                <option value="NO">NO</option>
+            </select>
+    </div>
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_perinium">Perinium</label>
+        <select class="form-control" name="perinium" ng-change="vm.update()" ng-model="vm.deliverySummary.perineum" id="field_perinium">
+                <option value="INTACT">INTACT</option>
+                <option value="EPISIOTOMY">EPISIOTOMY</option>
+                <option value="LACERATION">LACERATION</option>
+                <option value="TEAR">TEAR</option>
+            </select>
+    </div>
+    <div class="form-group col-xs-6" ng-show="vm.deliverySummary.perineum=='TEAR'">
+        <label class="control-label" for="field_menstrualCycle">Degree</label>
+
+        <label>
+           <input type="radio"  name="REGULAR" ng-model="vm.deliverySummary.degreeId" ng-change="vm.update()" ng-value="1" >1st
+              </label>
+        <label>
+           <input type="radio"  name="IRREGULAR" ng-model="vm.deliverySummary.degreeId" ng-change="vm.update()" ng-value="2"/>2nd
+              </label>
+        <label>
+           <input type="radio"  name="IRREGULAR" ng-model="vm.deliverySummary.degreeId" ng-change="vm.update()" ng-value="3"/>3rd
+              </label>
+    </div>
+    <div ng-hide="vm.deliverySummary.perineum=='INTACT'">
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_methodOfRepair">Method Of Repair</label>
+            <input type="text" class="form-control" ng-blur="vm.update()" name="methodOfRepair" id="field_methodOfRepair" ng-model="vm.deliverySummary.methodOfRepair"
+            />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_sutureType">Suture Type</label>
+            <input type="text" class="form-control" ng-blur="vm.update()" name="sutureType" id="field_sutureType" ng-model="vm.deliverySummary.sutureType"
+            />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_repairedBy">Repaired By</label>
+            <input type="text" class="form-control" ng-blur="vm.update()" name="repairedBy" id="field_repairedBy" ng-model="vm.deliverySummary.repairedBy"
+            />
+        </div>
+
+
+    </div>
+</form>

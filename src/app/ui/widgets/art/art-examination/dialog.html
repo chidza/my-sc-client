@@ -1,0 +1,142 @@
+<style rel="stylesheet">
+    input[type="checkbox"] {
+        transform: scale(1.5, 1.5);
+        margin-left: 20px;
+    }
+</style>
+
+<div class="col-xs-12">
+
+    <div class="row">
+
+        <table class="table  table-responsive">
+            <tr>
+                <td>Enlarged lymph nodes</td>
+                <td style="border-right: 1px solid #000;">
+                    <label><input type="radio"  ng-model="vm.art.enlargedLymphNode"  ng-click="vm.update()" ng-value="true"> Yes</label>
+                    <label><input type="radio"  ng-model="vm.art.enlargedLymphNode" ng-click="vm.update()"  ng-value="false"> No</label>
+                    <td>OI/ART Number</td>
+                    <td>
+                        <div class="input-group">
+                            <input type="text" autocomplete="off" ng-blur="vm.update()" class="form-control" size="35" ng-model="vm.art.artNumber">
+                            <div class="input-group-btn ">
+                                <button ng-click="vm.generateArtNumber()" class="btn btn-primary btn-block" type="button">Generate</button>
+                            </div>
+                        </div>
+                    </td>
+            </tr>
+            <tr>
+                <td>Pallor</td>
+                <td style="border-right: 1px solid #000;">
+                    <label><input type="radio"  ng-model="vm.art.pallor"  ng-click="vm.update()" ng-value="true"> Yes</label>
+                    <label><input type="radio"  ng-model="vm.art.pallor" ng-click="vm.update()"  ng-value="false"> No</label>
+
+                    <td>Date of Registration</td>
+                    <td>
+                        <div class="input-group">
+                            <input id="field_date" type="text" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.art.date"
+                                is-open="vm.datePickerOpenStatus.date" ng-change="vm.update()" required/>
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </div>
+                        </div>
+                    </td>
+            </tr>
+            <tr>
+                <td>Mental Status</td>
+                <td style="border-right: 1px solid #000;">
+                    <div ng-repeat="status in vm.normality">
+                        <label> <input type="radio" ng-model="vm.art.mentalStatus" ng-click="vm.update()" ng-value="status" name="mentalStatus" />
+                        {{status}}</label>
+                    </div>
+                </td>
+                <td>Date of HIV Test</td>
+                <td>
+                    <div class="input-group">
+                        <input type="text" autocomplete="off" ng-disabled="true" class="form-control" ng-value="vm.personInvestigation.date | date:'y-MM-dd'">
+                        <div class="input-group-btn ">
+                            <button ng-click="vm.hiv()" class="btn btn-primary btn-block" type="button"><span ng-show="!vm.personInvestigation.id">Set</span><span ng-show="vm.personInvestigation.id">Change</span></button>
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Jaundice</td>
+                <td style="border-right: 1px solid #000;">
+                    <label><input type="radio"  ng-model="vm.art.jaundice"  ng-click="vm.update()" ng-value="true"> Yes</label>
+                    <label><input type="radio"  ng-model="vm.art.jaundice" ng-click="vm.update()"  ng-value="false"> No</label>
+
+                    <td>Weight(kg)</td>
+                    <td>
+                        <mrs-encounter-individual-vital-dialog person-id="vm.personId" encounter-id="vm.encounterId" workspace-id="vm.workspaceId" person-vital-id="vm.art.weightId"
+                            vital-type="vm.weight" saved="vm.updateVital(personVitalId,vm.weight)"></mrs-encounter-individual-vital-dialog>
+                    </td>
+            </tr>
+            <tr>
+                <td>Cyanosis</td>
+                <td style="border-right: 1px solid #000;"><label class="switch">
+                    <input class="switch-input" type="checkbox" ng-click="vm.update()"  ng-model="vm.art.cyanosis"/>
+                    <span class="switch-label" data-on="NORMAL" data-off="ABNORMAL"></span>
+                    <span class="switch-handle"></span></label>
+                </td>
+                <td>Height(cm)</td>
+                <td>
+                    <mrs-encounter-individual-vital-dialog person-id="vm.personId" encounter-id="vm.encounterId" workspace-id="vm.workspaceId" person-vital-id="vm.art.heightId"
+                        vital-type="vm.height" saved="vm.updateVital(personVitalId,vm.height)"></mrs-encounter-individual-vital-dialog>
+                </td>
+            </tr>
+            <tr>
+                <td>Central Nervous System</td>
+                <td style="border-right: 1px solid #000;">
+                    <div ng-repeat="status in vm.normality">
+                        <input type="radio" ng-model="vm.art.centralNervousSystem" ng-click="vm.update()" ng-value="status" name="centralNervousSystem"
+                        />
+                        <label>{{status}}</label>
+                    </div>
+
+                </td>
+
+                <td>BP(mmHg)</td>
+                <td>
+                    <mrs-encounter-individual-vital-dialog person-id="vm.personId" encounter-id="vm.encounterId" workspace-id="vm.workspaceId" person-vital-id="vm.art.bpId"
+                        vital-type="vm.bp" saved="vm.updateVital(personVitalId,vm.bp)"></mrs-encounter-individual-vital-dialog>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td style="border-left: 1px solid #000;">Temperature (C)</td>
+                <td>
+                    <mrs-encounter-individual-vital-dialog person-id="vm.personId" encounter-id="vm.encounterId" workspace-id="vm.workspaceId" person-vital-id="vm.art.temperatureId"
+                        vital-type="vm.temp" saved="vm.updateVital(personVitalId,vm.temp)"></mrs-encounter-individual-vital-dialog>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td style="border-left: 1px solid #000;">Pulse(bpm)</td>
+                <td>
+                    <mrs-encounter-individual-vital-dialog person-id="vm.personId" encounter-id="vm.encounterId" workspace-id="vm.workspaceId" person-vital-id="vm.art.pulseId"
+                        vital-type="vm.pulse" saved="vm.updateVital(personVitalId,vm.pulse)"></mrs-encounter-individual-vital-dialog>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td style="border-left: 1px solid #000;">Respiratory Rate(bpm)</td>
+                <td>
+                    <mrs-encounter-individual-vital-dialog person-id="vm.personId" encounter-id="vm.encounterId" workspace-id="vm.workspaceId" person-vital-id="vm.art.rrId"
+                        vital-type="vm.rr" saved="vm.updateVital(personVitalId,vm.rr)"></mrs-encounter-individual-vital-dialog>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+
+
+
+</div>
+
+
+

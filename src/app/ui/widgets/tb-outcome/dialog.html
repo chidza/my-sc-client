@@ -1,0 +1,41 @@
+<style>
+  .textcolor {
+    color: #ffffff;
+  }
+  
+  .boreder {
+    border-right: 1px solid black;
+  }
+</style>
+
+<div class="col-xs-12" ng-show="vm.tb.id">
+
+
+  <form class="form-horizontal">
+
+
+    <div class="form-group ">
+      <label class="col-xs-4 control-label">TB Outcome</label>
+      <div class="col-xs-6">
+        <select ng-options="d as d  for d in vm.tbOutcomes" class="form-control" ng-model="vm.tb.outcome" ng-change="vm.update()"></select>
+      </div>
+
+    </div>
+
+  </form>
+
+  <div class="col-xs-6 col-xs-offset-4" data-ng-show="vm.tb.outcome=='TRANSFERED'">
+    <mrs-referral-dialog encounter-id="vm.encounterId" person-id="vm.personId" opd-id="vm.opdId" closed="vm.close()" saved="vm.save()"></mrs-referral-dialog>
+  </div>
+</div>
+<div class="col-xs-6 col-xs-offset-4" data-ng-show="vm.tb.outcome=='DIED'">
+  Death Component
+</div>
+<div class="col-xs-6 col-xs-offset-4" data-ng-show="vm.tb.outcome!='DIED' && vm.tb.outcome!='TRANSFERED' && vm.tb.outcome!='CURRENT'">
+  <mrs-encounter-note-dialog encounter-note-id="-1" encounter-id="vm.encounterId" saved="vm.save()"></mrs-encounter-note-dialog>
+</div>
+</div>
+
+<div class="col-xs-12" ng-hide="vm.tb.id">
+  <p>Patient not registered for TB</p>
+</div>

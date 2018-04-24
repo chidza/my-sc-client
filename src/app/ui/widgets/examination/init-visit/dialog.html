@@ -1,0 +1,27 @@
+<mrs-person-label person-id="vm.personId"></mrs-person-label>
+
+<form name="editForm" role="form" novalidate  ng-hide="vm.opd.id" show-validation ng-init="vm.opd.id<1?vm.opd={}:'';vm.opd.id<1?vm.opd.repeatVisit=false:''">
+    <div class="col-xs-12">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="control-label" for="field_repeatVisit">Is this a Repeat Visit? </label>
+            <input type="checkbox" class="form-control" name="repeatVisit" id="field_repeatVisit" ng-model="vm.opd.repeatVisit" />
+        </div>
+
+    </div>
+    <div class="col-xs-12">
+        <div class="pull-right">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+            <button type="submit" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Initiate</span>
+        </button>
+        </div>
+
+    </div>
+</form>
+
+<div class="col-xs-12" ng-show="vm.opd.id">
+    <p>Patient already has an OPEN OPD Visit</p>
+</div>

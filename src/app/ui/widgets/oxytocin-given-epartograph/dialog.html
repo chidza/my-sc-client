@@ -1,0 +1,17 @@
+<table class="table  table-bordered row-border hover " ng-style="{'width': vm.width +'px'}">
+    <thead>
+        <th style="border-width: 0;"></th>
+        <th ng-repeat="d in vm.data" style="font-size: x-small;">{{d.time | date:"HH:mm"}}</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border-width: 0; font-size: small;" class="pull-left"> <b>Oxytocin U/L</b></td>
+            <td ng-repeat="d in vm.data" style="font-size: small;"><b>{{d.strength}}</b></td>
+        </tr>
+        <tr>
+            <td style="border-width: 0; font-size: small;" class="pull-left"><b>drops/min</b></td>
+            <td ng-repeat="d in vm.data" style="font-size: small;"><b>{{d.quantity}}</b></td>
+        </tr>
+
+    </tbody>
+</table>

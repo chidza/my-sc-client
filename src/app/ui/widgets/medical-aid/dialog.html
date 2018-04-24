@@ -1,0 +1,66 @@
+<form name="editForm" role="form" novalidate  show-validation>
+    <div class="modal-body">
+
+        <div class="form-group">
+            <label for="memberName">Member Name</label>
+            <input type="text" class="form-control" id="field_memberName" name="memberName" ng-model="vm.medicalAid.memberName" />
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_number">Medical-Aid Number</label>
+            <input type="text" class="form-control" name="number" id="field_number" ng-model="vm.medicalAid.number" required />
+
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label" for="field_admitted">Expiration Date</label>
+            <div class="input-group">
+                <input id="field_expirationDate" type="text" class="form-control" name="expirationDate" uib-datepicker-popup="{{dateformat}}"
+                    ng-model="vm.medicalAid.expirationDate" is-open="vm.datePickerOpenStatus.expirationDate" required/>
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('expirationDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.expirationDate.$invalid">
+                <p class="help-block" ng-show="editForm.expirationDate.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_provider">Provider</label>
+            <select class="form-control" id="field_provider" name="provider" ng-model="vm.medicalAid.providerId" ng-options="medicalAidProvider.id as medicalAidProvider.name for medicalAidProvider in vm.MedicalAidServiceProviders"
+                required>
+                <option value=""></option>
+                </select>
+        </div>
+        <div ng-show="editForm.provider.$invalid">
+            <p class="help-block" ng-show="editForm.provider.$error.required">
+                This field is required.
+            </p>
+        </div>
+
+        <div ng-show="editForm.person.$invalid">
+            <p class="help-block" ng-show="editForm.person.$error.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+
+    <div class="col-xs-8 col-xs-offset-4">
+
+        <div class="pull-right">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+            <button type="button" ng-click="vm.save()"  class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+        </div>
+    </div>
+    <br>
+    <br>
+</form>

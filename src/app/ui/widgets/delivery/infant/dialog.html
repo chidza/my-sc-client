@@ -1,0 +1,181 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">Birth Outcome</div>
+    <div class="panel-body">
+        <form name="editForm" role="form" novalidate show-validation>
+
+
+            <div class="form-group">
+                <label for="field_caput">Outcome</label>
+                <label>
+           <input type="radio" ng-disabled="vm.disableAlive" name="AliveOUtcome" ng-model="vm.infant.outcome" value="ALIVE"/>Alive
+              </label>
+                <label>
+           <input type="radio" ng-disabled="vm.disableDead" ng-click="vm.outcomeDead()"  ng-model="vm.infant.outcome"value="DEAD"  name="DeadOutcome"/>Dead
+              </label>
+            </div>
+
+
+            <div class="col-xs-12" ng-show="vm.infant.outcome==='ALIVE'">
+                <div class="form-group col-xs-6">
+                    <label class="control-label" for="field_date"><i class="glyphicon glyphicon-calendar"></i>Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.infant.date"
+                            is-open="vm.datePickerOpenStatus.date" required/>
+                        <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                    </div>
+                    <div ng-show="editForm.date.$invalid">
+                        <p class="help-block" ng-show="editForm.date.$error.required">
+                            This field is required.
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="field_deliveryMethod">Delivery Method</label>
+                        <select class="form-control" name="deliveryMethod" ng-model="vm.infant.deliveryMethod" id="field_deliveryMethod" required>
+                <option value="ASSISTEDBREECH">ASSISTED BREECH</option>
+                <option value="C_SECTION" >C SECTION</option>
+                <option value="INSTRUMENT_DELIVERY" >INSTRUMENT DELIVERY</option>
+                <option value="NVD">NVD</option>
+                <option value="VACUUM">VACUUM</option>
+            </select>
+
+
+                        <div ng-show="editForm.deliveryMethod.$invalid">
+                            <p class="help-block" ng-show="editForm.deliveryMethod.$error.required">
+                                This field is required.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="field_apgar1">Crown to Heel</label>
+                        <input type="number" class="form-control" name="heightId" id="field_heightId" ng-model="vm.infant.height" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="field_apgar1">Birth Weight</label>
+                        <input type="number" class="form-control" name="weightId" id="field_weightId" ng-model="vm.infant.weight" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="field_apgar1">Head Circumference</label>
+                        <input type="number" class="form-control" name="headCircumferenceId" id="field_headCircumferenceId" ng-model="vm.infant.headCircumference"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Any Abnormalities</label>
+                        <textarea rows="5" cols="55" ng-model="vm.infant.abnormalities"></textarea>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="field_time"><i class="glyphicon glyphicon-time"></i> Time</label>
+                    <div class="input-group">
+                        <input id="field_time" type="text" class="form-control" name="time" enable-date="false" initial-picker="time" datetime-picker="HH:mm"
+                            ng-model="vm.infant.time" is-open="vm.datePickerOpenStatus.time" required />
+                        <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('time')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                    </div>
+                    <div ng-show="editForm.time.$invalid">
+                        <p class="help-block" ng-show="editForm.time.$error.required">
+                            This field is required.
+                        </p>
+                        <p class="help-block" ng-show="editForm.time.$error.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label" for="field_meconium">Meconium: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       <label> <input type="checkbox" class="form-control" name="meconium" id="field_meconium" ng-model="vm.infant.meconium" />
+                       Stained</label>
+                        </div>
+
+
+
+
+                    <div class="form-group">
+
+                        <label for="field_caput">Conditions at Birth:</label>&nbsp;&nbsp;&nbsp;
+                        <label>  <input type="checkbox" class="form-control" name="crying" id="field_crying" ng-model="vm.infant.crying" />Crying
+
+              </label>&nbsp;&nbsp;
+                        <label>
+                            <label>  <input type="checkbox" class="form-control" name="breathing" ng-model="vm.infant.breathing" id="field_breathing" />Breathing
+              </label>&nbsp;&nbsp;
+
+                    </div>
+
+                    <div class="form-group">
+                        <div ng-show="vm.infant.id && vm.infant.resuscitation">
+                            <label class="control-label" for="field_time"> Resuscitation</label>
+                            <div class="input-group">
+                                <input type="checkbox" class="form-control" ng-click="vm.isChecked($event)" name="resuscitation" id="field_resuscitation"
+                                    ng-model="vm.infant.resuscitation" />
+                                <span class="input-group-btn">
+                            <button class="btn btn-primary" ng-click="vm.updateInfatntResuscitation()" type="button">Update interventions</button>
+                        </span>
+                            </div>
+                        </div>
+                        <div ng-hide="vm.infant.id && vm.infant.resuscitation">
+                            <label class="control-label" for="field_time"> Resuscitation</label>
+                            <input type="checkbox" ng-click="vm.isChecked($event)" class="form-control" name="resuscitation" id="field_resuscitation"
+                                ng-model="vm.infant.resuscitation">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label" for="field_apgar1">Apgar 1</label>
+                        <input type="number" class="form-control" name="apgar1" id="field_apgar1" ng-model="vm.infant.apgar1" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="field_apgar5">Apgar 5</label>
+                        <input type="number" class="form-control" name="apgar5" id="field_apgar5" ng-model="vm.infant.apgar5" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="field_sex">Sex</label>
+                        <select class="form-control" name="sex" ng-model="vm.infant.sex" id="field_sex" required>
+                            <option value="MALE">MALE</option>
+                            <option value="FEMALE">FEMALE</option>
+                            <option value="OTHER">OTHER</option>
+                     </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="field_caput">Condition After 5 mins</label>&nbsp;&nbsp;&nbsp;
+                        <label>
+           <input type="radio" name="Alive" ng-model="vm.infant.conditionAfter5" value="ALIVE" value="True"/>Alive
+              </label>
+                        <label>
+           <input type="radio" name="Dead" ng-model="vm.infant.conditionAfter5" value="DEAD"/>Dead
+              </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="field_breastfed">Breastfed</label>
+                        <input type="checkbox" class="form-control" name="breastfed" id="field_breastfed" ng-model="vm.infant.breastfed" />
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer col-xs-12" ng-hide="vm.infant.outcome==='DEAD'">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+                <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" ng-click="vm.save()" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+            </div>
+
+        </form>
+        <div class="col-xs-12" ng-show="vm.disableAlive">
+            <mrs-death-dialog delivery-id="vm.deliveryId" infant-id="vm.infantId" saved="vm.close()" closed="vm.close()">
+        </div>
+    </div>
+</div>

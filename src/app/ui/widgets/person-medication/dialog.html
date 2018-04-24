@@ -1,0 +1,39 @@
+<form name="editForm" role="form" class="form-horizontal" novalidate  show-validation>
+
+    <div class="form-group">
+        <label class="control-label col-xs-4" for="field_drugName">Medication</label>
+        <div class="col-xs-5">
+            <h4><span ng-if="vm.date!='ZEPI'">{{vm.drugName.name}}</span><span ng-if="vm.date=='ZEPI'">{{vm.drugName.alias}}</span></h4>
+
+        </div>
+    </div>
+    <div ng-show="vm.drugOptionNames.length > 0 ">
+        <div class="form-group">
+            <label class="control-label col-xs-4" for="field_drugOption">Medication Option</label>
+            <div class="col-xs-5">
+                <select class="form-control" id="field_drugOption" name="drugOption" ng-model="vm.personMedication.drugOptionId" ng-options="option.value as option.id for option in vm.drugOptionNames">
+            </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-4" for="field_date">Date</label>
+        <div class="col-xs-5">
+            <div class="input-group">
+                <input id="field_date" type="text" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.personMedication.date"
+                    is-open="vm.datePickerOpenStatus.date" required/>
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div class="pull-right">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="button" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary" ng-click="vm.save()">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

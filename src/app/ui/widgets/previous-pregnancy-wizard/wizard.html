@@ -1,0 +1,78 @@
+<imhere-wizard on-finish="app.finish()">
+    <div class="row">
+
+        <div class="col-xs-12">
+
+            <imhere-step>
+
+                <mrs-previous-pregnancy-dialog person-id="vm.personId" anc-id="vm.ancId" saved="vm.saved(deliveryId, ancId)"></mrs-previous-pregnancy-dialog>
+
+                <div ng-if="vm.deliveryId">
+                    <!--    // CHECK CURRENT STATE AND ONLY SHOW WHEN ADDING STATE IS ACTIVE -->
+
+                    <div ng-if="vm.state.current.component =='mrsConsultationPatientPncPreviousPregnanciesAddLayout' || vm.state.current.component =='mrsConsultationPatientAncPreviousPregnanciesAddLayout' || vm.state.current.component == 'mrsConsultationPatientDeliveryRegistrationPreviousPregnanciesAddLayout'">
+
+                        <legend>Add Infant Details</legend>
+
+                        <div ng-if="vm.deliveryId">
+                            <mrs-birth-outcome-dialog current-outcome="vm.currentOutcome" outcome="vm.birthOutcome(outcome)"> </mrs-birth-outcome-dialog>
+                        </div>
+
+                    </div>
+
+                    <div ng-if="vm.currentOutcome=='DEAD'">
+                        <mrs-previous-death-dialog date="vm.date" delivery-id="vm.deliveryId" infant-id="" saved="vm.reset=true"></mrs-previous-death-dialog>
+                    </div>
+
+                    <!--      // list is below -->
+
+
+                    <!-- // check all relevant states and insert them in condition -->
+                    <imhere-next ng-if="vm.state.current.component =='mrsConsultationPatientPncPreviousPregnanciesEditLayout' || vm.state.current.component =='mrsConsultationPatientAncPreviousPregnanciesEditLayout' || vm.state.current.component =='mrsConsultationPatientDeliveryRegistrationPreviousPregnanciesEditLayout' || vm.currentOutcome=='ALIVE'"
+                        class="pull-right">Search for Infant</imhere-next>
+                    <imhere-next ng-if="vm.state.current.component =='mrsConsultationPatientPncPreviousPregnanciesEditLayout' || vm.state.current.component =='mrsConsultationPatientAncPreviousPregnanciesEditLayout' || vm.state.current.component =='mrsConsultationPatientDeliveryRegistrationPreviousPregnanciesEditLayout' || vm.currentOutcome=='ALIVE'"
+                        class="pull-right">Register New Infant</imhere-next>
+
+                    <!-- list should hide if outcome is dead on registration but be present on editing -->
+
+
+                    <mrs-birth-details ng-if="vm.state.current.component =='mrsConsultationPatientPncPreviousPregnanciesEditLayout' || vm.state.current.component =='mrsConsultationPatientAncPreviousPregnanciesEditLayout' || vm.state.current.component =='mrsConsultationPatientDeliveryRegistrationPreviousPregnanciesEditLayout' || vm.currentOutcome=='ALIVE'"
+                        refresh="vm.refresh" delivery-id="vm.deliveryId" edit="vm.editInfant(infantId)" edit-infant="vm.editBirthDetails(infantId)"></mrs-birth-details>
+
+
+                </div>
+
+
+                <div class="col-xs-2 pull-right">
+                    <button class="btn btn-success" ng-click="vm.closed(vm.deliveryId)">BACK</button>
+                </div>
+
+
+            </imhere-step>
+
+
+
+            <imhere-step>
+                <div ng-if="!vm.childId">
+                <mrs-person-relation-select date="vm.date" person-id="vm.personId" selected="vm.personSelected(personId)"></mrs-person-relation-select>
+                <imhere-pre>BACK</imhere-pre>
+                </div>
+                <div ng-if="vm.childId">
+                    <mrs-birth-details-add person-id="vm.personId" child-id="vm.childId" delivery-id="vm.deliveryId" close="vm.close()" saved="vm.childSaved()"></mrs-birth-details-add>
+
+                </div>
+            </imhere-step>
+
+
+
+
+            <imhere-step>
+                <mrs-birth-details-add person-id="vm.personId" child-id="vm.childId" delivery-id="vm.deliveryId" saved="vm.childSaved(vm.deliveryId)"></mrs-birth-details-add>
+                <imhere-pre ng-hide="vm.reset">BACK</imhere-pre>
+                <imhere-reset ng-if="vm.reset">Done</imhere-reset>
+            </imhere-step>
+
+
+        </div>
+    </div>
+</imhere-wizard>

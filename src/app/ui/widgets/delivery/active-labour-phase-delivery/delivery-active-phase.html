@@ -1,0 +1,29 @@
+<div class="container">
+    <h2>List of Deliveries in Active Phase</h2>
+    <div class="col-xs-12">
+        <table datatable="ng" class="table table-striped table-bordered row-border hover">
+            <thead>
+                <tr>
+                    <th>Admission Date</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th class="text-center">Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="d in vm.deliveryPerson">
+                    <td>{{d.admissionDate | date:'yyyy-MM-dd'}}</td>
+                    <td>{{d.firstName}}</td>
+                    <td>{{d.lastName}}</td>
+                    <td>
+                        <div>
+                            <button type="button" ng-click="vm.edit(d)" class="btn btn-primary"><i class="fa fa-edit">View</i></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

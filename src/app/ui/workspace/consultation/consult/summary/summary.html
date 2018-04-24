@@ -1,0 +1,131 @@
+<style>
+    .textcolor {
+        color: #ffffff;
+    }
+
+    .buttonx {
+	animation: glowing 1500ms infinite;
+	color: white;
+/*	border: 5px solid cornflowerblue;*/
+}
+
+.audio { 
+   display:none;
+}
+
+    .glow {
+        display: inline-block;
+       
+        animation: glowing 5.85s infinite;
+	color: white;
+
+    }
+
+    @keyframes glow {
+        50% {
+            color: red;
+            transform: scale(1.9);
+        }
+    }
+
+    @keyframes glowing {
+
+
+    0% { background-color: #d32f2f; box-shadow: 0 0 3px #d32f2f; transform: scale(1.0);}
+	25% { background-color: #303f9f; box-shadow: 0 0 10px #303f9f; transform: scale(1.4);}
+	50% { background-color: #d32f2f; box-shadow: 0 0 3px #d32f2f; transform: scale(1.0);}
+	75% { background-color: #303f9f; box-shadow: 0 0 10px #303f9f; transform: scale(1.4);}
+	100% { background-color: #d32f2f; box-shadow: 0 0 3px #d32f2f; transform: scale(1.0);}
+
+
+}
+
+
+    .boreder {
+        border-right: 1px solid black;
+    }
+</style>
+
+
+<div class="col-xs-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading"> Consultation Summary</div>
+        <div class="panel-body">
+            <div class=" col-xs-6 boreder">
+
+                <form class="form-horizontal">
+
+                    <mrs-person-encounter-vital-list opd-id="vm.opdId" admission-id="vm.admissionId"></mrs-person-encounter-vital-list>
+
+
+
+                    <mrs-person-encounter-diagnosis-list opd-id="vm.opdId" admission-id="vm.admissionId"></mrs-person-encounter-diagnosis-list>
+
+
+                    <mrs-person-encounter-examination-list opd-id="vm.opdId" admission-id="vm.admissionId"></mrs-person-encounter-examination-list>
+
+
+
+                    <mrs-person-encounter-complaint-list opd-id="vm.opdId" admission-id="vm.admissionId"></mrs-person-encounter-complaint-list>
+
+
+
+
+
+                    <mrs-person-prescription-list opd-id="vm.opdId" admission-id="vm.admissionId"></mrs-person-prescription-list>
+
+
+
+                    <mrs-person-encounter-procedure-list opd-id="vm.opdId" admission-id="vm.admissionId"></mrs-person-encounter-procedure-list>
+
+
+
+                    <mrs-person-encounter-investigation-list opd-id="vm.opdId" admission-id="vm.admissionId"></mrs-person-encounter-investigation-list>
+
+
+
+
+
+                </form>
+            </div>
+
+            <div class=" col-xs-5 col-xs-offset-1">
+                <mrs-person-encounter-health-education-list opd-id="vm.opdId" admission-id="vm.admissionId"></mrs-person-encounter-health-education-list>
+                <legend>Relations</legend>
+                <legend>Appointment(s) List</legend>
+                <div class="form-group" ng-hide="vm.appointments.length==0 && vm.fulfilledAppointments.length==0">
+
+
+                    <table class="table  table-bordered table-striped">
+                        </thead>
+                        <tr class="alert alert-success" ng-repeat="full in vm.fulfilledAppointments">
+                            <td>
+                                <div> {{full.dateOfAppointment}} Active</div>
+                            </td>
+                            <td><a class="btn-info label label-info" ng-click="vm.viewAppointment(full)">View info</a></td>
+                        </tr>
+                        <tr ng-repeat="app in vm.appointments">
+                            <td> {{app.dateOfAppointment}}</td>
+                            <td><a class="btn-info label label-info" ng-click="vm.viewAppointment(app)">View info</a></td>
+                        </tr>
+
+                        <tr>
+                             <div class="pull-left" ng-if="vm.result === 'UNKNOWN'">
+                          <!--           <audio  autoplay loop>
+                                           
+                                            <source src="img/heartbeat.mp3" type="audio/mpeg">
+                                                
+                                          </audio> -->
+                                          <button type="button" ng-click="vm.hts()" class="btn btn-md  buttonx pull-right">Offer HTS </button>
+                              
+                            </div>
+                        </tr>
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

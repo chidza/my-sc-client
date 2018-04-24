@@ -1,0 +1,73 @@
+<div class="col-xs-offset-4 col-xs-8">
+    <h2>Lab Result for {{vm.personLabInvestigation.name}}</h2>
+</div>
+<hr/>
+<div class="col-xs-offset-3 col-xs-9">
+    <form class="form-horizontal">
+
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Date:</label>
+
+            <div class="col-xs-7">
+                <label><input type="text" class="form-control" ng-disabled="true" ui-date-mask="short" ng-model="vm.personLabInvestigation.sampleDate"
+                              placeholder="YYYY-MM-DD"/></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Sample</label>
+
+            <div class="col-xs-7">
+                <label><input type="text" class="form-control" ng-disabled="true"   ng-model="vm.personLabInvestigation.sampleName"/></label>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Test</label>
+
+            <div class="col-xs-7">
+                <label><input type="text" class="form-control" ng-disabled="true"   ng-model="vm.personLabInvestigation.testName"/></label>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Lab:</label>
+            <div class="col-xs-7">
+                <label><input type="text" class="form-control" ng-disabled="true"   ng-model="vm.personLabInvestigation.labName"/></label>
+            </div>
+        </div>
+
+        <!--  -->
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Result</label>
+
+            <div class="col-xs-9" ng-show="vm.investigationResults.length>0">
+                <label ng-repeat="result in vm.investigationResults track by $index"> <input type="radio" ng-model="vm.labInvestigation.result" ng-value="result.id" name="result"/> {{result.name}}&nbsp;&nbsp;</label>
+            </div>
+            <div class="col-xs-5" ng-hide="vm.investigationResults.length>0">
+                <input type="text" ng-model="vm.labInvestigation.result" class="form-control">
+            </div>
+            <div ng-if="vm.investigation.testId==10">
+                <label>g/dm</label></div>
+        </div>
+
+        <!--  -->
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Result Date:</label>
+            <div class="input-group col-xs-4">
+                <input id="field_date" type="text" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.labInvestigation.resultDate"
+                    is-open="vm.datePickerOpenStatus.date" required/>
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('date')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <button type="submit" ng-click="vm.save()" class="btn btn-success">Save</button>
+                <a type="submit" ng-click="vm.cancel()" class="btn btn-danger">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>

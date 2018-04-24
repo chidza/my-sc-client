@@ -1,0 +1,105 @@
+<style>
+    .textcolor {
+        color: #ffffff;
+    }
+    
+    .boreder {
+        border-right: 1px solid black;
+    }
+</style>
+
+<div class="col-xs-12">
+    <form class="form-horizontal">
+
+
+        <div id="scrollpane">
+            <div class="form-group">
+                <label class="col-xs-6 control-label">Test Result</label>
+                <div class="col-xs-6">
+                    <p class="form-control-static"></p>
+                </div>
+            </div>
+            <div class="box-default">
+                <div class="col-xs-6 boreder">
+                    <h4>
+                        <u> Pretest</u>
+                    </h4>
+
+
+                    <div class="form-group">
+                        <label class="col-xs-8 control-label">HTS Approach</label>
+                        <div class="col-xs-4">
+                            <p class="form-control-static">{{vm.hts.approach}}</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-8 control-label">Reason for HIV Testing</label>
+                        <div class="col-xs-4">
+                            <p class="form-control-static" style="font-size: small;">{{vm.purposeofTestName(vm.hts.purposeOfTestId)}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-8 control-label">Couple Counselling</label>
+                        <div class="col-xs-4">
+
+                            <p class="form-control-static"> <i ng-class="{true: 'fa fa-check fa-2x text-success', false: 'fa fa-times fa-2x text-danger'}[vm.hts.coupleCounselling]"></i></p>
+                        </div>
+                    </div>
+
+                    <div class="form-group"> 
+                        <label class="col-xs-8 control-label">New Test : <i style="font-size: x-small">In Client's Life </i></label>
+                        <div class="col-xs-4">
+                            <p class="form-control-static"><i ng-class="{false: 'fa fa-check fa-2x text-success', true: 'fa fa-times fa-2x text-danger'}[vm.hts.retest]"></i></p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="col-xs-8 control-label">New Test : <i style="font-size: x-small">For Pregnant and Lactating women</i> </label>
+
+                        <div class="col-xs-4">
+                            <p class="form-control-static"><i ng-class="{true: 'fa fa-check fa-2x text-success', false: 'fa fa-times fa-2x text-danger'}[vm.hts.testForPregnancy]"></i></p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-8 control-label">Pre-test information given</label>
+                        <div class="col-xs-4">
+                            <p class="form-control-static"><i ng-class="{true: 'fa fa-check fa-2x text-success', false: 'fa fa-times fa-2x text-danger'}[vm.hts.preTestInformationGiven]"></i></p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-6">
+                    <h4>
+                        <u>Post-Test </u>
+                    </h4>
+                    <div class="form-group">
+                        <label class="col-xs-8 control-label">Results Issued</label>
+                        <div class="col-xs-4">
+                            <p class="form-control-static"><i ng-class="{true: 'fa fa-check fa-2x text-success', false: 'fa fa-times fa-2x text-danger'}[vm.hts.resultsIssued]"></i></p>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-show="!vm.hts.resultsIssued">
+                        <label class="col-xs-8 control-label">Reason for not issuing results</label>
+                        <div class="col-xs-4">
+                            <p class="form-control-static">{{vm.ReasonName(vm.hts.reasonForNotIssuingResultId)}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-8 control-label">Post Test Counselled</label>
+                        <div class="col-xs-4">
+                            <p class="form-control-static"><i ng-class="{true: 'fa fa-check fa-2x text-success', false: 'fa fa-times fa-2x text-danger'}[vm.hts.postTestCounselling]"></i></p>
+                        </div>
+                    </div>
+
+
+    </form>
+
+    </div>
+
+
+    </div>
+    </div>

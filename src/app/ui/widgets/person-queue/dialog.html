@@ -1,0 +1,17 @@
+<legend class="col-xs-12 control-label">
+    <h4>Add person to queue</h4>
+</legend>
+<br/>
+
+<div class="form-group col-xs-3" ng-repeat="queue in vm.queues">
+
+    <label class="radio-inline" for="{{queue.id}}"><input type="checkbox" id="{{queue.id}}"  ng-checked="vm.isExist(queue.id)"
+							ng-click="vm.save(queue.id)">&nbsp;{{queue.name}}</label>
+
+</div>
+
+<br/>
+
+<div class="pull-right">
+    <button class="=btn btn-block btn-success btn-lg" ng-click="vm.close()">Done</button>
+</div>

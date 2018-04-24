@@ -1,0 +1,37 @@
+<div class="col-xs-12">
+    <table datatable="ng" class="table table-striped table-bordered row-border hover">
+        <thead>
+            <tr>
+                <th colspan="8">
+                    <div class="pull-right">
+                        <!-- <button type="button"  ng-click="vm.recordDispense()" class="btn btn-info"><i class="fa fa-plus"></i> Record Dispense</button> -->
+                        <button type="button" ng-click="vm.add()" class="btn btn-success"><i class="fa fa-plus"></i> Dispense Medication</button>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th>Medication</th>
+                <th>Form</th>
+                <th>Frequency</th>
+                <th>Dispensed</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="model in vm.dispenseMedication">
+                <td>{{model.drugName}}</td>
+                <td>{{model.strength + " "+ model.unit + " "+ model.formulation}}</td>
+                <td>{{model.frequency + " / " + model.duration + " days"}}</td>
+                <td><span class="pull-right" ng-class="model.dispenseId <= 1 ? '' : 'fa fa-check fa-2x'"></span> </td>
+                <td style="width: 36%">
+                    <div class="pull-right" ng-if="model.createdBy==vm.currentUser">
+                        <button type="button" ng-click="vm.edit(model.encounterMedicationId)" class="btn btn-primary"><i class="fa fa-edit">Edit</i></button>
+                        <!--   <button type="button" ng-if="!model.dispenseId" ng-click="vm.dispense(model)" class="btn btn-info"><i class="fa fa-edit">Dispense</i> </button>
+                        <button type="button" ng-if="model.dispenseId" ng-click="vm.dispense(model)" class="btn btn-info"><i class="fa fa-edit">Edit Dispense</i> </button> -->
+                        <button type="button" ng-disabled="model.dispenseId" ng-click="vm.delete(model)" class="btn btn-danger"><i class="fa fa-trash-o">Delete</i></button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

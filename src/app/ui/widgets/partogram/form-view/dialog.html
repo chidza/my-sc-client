@@ -1,0 +1,18 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">Recordings as at {{vm.date | date:"yyyy-MM-dd HH:mm"}}</div>
+    <div class="panel-body">
+        <mrs-partogram-vital-view person-id="vm.personId" date="vm.date"></mrs-partogram-vital-view>
+        <br>
+        <mrs-urinalysis-view-static person-id="vm.personId" date="vm.date"></mrs-urinalysis-view-static>
+        <br>
+        <mrs-contration-partogram-view delivery-id="vm.deliveryId" date="vm.date"></mrs-contration-partogram-view>
+        <br>
+        <mrs-cervix-partogram-view delivery-id="vm.deliveryId" date="vm.date"></mrs-cervix-partogram-view>
+        <br>
+        <mrs-partogram-amniotic-and-moulding-view delivery-id="vm.deliveryId" date="vm.date"> </mrs-partogram-amniotic-and-moulding-view>
+        <br>
+        <mrs-partogram-oxytocin-view person-id="vm.personId" date="vm.date"></mrs-partogram-oxytocin-view>
+        <br>
+        <mrs-partogram-drug-view-static person-id="vm.personId" date="vm.date"></mrs-partogram-drug-view-static>
+    </div>
+</div>

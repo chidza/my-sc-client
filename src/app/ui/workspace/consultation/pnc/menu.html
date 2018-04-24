@@ -1,0 +1,19 @@
+<div class="col-xs-12">
+
+    <button ui-sref="consultation.management.pnc.overview" class="btn btn-info btn-block btn-lg"><i class="fa fa-universal-access  pull-left"></i>Overview</button>
+    <button ui-sref="consultation.management.pnc.previousPregnancies.list" class="btn btn-success btn-block btn-lg"><i class="fa fa-address-card-o  pull-left"></i>Registration</button>
+    <div class="panel-body">
+
+        <div class="row">
+            <button ng-click="vm.onExaminations()" class="btn btn-primary btn-block btn-lg"><i class="fa fa-calendar-plus-o  pull-left"></i>PNC Visit</button>
+            <button ng-click="vm.onVitals()" class="btn btn-primary btn-block btn-lg"><i class="fa fa-stethoscope pull-left" aria-hidden="true"></i>Vitals</button>
+            <button ng-click="vm.onInvestigations()"  class="btn btn-primary btn-block btn-lg"><i class="fa fa-eyedropper pull-left" aria-hidden="true"></i>Investigations</button>
+            <button ng-click="vm.onMedicines()"  class="btn btn-primary btn-block btn-lg"><i class="fa fa-eyedropper pull-left" aria-hidden="true"></i>Treatment</button>
+            <button ng-click="vm.onProcedures()"  class="btn btn-primary btn-block btn-lg"><i class="fa fa-eyedropper pull-left" aria-hidden="true"></i>Procedures</button>
+            <button ng-click="vm.onhealthEducation()"  class="btn btn-primary btn-block btn-lg"><i class="fa fa-slideshare  pull-left"></i>Health Education</button>
+            <button ui-sref="consultation.purpose.list({workareaId:vm.workareaId,personId:vm.personId})" class="btn btn-danger btn-block btn-lg"><i class="fa fa-sign-out pull-left"></i>Close</button>
+        </div>
+
+    </div>
+
+</div>

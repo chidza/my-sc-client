@@ -1,0 +1,19 @@
+<legend>Cervix Dilatation and Descent of Head</legend>
+<table class="table table-striped table-bordered row-border hover">
+    <thead>
+        <tr>
+            <th>Observation</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>       
+        <tr>
+            <th>Dilatation (cm)</th>
+            <td>{{vm.cervix.dilatation}}</td>
+        </tr>
+        <tr>
+            <th>Descent</th>
+            <td>{{vm.getDescent(vm.cervix.descentId)}}</td>
+        </tr>
+    </tbody>
+</table>

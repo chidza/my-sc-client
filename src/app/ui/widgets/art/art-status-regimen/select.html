@@ -1,0 +1,22 @@
+<div class="col-xs-12">
+    <table datatable="ng" class="table table-striped table-bordered row-border hover">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>ARV Combination Regimen</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="regimen in vm.arvCombinationRegimens">
+                <td>{{regimen.code}}</td>
+                <td>{{regimen.name}}</td>
+                <td>
+                    <div class="pull-right">
+                        <button type="button" ng-click="vm.select(regimen.id)" class="btn btn-primary">Select</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

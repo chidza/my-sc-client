@@ -1,0 +1,51 @@
+<form name="editForm" role="form" novalidate  show-validation>
+
+
+
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_bloodLoss">Temperature After Delivery</label>
+        <mrs-encounter-individual-vital-dialog person-id="vm.personId" workspace-id="vm.workspaceId" encounter-id="vm.encounterId" person-vital-id="vm.deliverySummary.tempAfterDeliveryId"
+            vital-type="vm.temp" saved="vm.updateVital(personVitalId,vm.temp)"></mrs-encounter-individual-vital-dialog>
+
+    </div>
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_bloodLoss">BP immediately after delivery</label>
+        <mrs-encounter-individual-vital-dialog person-id="vm.personId" workspace-id="vm.workspaceId" encounter-id="vm.encounterId" person-vital-id="vm.deliverySummary.bpAfterDeliveryId"
+            vital-type="vm.bp" saved="vm.updateVital(personVitalId,'BP_AFTER_DEL')"></mrs-encounter-individual-vital-dialog>
+    </div>
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_bloodLoss">BP after 1 hour</label>
+        <mrs-encounter-individual-vital-dialog person-id="vm.personId" workspace-id="vm.workspaceId" encounter-id="vm.encounterId" person-vital-id="vm.deliverySummary.bpAfterHrDeliveryId"
+            vital-type="vm.bp" saved="vm.updateVital(personVitalId,'BP_AFTER_HR')"></mrs-encounter-individual-vital-dialog>
+
+    </div>
+
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_uterusContracted">Uterus Contracted</label>
+        <input type="text" class="form-control" name="uterusContracted" id="field_uterusContracted" ng-model="vm.deliverySummary.uterusContracted"
+            ng-blur="vm.save()" />
+    </div>
+
+    
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_skinToSkin">Skin to skin</label>
+         <input type="checkbox" class="form-control" name="skinToSkin" id="field_skinToSkin"  ng-model="vm.deliverySummary.skinToSkin"
+            ng-change="vm.save()" />
+    </div>
+
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_bloodLoss">Pulse immediately after delivery</label>
+        <mrs-encounter-individual-vital-dialog person-id="vm.personId" workspace-id="vm.workspaceId" encounter-id="vm.encounterId" person-vital-id="vm.deliverySummary.pulseAfterDeliveryId"
+            vital-type="vm.pulse" saved="vm.updateVital(personVitalId,'PULSE_AFTER_DEL')"></mrs-encounter-individual-vital-dialog>
+
+    </div>
+
+
+
+    <div class="form-group col-xs-6">
+        <label class="control-label" for="field_bloodLoss">Pulse after 1 hour</label>
+        <mrs-encounter-individual-vital-dialog person-id="vm.personId" workspace-id="vm.workspaceId" encounter-id="vm.encounterId" person-vital-id="vm.deliverySummary.pulseAfterHrDeliveryId"
+            vital-type="vm.pulse" saved="vm.updateVital(personVitalId,'PULSE_AFTER_HR')"></mrs-encounter-individual-vital-dialog>
+    </div>
+    </div>
+</form>

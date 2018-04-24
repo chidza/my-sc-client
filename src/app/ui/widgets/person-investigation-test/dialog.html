@@ -1,0 +1,68 @@
+<div class="col-xs-12">
+    <div id="scrollpane">
+        <form class="form-horizontal" name="editForm">
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Sample:</label>
+                <div class="col-xs-9">
+                    <label class="control-label">{{vm.sample.name}}</label>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Investigation:</label>
+                <div class="col-xs-9">
+                    <label class="control-label">{{vm.labTest.name}}</label>
+                </div>
+
+            </div>
+
+            <div class="form-group" ng-show="vm.testKits.length>0">
+                <label class="col-xs-3 control-label">Test Equipment</label>
+                <div class="col-xs-9">
+                    <label ng-repeat="kit in vm.testKits track by $index"> <input type="radio" ng-model="vm.personInvestigationTest.testKitId" ng-value="kit.id" name="kitName"/> {{kit.name}}&nbsp;&nbsp;</label>
+                </div>
+
+            </div>
+
+            <div class="form-group" ng-show="vm.testKitBatches.length>0">
+                <label class="col-xs-3 control-label">Test kit Batches</label>
+                <div class="col-xs-9">
+                    <label ng-repeat="batch in vm.testKitBatches track by $index"> 
+                        <input type="radio"  ng-click="vm.getExpiryDate(batch.id)" ng-model="vm.personInvestigationTest.testKitBatchId" ng-value="batch.id" id="batch" name="batch"/> {{batch.batchNumber}}&nbsp;&nbsp;
+                        </label>
+                </div>
+
+            </div>
+
+            <div class="form-group" ng-show="vm.personInvestigationTest.testKitBatchId">
+                <label class="col-xs-3 control-label">Expiry Date</label>
+                <div class="col-xs-9">
+                    <label>{{vm.expiryDate}}</label>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Result</label>
+                
+                <div class="col-xs-9" ng-show="vm.investigationResults.length>0">
+                    <label ng-repeat="result in vm.investigationResults track by $index"> <input type="radio" ng-model="vm.personInvestigationTest.result" ng-value="result.id" name="result"/> {{result.name}}&nbsp;&nbsp;</label>
+                </div>
+                <div class="col-xs-5" ng-hide="vm.investigationResults.length>0">
+                    <input type="text" ng-model="vm.personInvestigationTest.result" class="form-control">
+                </div>
+<div ng-if="vm.investigation.testId==10">
+                 <label>g/dm</label></div>
+            </div>
+
+
+    </div>
+</div>
+
+<div class="col-xs-offset-6 col-xs-6 ">
+    <div class="pull-right">
+        <button class="btn btn-primary" ng-disabled="!vm.personInvestigationTest.result" ng-click="vm.save()">Save</button>
+        <button class="btn btn-danger" ng-click="vm.cancel()">Cancel</button>
+    </div>
+</div>
+</form>

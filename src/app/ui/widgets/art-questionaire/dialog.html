@@ -1,0 +1,13 @@
+<style>
+    input.largerCheckbox {
+        width: 25px;
+        height: 25px;
+    }
+</style>
+<p>
+    <legend>{{vm.categoryName}}</legend>
+    <ul ng-repeat="question in vm.artQuestionMedicalList">
+        <label> <input type="checkbox" class="largerCheckbox" ng-model="question.state" id="questions.id" ng-click="vm.save(question)">
+            {{question.name}}</label>
+    </ul>
+</p>

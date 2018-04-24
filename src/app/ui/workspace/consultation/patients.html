@@ -1,0 +1,49 @@
+<div class="col-xs-9">
+
+    <div class="row">
+        <div class="col-xs-9">
+            <div ng-if="vm.workspaceId=='admission'">
+                <mrs-ward-label ward-id="vm.workareaId"></mrs-ward-label>
+            </div>
+            <div ng-if="vm.workspaceId=='opd'">
+                <mrs-queue-label queue-id="vm.workareaId"></mrs-queue-label>
+            </div>
+        </div>
+
+        <div class="col-xs-3">
+
+            <button ng-click="vm.changeWorkArea()" class="btn btn-danger btn-block btn-lg">Change {{vm.workareaTitle}}</button>
+
+            <!--
+            <div ng-if="vm.workspaceId=='opd'">
+                <button ng-click="vm.admission()" class="btn btn-success btn-block btn-lg" ng-disabled="true">Admit Patient</button>
+            </div>
+            -->
+        </div>
+    </div>
+
+    <p>
+        Select patient from {{vm.workareaTitle | lowercase}}
+    </p>
+
+    <div ng-if="vm.workspaceId=='admission'">
+        <mrs-ward-queue ward-id="vm.workareaId" person-selected="vm.onPersonSelected(personId)"></mrs-ward-queue>
+    </div>
+
+    <div ng-if="vm.workspaceId=='opd'">
+        <mrs-opd-queue queue-id="vm.workareaId" person-selected="vm.onPersonSelected(personId)"></mrs-opd-queue>
+    </div>
+
+</div>
+
+<div class="col-xs-3">
+
+    <div class="col-xs-12">
+        <mrs-person-summary person-id="vm.personId"></mrs-person-summary>
+    </div>
+
+    <div class="col-xs-12">
+        <button ng-disabled="!vm.personId" ng-click="vm.patientManagement()" class="btn btn-lg btn-primary btn-block" type="button">Open Patient File</button>
+    </div>
+
+</div>

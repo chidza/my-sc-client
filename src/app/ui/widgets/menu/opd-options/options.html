@@ -1,0 +1,102 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">Patient Options</div>
+    <div class="panel-body">
+        <div class="row" ng-hide="vm.isUnknown()">
+
+            <div class="col-xs-6" ng-hide="vm.isAdmitted()">
+                <div class="form-group">
+                    <button class="btn btn-block btn-primary btn-lg" ng-click="vm.vitals()">Vitals</button>
+                </div>
+            </div>
+
+            <div class="col-xs-6" ng-show="vm.isNurseOrDoctor()">
+                <div class="form-group">
+                    <button class="btn btn-block btn-primary btn-lg" ng-click="vm.general()">Consultation</button>
+                </div>
+            </div>
+
+            <div class="col-xs-6" ng-show="(vm.isPharmacists() || vm.isPharmTech()) && !vm.isAdmitted()">
+                <div class="form-group">
+                    <button class="btn btn-block btn-primary btn-lg" ng-click="vm.medication()">Medication</button>
+                </div>
+            </div>
+
+            <div class="col-xs-6" ng-show="vm.isNurseOrDoctor()">
+                <div class="form-group">
+                    <button class="btn btn-block btn-primary btn-lg" ng-click="vm.hts()">HIV Testing</button>
+                </div>
+            </div>
+
+            <div class="col-xs-6" ng-show="vm.isNurseOrDoctor() && !vm.isAdmitted()">
+                <div class="form-group">
+                    <button class="btn btn-block btn-primary btn-lg" ng-click="vm.art()">ART</button>
+                </div>
+            </div>
+
+            <div class="col-xs-6" ng-show="vm.isFemale() && vm.isNurseOrDoctor() && !vm.isAdmitted()">
+                <div class="form-group">
+                    <button class="btn btn-block btn-primary btn-lg" ng-click="vm.anc()">ANC</button>
+                </div>
+            </div>
+
+            <div class="col-xs-6" ng-show="vm.isFemale() && vm.isNurseOrDoctor()">
+                <div class="form-group">
+                    <button class="btn btn-block btn-primary btn-lg" ng-click="vm.pnc()">PNC</button>
+                </div>
+            </div>
+
+            <div class="col-xs-6" ng-show="vm.isNurseOrDoctor() && !vm.isAdmitted()">
+                <div class="form-group">
+                    <button class="btn btn-block btn-primary btn-lg" ng-click="vm.tb()">TB</button>
+                </div>
+            </div>
+
+
+            <div class="col-xs-6" ng-show="vm.isNurseOrDoctor() && !vm.isAdmitted()">
+                <div class="form-group">
+                    <button class="btn btn-block btn-primary btn-lg" disabled ng-click="vm.sti()">STI</button>
+                </div>
+            </div>
+
+            <div class="col-xs-6" ng-show="vm.isNurseOrDoctor() && !vm.isAdmitted()">
+                <div class="form-group">
+                    <button class="btn btn-block btn-primary btn-lg" ng-click="vm.chronic()">Chronic</button>
+                </div>
+            </div>
+
+            <div class="col-xs-6" ng-show="vm.isInfant() && vm.isNurseOrDoctor()">
+                <div class="form-group">
+                    <button class="btn btn-block btn-primary btn-lg" ng-click="vm.imnci()">IMNCI</button>
+                </div>
+            </div>
+
+            <div class="col-xs-6" ng-show="vm.isNurseOrDoctor() && !vm.isAdmitted()">
+                <div class="form-group">
+                    <button class="btn btn-block btn-primary btn-lg" disabled ng-click="vm.fp()">Family Planning</button>
+                </div>
+            </div>
+
+            <div class="col-xs-12" ng-show="vm.isAdmitted() && vm.isFemale() && vm.isNurseOrDoctor()">
+                <div class="form-group">
+                    <button class="btn btn-block btn-primary btn-lg" ng-click="vm.delivery()">Delivery</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" ng-show="vm.isUnknown()">
+            <div class="col-xs-12">
+
+                <p class="text-danger">
+                    <strong>Can not attend to patient with undefined sex or gender</strong>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <button class="btn btn-danger btn-block btn-lg" ng-click="vm.close()">Next Patient</button>
+    </div>
+
+</div>

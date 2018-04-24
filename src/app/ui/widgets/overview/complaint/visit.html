@@ -1,0 +1,18 @@
+<table datatable="ng" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Present</th>
+            <th>Duration</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="complaint in vm.complaints">
+            <td>{{complaint.date | date:"y-MM-dd"}}</td>
+            <td>{{complaint.name}}</td>
+            <td>{{complaint.present}}</td>
+            <td>{{complaint.duration}}day(s)</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,7 @@
+<div ng-hide="vm.complaints.length===0">
+    <strong> Complaints </strong>
+    <ul ng-repeat="complaint in vm.complaints" class="list-unstyled">
+        <li><b>{{$index +1}}.</b> {{complaint.name}}/{{complaint.duration}}day(s) &nbsp;&nbsp;<i ng-class="complaint.present? 'fa fa-check text-danger' : 'fa fa-times text-success'"></i></li>
+    </ul>
+    <hr>
+</div>

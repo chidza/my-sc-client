@@ -1,0 +1,6 @@
+<div class="input-group">
+    <input type="text" autocomplete="off" ng-disabled="true" class="form-control" ng-value="vm.getResult(vm.personInvestigation.result)">
+    <div class="input-group-btn">
+        <button ng-click="vm.update()" class="btn btn-primary btn-block" type="button"><span ng-show="!vm.personInvestigation.result">Set</span><span ng-show="vm.personInvestigation.result">Update</span></button>
+    </div>
+</div>

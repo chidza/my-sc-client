@@ -1,0 +1,58 @@
+<form name="editForm" role="form" novalidate show-validation>
+    <div class="modal-body">
+
+
+        <div class="form-group" ng-show="vm.drugName.name">
+            <label class="control-label" for="field_medication">Medication</label>
+            <input type="text" class="form-control" disabled name="medication" id="field_medication" ng-model="vm.drugName.name" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_duration">Duration</label>
+            <input type="number" class="form-control" name="duration" id="field_duration"  ng-model="vm.dispense.duration"  required/>
+            <div ng-show="editForm.duration.$invalid">
+                <p class="help-block" ng-show="editForm.duration.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block" ng-show="editForm.duration.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_quantity">Quantity</label>
+            <input type="number" class="form-control" name="quantity" id="field_quantity" ng-model="vm.dispense.quantity" required />
+            <div ng-show="editForm.quantity.$invalid">
+                <p class="help-block" ng-show="editForm.quantity.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block" ng-show="editForm.quantity.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div>
+                <label>Frequency: </label>
+                <label ng-repeat="frequency in vm.frequencies">
+                    <input type="radio" name="freq" required ng-model="vm.dispense.frequencyId"
+                            ng-value="frequency.id" string/> {{frequency.name}}&nbsp;&nbsp;&nbsp;  </label>
+            </div>
+
+
+            <div ng-show="editForm.freq.$invalid">
+                <p class="help-block" ng-show="editForm.freq.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="button" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary" ng-click="vm.save()">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

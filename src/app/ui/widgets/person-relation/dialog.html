@@ -1,0 +1,32 @@
+<div class="col-xs-12">
+    <form class="form-horizontal" autocomplete="off">
+        <div class="form-group">
+            <label for="id" class="col-xs-2 control-label">Member</label>
+            <div class="col-xs-6">
+                <mrs-person-label person-id="vm.memberId"></mrs-person-label>
+
+                <div class="pull-right" ng-hide="vm.personRelation.id">
+                    <button ng-click="vm.change()" class="btn btn-primary">Change Member</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-2 control-label">Type</label>
+            <div class="col-xs-6">
+                <select ng-options="d.id as d.name  for d in vm.relationshipTypes" class="form-control" ng-model="vm.personRelation.typeId"></select>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-xs-offset-2 col-xs-6 ">
+                <div class="pull-right">
+                    <button type="submit" ng-click="vm.save()" class="btn btn-primary">Save</button>
+                    <button type="submit" ng-click="vm.close()" class="btn btn-danger">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

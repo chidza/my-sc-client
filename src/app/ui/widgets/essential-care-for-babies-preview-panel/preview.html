@@ -1,0 +1,106 @@
+<style>
+    .textcolor {
+        color: #ffffff;
+    }
+
+
+
+
+
+
+    .boreder {
+        border-right: 1px solid black;
+    }
+</style>
+
+
+
+<div class="col-xs-12">
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="pull-right">
+                <button type="button" ng-click="vm.onRecord()" class="btn btn-lg btn-success pull-right"><i class="fa fa-plus fa-2x"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class=" col-xs-6 boreder">
+
+        <form class="form-horizontal">
+
+
+            <div ng-hide="vm.vitals.length===0">
+                <strong> Vitals </strong>
+                <ul ng-repeat="vital in vm.vitals track by $index" class="list-unstyled">
+                    <li><b>{{$index +1}}.</b>{{vm.getTime(vital.date)}} {{vital.vital}}-{{vital.value +' '+ vital.unit}}</li>
+                </ul>
+                <hr>
+            </div>
+
+            <div ng-hide="vm.medications.length===0">
+                <strong> Medications </strong>
+                <ul ng-repeat="vital in vm.medications track by $index" class="list-unstyled">
+                    <li><b>{{$index +1}}.</b>{{vm.getTime(vital.date)}} {{vital.drugName}}</li>
+                </ul>
+                <hr>
+            </div>
+
+            <div ng-hide="vm.investigations.length===0">
+                <strong> Investigations </strong>
+                <ul ng-repeat="vital in vm.investigations track by $index" class="list-unstyled">
+                    <li><b>{{$index +1}}.</b>{{vital.date}} {{vital.sample}}-{{vital.result}}-{{vital.test}}</li>
+                </ul>
+                <hr>
+            </div>
+            <div ng-hide="vm.examinations.length===0">
+                <strong> Examinations </strong>
+                <ul ng-repeat="vital in vm.examinations track by $index" class="list-unstyled">
+                    <li><b>{{$index +1}}.</b>{{vital.date}} {{vital.examination}}-{{vital.note }}</li>
+                </ul>
+                <hr>
+            </div>
+
+            <div ng-hide="vm.feedingOptionsPropertyList.length===0">
+                <strong>Feeding Options </strong>
+                <ul ng-repeat="vital in vm.feedingOptionsPropertyList track by $index" class="list-unstyled">
+                    <li><b>{{$index +1}}.</b>{{vm.getTime(vital.createdDate)}} - {{vital.name}}</li>
+                </ul>
+                <hr>
+            </div>
+
+
+
+
+
+
+        </form>
+    </div>
+
+    <div class=" col-xs-5 col-xs-offset-1">
+
+        <legend>Delivery Information</legend>
+        <div >
+            
+                        <ul  class="list-unstyled">
+                            <li>weight  <span ng-class="vm.infant.weight>1500 ? 'fa  text-success' : 'fa  text-danger'">{{vm.infant.weight}}</span></span></li>
+                         
+                            <li >height: {{vm.infant.height}}</li>
+                            <li >headCircumference: {{vm.infant.headCircumference}}</li>
+                            <li >deliveryMethod: {{vm.infant.deliveryMethod}}</li>
+                            <li >meconium: {{vm.infant.meconium}}</li>
+                            <li >resuscitation: {{vm.infant.resuscitation}}</li>
+                        </ul>
+                        <hr>
+                    </div>
+        <legend>Danger Signs</legend>
+        <div ng-hide="vm.DangerSignsPropertyList.length===0">
+
+            <ul ng-repeat="vital in vm.DangerSignsPropertyList track by $index" class="list-unstyled">
+                <li style="color: red;"><b>{{$index +1}}.</b>{{vital.name}}</li>
+            </ul>
+            <hr>
+        </div>
+    </div>
+</div>

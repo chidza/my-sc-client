@@ -1,0 +1,43 @@
+{
+  //"esversion": 6,
+  "globals": {
+    "epms": false,
+    // Angular
+    "angular": false,
+    // Angular mocks
+    "module": false,
+    "inject": false,
+    //moment
+    "moment": false,
+    // Jasmine
+    "jasmine": false,
+    "describe": false,
+    "beforeEach": false,
+    "afterEach": false,
+    "it": false,
+    "expect": false,
+    // Protractor
+    "$": false,
+    "$$": false,
+    "browser": false,
+    "by": false,
+    "element": false,
+    "protractor": false
+  },
+  "node": true,
+  "curly": true,
+  "eqeqeq": true,
+  "forin": true,
+  "freeze": true,
+  "funcscope": true,
+  "latedef": true,
+  "shadow": false,
+  "strict": true,
+  "undef": true,
+  "unused": true,
+  "boss": true,
+  "eqnull": true,
+  "evil": true,
+  "lastsemic": true,
+  "loopfunc": true
+}

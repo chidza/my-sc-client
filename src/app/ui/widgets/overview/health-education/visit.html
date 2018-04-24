@@ -1,0 +1,16 @@
+<table datatable="ng" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="education in vm.healthEducation">
+            <td>{{education.date | date:"y-MM-dd HH:mm"}}</td>
+            <td>{{education.name}}</td>
+            <td>{{education.type}}</td>
+        </tr>
+    </tbody>
+</table>

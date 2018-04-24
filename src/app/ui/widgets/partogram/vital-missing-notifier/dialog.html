@@ -1,0 +1,13 @@
+<div ng-show="vm.vitalList.length == 0">
+    <b>{{vm.vital.name + " ("+vm.unit.name+")"}}</b> information is up to date
+</div>
+
+
+<div ng-show="vm.vitalList.length > 0">
+    <legend style="font-size:small"> <b>{{vm.vital.name + " ("+vm.unit.name+")"}}<br> not entered at these time(s)</b></legend>
+
+    <ul class="list-unstyled" ng-repeat="x in vm.vitalList">
+        <li ng-class="x.status == 'RECORDED' ? 'text-success' : 'text-danger'">{{ vm.formatTime(x.time) }} - {{ x.status }}</li>
+
+    </ul>
+</div>

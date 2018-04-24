@@ -1,0 +1,42 @@
+<div class="col-xs-6">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title promo-badge">Select Sample</h3>
+
+        </div>
+
+        <div class="panel-body">
+
+            <div ng-repeat="s in vm.samples">
+                <label>
+            <input type="radio" ng-change="vm.sampeTests()" ng-model="vm.sampleId" name="sampleId" ng-value="s.id"> {{s.name}}
+         </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-6">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title promo-badge">Select Test</h3>
+
+        </div>
+
+        <div class="panel-body">
+            <div ng-repeat="t in vm.tests">
+                <label >
+            <input type="radio" ng-change="vm.getInvestigation()"  ng-model="vm.testId" name="testId" ng-value="t.id"> {{t.name}}
+         </label>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12">
+
+    <div class="pull-right">
+        <button class="btn btn-primary btn-lg" ng-show="vm.investigationId.length>0" ng-click="vm.onSelected()">Select Test</button>
+    </div>
+</div>

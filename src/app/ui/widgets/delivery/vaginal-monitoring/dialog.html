@@ -1,0 +1,64 @@
+<form name="editForm" role="form" novalidate  show-validation>
+
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="col-xs-3 control-label" for="field_date">Date</label>
+            <div class="col-xs-9 input-group">
+                <input id="field_date" type="text" class="form-control" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.vaginal.date"
+                    is-open="vm.datePickerOpenStatus.date" required disabled/>
+                <span class="input-group-btn">
+                        <button type="button"  class="btn btn-default" ng-click="vm.openCalendar('date')" disabled><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-3 control-label" for="field_time">Time</label>
+            <div class="col-xs-9 input-group">
+                <input id="field_time" type="text" class="form-control" name="time" enable-date="false" initial-picker="time" datetime-picker="HH:mm"
+                    ng-model="vm.vaginal.time" is-open="vm.datePickerOpenStatus.time" required disabled/>
+                <span class="input-group-btn">
+                        <button type="button"  class="btn btn-default" ng-click="vm.openCalendar('time')" disabled><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-3 control-label" for="field_amnioticFluid">Amniotic Fluid</label>
+            <div class="col-xs-9">
+                <label ng-repeat="d in vm.amniotic">
+            <input type="radio" class="enlarged" name="AmnioticFluidId" ng-model="vm.vaginal.amnioticFluidId" ng-value="d.id"/> {{d.name}}&nbsp;&nbsp;&nbsp;&nbsp;
+              </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-3 control-label" for="field_moulding">Moulding</label>
+            <div class="col-xs-9">
+                <label ng-repeat="d in vm.degrees" ng-if="d.name!='0'">
+           <input type="radio" class="enlarged" name="mouldingId" ng-model="vm.vaginal.mouldingId" ng-value="d.id"/> {{d.name}}&nbsp;&nbsp;&nbsp;&nbsp;
+              </label>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-xs-3 control-label" for="field_caput">Caput</label>
+            <div class="col-xs-9">
+                <label ng-repeat="d in vm.degrees">
+           <input type="radio" class="enlarged" name="CaputId" ng-model="vm.vaginal.caputId" ng-value="d.id"/> {{d.name}}&nbsp;&nbsp;&nbsp;&nbsp;
+              </label>
+            </div>
+        </div>
+
+
+
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+            <button type="button" ng-click="vm.save()" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+        </div>
+</form>

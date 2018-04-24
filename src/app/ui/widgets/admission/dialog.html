@@ -1,0 +1,85 @@
+<form name="editForm" role="form" novalidate  show-validation>
+    <div class="row">
+        <div class="form-group col-xs-3">
+            <label class="control-label " for="field_admitted">Date</label>
+            <div class="input-group">
+                <input id="field_admitted" type="text" class="form-control" name="admitted" uib-datepicker-popup="y-MM-dd" ng-model="vm.admission.time"
+                    is-open="vm.datePickerOpenStatus.admitted" required/>
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('admitted')">&nbsp;<i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.admitted.$invalid">
+                <p class="help-block" ng-show="editForm.admitted.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-3">
+            <label class="control-label " for="field_time">Time</label>
+            <div class="input-group ">
+                <input id="field_time" type="text" class="form-control" name="time" enable-date="false" initial-picker="time" datetime-picker="HH:mm"
+                    ng-model="vm.admission.time" is-open="vm.datePickerOpenStatus.time" required />
+                <span class="input-group-btn">
+                        <button type="button"  class="btn btn-default" ng-click="vm.openCalendar('time')" >&nbsp;<i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.time.$invalid">
+                <p class="help-block" ng-show="editForm.time.$error.required">
+                    This field is required.
+                </p>
+                <p class=" help-block" ng-show="editForm.time.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_ward">Ward</label>
+            <div class="input-group col-xs-12">
+                <select class="form-control " id="field_ward" name="ward" ng-model="vm.admission.wardId" ng-options="ward.id as ward.name for ward in vm.wards"
+                    required>
+                <option value=""></option>
+                </select>
+            </div>
+            <div ng-show="editForm.ward.$invalid">
+                <p class="help-block" ng-show="editForm.ward.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-if="!vm.admission.id">
+        <div class="form-group col-xs-12">
+            <label class="control-label" for="field_ward">Reason</label>
+            <div class="input-group col-xs-12">
+                <div class="input-group">
+                    <input type="text" autocomplete="off" ng-disabled="true" class="form-control" ng-value="vm.diagnosis.name">
+                    <div class="input-group-btn">
+                        <button ng-click="vm.selectDiagnosis()" class="btn btn-primary btn-block" type="button"><span ng-show="!vm.diagnosis.id">Set</span><span ng-show="vm.diagnosis.id">Change</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr/>
+
+    <p>&nbsp;</p>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="pull-right">
+                <button type="button" class="btn btn-default btn-lg" data-dismiss="modal" ng-click="vm.close()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+                <button type="button" ng-click="vm.save()" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary btn-lg">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Admit Patient</span>
+        </button>
+            </div>
+        </div>
+    </div>
+
+</form>
